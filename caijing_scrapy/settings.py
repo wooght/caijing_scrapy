@@ -16,7 +16,12 @@ NEWSPIDER_MODULE = 'caijing_scrapy.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'caijing_scrapy (+http://www.yourdomain.com)'
+USER_AGENT = [
+                'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6',
+                'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
+                'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE',
+                'Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11'
+             ]
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -28,13 +33,18 @@ CONCURRENT_REQUESTS = 32
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 1                                  #同一网站延迟时间
+DOWNLOAD_DELAY = 5                                  #同一网站延迟时间
 RANDOMIZE_DOWNLOAD_DELAY = True                     #随机等待时间 在download-delay的基础上
 
-DOWNLOAD_TIMEOUT = 20                               #等待/超时的最大时间 S
+DNS_TIMEOUT = 10                                    #DNS解析等等最大时间
+DOWNLOAD_TIMEOUT = 5                                #等待/超时的最大时间 S
 
 HTTPERROR_ALLOWED_CODES= [521]                      #可继续执行的访问错误
 
+RETRY_ENABLED = True
+RETRY_TIMES = 1                                     #重试一次即可放弃
+
+#IP池
 HTTP_IPS = [
     '61.152.230.26:8080',
     '211.103.208.244:80',
@@ -68,7 +78,7 @@ HTTP_IPS = [
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-   'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
    'caijing_scrapy.middlewares.WooghtDownloadMiddleware': 543,
 }
 

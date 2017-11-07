@@ -27,3 +27,12 @@ def search_time(str):
             return str
         else:
             return today()
+
+#新浪新闻事件获取
+def sina_get_time(strr):
+    time_re = re.search(r'(\d{4})\D*(\d{2})\D*(\d{2})\D*(\d{2})\:(\d{2})',strr)
+    if(time_re):
+        time_str = time_re.group(1)+'-'+time_re.group(2)+'-'+time_re.group(3)+' '+time_re.group(4)+':'+time_re.group(5)+':00'
+    else:
+        time_str = today()
+    return time_num(time_str,"%Y-%m-%d %H:%M:%S")
