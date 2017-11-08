@@ -45,7 +45,7 @@ class NewsSpider(CrawlSpider):
         Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
         Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen'),
         #腾讯证券
-        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm',)),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm$',)),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
         # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d+.htm',)),callback='parse',follow=True,process_links='link_screen'),
     )
@@ -141,8 +141,8 @@ class NewsSpider(CrawlSpider):
         items['url'] = response.url
         url_re = re.search(r'.*a\/(\d+)\/(\d+).htm',items['url'],re.I)
         items['only_id'] = url_re.group(1)+url_re.group(2)
-        thetime = response.xpath('//span[@class="a_time"]/text()').extract()[0].strip()
-        if(not thetime):
-            thetime = response.xpath('//span[@class="pubTime article-time"]/text()').extract()[0].strip()
-        items['put_time'] = wfunc.time_num(thetime,"%Y-%m-%d %H:%M")
+        thetime = response.xpath('//span[@class="a_time"]/text()')
+        if(len(thetime)<1):
+            thetime = response.xpath('//span[@class="pubTime article-time"]/text()')
+        items['put_time'] = wfunc.time_num(thetime.extract()[0].strip(),"%Y-%m-%d %H:%M")
         yield items
