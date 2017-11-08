@@ -33,7 +33,7 @@ CONCURRENT_REQUESTS = 32
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 5                                  #同一网站延迟时间
+DOWNLOAD_DELAY = 1                                  #同一网站延迟时间
 RANDOMIZE_DOWNLOAD_DELAY = True                     #随机等待时间 在download-delay的基础上
 
 DNS_TIMEOUT = 10                                    #DNS解析等等最大时间
@@ -43,6 +43,14 @@ HTTPERROR_ALLOWED_CODES= [521]                      #可继续执行的访问错
 
 RETRY_ENABLED = True
 RETRY_TIMES = 1                                     #重试一次即可放弃
+
+LOG_ENABLED = True                                   #日志
+LOG_LEVEL = 'WARNING'                                  #运行日志级别 DEBUG,INFO,WARNING,ERROR,CRITICAL,SILENT
+
+LOGSTATS_INTERVAL = 60                              #打印item处理数据
+
+TELNETCONSOLE_ENABLED = True
+TELNETCONSOLE_PORT = '50853'                          #监控端口
 
 #IP池
 HTTP_IPS = [

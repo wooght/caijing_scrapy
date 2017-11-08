@@ -15,6 +15,7 @@ import random
 from scrapy.http import Request, FormRequest, HtmlResponse
 from caijing_scrapy.settings import HTTP_IPS
 from caijing_scrapy.settings import USER_AGENT
+import caijing_scrapy.providers.wfunc as wfunc
 
 
 class WooghtDownloadMiddleware(object):
@@ -41,6 +42,8 @@ class WooghtDownloadMiddleware(object):
         # #service_args=['..'] 具备访问加密请求https的功能
         # driver = webdriver.PhantomJS(service_args=['--ssl-protocol=any'],executable_path="F:\homestead\scripy_wooght/phantomjs",desired_capabilities=cap)
         self.driver = webdriver.PhantomJS(service_args=['--ssl-protocol=any'],executable_path="F:\homestead\scripy_wooght/phantomjs",desired_capabilities=cap)
+        self.driver.implicitly_wait(10)        ##设置超时时间
+        self.driver.set_page_load_timeout(10)  ##设置超时时间 两则同时设置才有效
         print('-----------------------------=>driver启动')
         self.driver.onResourceTimeout = self.function()
     def function(self):
@@ -50,20 +53,20 @@ class WooghtDownloadMiddleware(object):
         js = "var q=document.body.scrollTop=2000"
         url=request.url;
         if(spider.name=='news'):
-            delay_time = random.randint(1,4)
-            time.sleep(delay_time)                                               #随机休息时间
+            delay_time = random.randint(0,2)
             print('休息中....',delay_time)
+            time.sleep(delay_time)                                               #随机休息时间
             self.open_url(url)
             not_html = 'html' in url
             if(not not_html and 'yicai' in url):
-                print('yicai------>')
+                print('------------>yicai------>')
                 arr_num = [1,2,3,4,5]
                 for i in arr_num:
                     button_id = self.driver.find_element_by_id('divMore')        #多次点击更多按钮
                     time.sleep(2)
                     button_id.click()
             elif(url=="https://xueqiu.com"):
-                print('xueqiu------>')
+                print('------------>xueqiu------>')
                 arr_num = [1,2,3,4]
                 for i in arr_num:
                     time.sleep(1)
@@ -75,26 +78,30 @@ class WooghtDownloadMiddleware(object):
                     print(button_class,'-=-=---===button click--====--=-=-=-=')
                     button_class.click()
             else:
-                print('sina,qq---------->')
+                print('------------>sina,qq---------->')
             body = self.driver.page_source
-            print(self.driver.title,'=-=-=-=-=SUCCESS!-=-=-=-=-=-')
+            print(self.driver.title,'=-=-=-=-=---SUCCESS--给spider处理--=-=-=-=-=-')
+            # self.driver.close()                                                     #关闭当前网页
             return HtmlResponse(body=body, encoding='utf-8',request=request,url=str(url))
 
 
     #关闭浏览器
     def spider_closed(self, spider, reason):
         print ('close driver......')
-        self.driver.quit()
-        self.driver.close()
-
+        self.driver.quit()                  #关闭浏览器
     #执行下载
     def open_url(self,url):
         #动态设置agent
         self.driver.desired_capabilities['phantomjs.page.settings.userAgent'] = random.choice(USER_AGENT)
         try:
-            return self.driver.get(url)
-        except:
-            print('=--===--==!!!! Open Url Error !!!-=-=--=-=-=')
+            print(wfunc.today(),'open url......:',url,'......')
+            t_one = time.time()
+            self.driver.get(url)
+            t_two = time.time()
+            print('out time:',t_two-t_one)
+        except Exception as e:
+            print('=--===--==!!!! Open Url Error !!!-=-=--=-=-=',e)
+            self.driver.quit()                                                      #退出旧的driver
             time.sleep(1)
             self.set_cap()                                                          #10061错误,及phantomjs内容溢出,需重新启动
             # self.set_proxy()

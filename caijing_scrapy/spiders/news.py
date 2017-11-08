@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 #
-#     第一财经-新闻
+#     第一财经-新闻,腾讯证券,新闻股票,雪球头条
 #     by wooght 2017-10
 #
 import scrapy
@@ -19,12 +19,13 @@ from scrapy.linkextractors import LinkExtractor
 class NewsSpider(CrawlSpider):
     name = 'news'
     allowed_domains = ['www.yicai.com','xueqiu.com','sina.com.cn','qq.com']
-    download_delay = 5                                              #设置下载延时
+    download_delay = 1                                              #设置下载延时
     start_urls = [
                     # 'http://www.yicai.com/news/5365720.html',
                     # 'https://xueqiu.com/7859591518/95051267',
                     # 'http://finance.sina.com.cn/stock/s/2017-11-06/doc-ifynmvuq9022743.shtml'
 
+                    'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
                     'http://finance.sina.com.cn/stock/',
                     'https://xueqiu.com',
                     'http://www.yicai.com/data/',
@@ -32,7 +33,7 @@ class NewsSpider(CrawlSpider):
                     'http://www.yicai.com/news/gushi/',
                     'http://www.yicai.com/data/',
                     'http://www.yicai.com/news/hongguan/',
-                    'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
+
                  ]
 
     rules = (
@@ -41,15 +42,21 @@ class NewsSpider(CrawlSpider):
         #第一财经
         Rule(LinkExtractor(allow=('http\:\/\/www\.yicai\.com\/news\/\d+\.html',)),callback='parse_yicai',follow=True,process_links='link_screen'),
         #雪球头条文章
-        Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*', )),callback='parse_xueqiu',follow=True,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
         Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen'),
         #腾讯证券
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm',)),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
         # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d+.htm',)),callback='parse',follow=True,process_links='link_screen'),
     )
+        # LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*'),restrict_xpaths=('//div[@id="id"]/a')) LinkExtractor通过xpaths指定搜索范围
 
     old_link = []
+
+    #动态修改配置内容
+    custom_settings = {
+        'LOGSTATS_INTERVAL': 10,
+    }
 
 
     def __init__(self,*args,**kwargs):
@@ -62,13 +69,11 @@ class NewsSpider(CrawlSpider):
         arr = r.fetchall()
         for one in arr:
             self.old_link.append(one[0])
-        print(self.old_link)
 
     #地址去重/过滤
     def link_screen(self,links):
         new_links = []
         for i in links:
-            print(i.url)
             if(i.url not in self.old_link):
                 new_links.append(i)
                 self.old_link.append(i.url)
@@ -107,7 +112,10 @@ class NewsSpider(CrawlSpider):
     def parse_sina(self,response):
         # http://finance.sina.com.cn/stock/s/2017-11-06/doc-ifynmvuq9022743.shtml
         items = NewsItem()
-        items['title'] = response.xpath('//title/text()').extract()[0].strip()
+        if(len(response.xpath('//title/text()').extract())>0):
+            items['title'] = response.xpath('//title/text()').extract()[0].strip()
+        else:
+            items['title'] = ' '
         bodys = response.xpath('//div[@id="artibody"]//p').extract()            #得到的是列表
         body_str=''
         for ii in bodys:
@@ -134,5 +142,7 @@ class NewsSpider(CrawlSpider):
         url_re = re.search(r'.*a\/(\d+)\/(\d+).htm',items['url'],re.I)
         items['only_id'] = url_re.group(1)+url_re.group(2)
         thetime = response.xpath('//span[@class="a_time"]/text()').extract()[0].strip()
+        if(not thetime):
+            thetime = response.xpath('//span[@class="pubTime article-time"]/text()').extract()[0].strip()
         items['put_time'] = wfunc.time_num(thetime,"%Y-%m-%d %H:%M")
         yield items
