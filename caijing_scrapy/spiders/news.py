@@ -7,7 +7,7 @@
 import scrapy
 import re
 import time
-from caijing_scrapy.items import NewsItem
+from caijing_scrapy.items import NewsItem,TopicItem
 import caijing_scrapy.providers.wfunc as wfunc
 
 import caijing_scrapy.Db as T
@@ -95,13 +95,13 @@ class NewsSpider(CrawlSpider):
 
     #雪球头条
     def parse_xueqiu(self,response):
-        items = NewsItem()
+        items = TopicItem()
         items['title'] = response.xpath('//title/text()').extract()[0].strip()
         thetime = response.xpath('//a[@class="time"]/@data-created_at').extract()
         if(len(thetime)<1):
             thetime = response.xpath('//a[@class="edit-time"]/@data-created_at').extract()
         # thetime = wfunc.search_time(thetime)
-        items['put_time'] = thetime[0].strip()
+        items['put_time'] = thetime[0][0:10].strip()                                             #截取长度   不包括后边界
         url_re = re.search(r'.*\/(\d+)\/(\d+)$',response.url,re.I)
         items['url'] = response.url
         items['only_id'] = url_re.group(1)+url_re.group(2)

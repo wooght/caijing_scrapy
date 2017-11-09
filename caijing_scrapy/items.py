@@ -15,3 +15,11 @@ class NewsItem(scrapy.Item):
     title = scrapy.Field()
     body = scrapy.Field()
     put_time = scrapy.Field()
+
+class TopicItem(scrapy.Item):
+    id = scrapy.Field()
+    url = scrapy.Field()
+    only_id = scrapy.Field()
+    title = scrapy.Field()
+    body = scrapy.Field()
+    put_time = scrapy.Field()    
