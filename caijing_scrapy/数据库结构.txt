@@ -1,0 +1,51 @@
+上市公司:Listed company
+ID
+总公司ID		father_id
+股票代码		code
+所属板块		plate_id
+公司名称		name
+官网		url
+微博		blog
+
+公司-公司关系:cp_relation
+ID
+公司1ID		cp_id
+公司2ID		cp2_id
+关系		level
+		持股		1
+
+
+板块分类:shares_plate
+ID
+父板块ID		father_id
+名称		name
+
+
+重要人物:character
+ID
+名称		name
+微博		blog
+
+公司-人物关系:cc_relation
+ID
+公司ID		company_id
+人物ID		character_id
+人物级别		level
+		法人		1
+		股东/懂事	2
+		经理/管理	3
+		投资商		4
+		持股		5
+		家属		6
+		员工		7
+
+微博:blog
+ID
+发布作者		author_id
+作者类型		author_level
+		1公司
+		2人物
+发布时间		pubdate
+发布内容		body
+分词		participle
+关键词		word_key	

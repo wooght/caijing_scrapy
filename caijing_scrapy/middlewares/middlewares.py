@@ -17,6 +17,9 @@ from caijing_scrapy.settings import HTTP_IPS
 from caijing_scrapy.settings import USER_AGENT
 import caijing_scrapy.providers.wfunc as wfunc
 
+import sys,io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
 
 class WooghtDownloadMiddleware(object):
     def __init__(self):
@@ -101,7 +104,7 @@ class WooghtDownloadMiddleware(object):
             print('out time:',t_two-t_one)
         except Exception as e:
             print('=--===--==!!!! Open Url Error !!!-=-=--=-=-=',e)
-            self.driver.quit()                                                      #退出旧的driver
+            self.driver.quit()                                                      #退出旧的driver,减小内存
             time.sleep(1)
             self.set_cap()                                                          #10061错误,及phantomjs内容溢出,需重新启动
             # self.set_proxy()

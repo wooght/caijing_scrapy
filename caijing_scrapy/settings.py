@@ -87,7 +87,7 @@ HTTP_IPS = [
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-   'caijing_scrapy.middlewares.WooghtDownloadMiddleware': 543,
+   'caijing_scrapy.middlewares.middlewares.WooghtDownloadMiddleware': 543,
 }
 
 # Enable or disable extensions

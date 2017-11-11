@@ -1,120 +1,460 @@
-[INFO  - 2017-11-09T14:00:08.746Z] GhostDriver - Main - running on port 60856
-[INFO  - 2017-11-09T14:00:12.208Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36","webSecurityEnabled":true}
-[INFO  - 2017-11-09T14:00:12.208Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.customHeaders:  - {"Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx; "}
-[INFO  - 2017-11-09T14:00:12.208Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.customHeaders.Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx; ","phantomjs.page.settings.disk-cache":true,"phantomjs.page.settings.loadImages":false,"phantomjs.page.settings.resourceTimeout":2000,"phantomjs.page.settings.connection":"keep-alive","phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36","phantomjs.page.settings.accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"}
-[INFO  - 2017-11-09T14:00:12.209Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 4dd7d820-c556-11e7-bd2a-19df6981222b
-[ERROR - 2017-11-09T14:00:12.237Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Connection\":\"close\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:60856\",\"User-Agent\":\"Python http auth\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"pageLoad\\\": 10000, \\\"sessionId\\\": \\\"4dd7d820-c556-11e7-bd2a-19df6981222b\\\"}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/4dd7d820-c556-11e7-bd2a-19df6981222b/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
+[INFO  - 2017-11-10T13:16:14.652Z] GhostDriver - Main - running on port 57776
+[INFO  - 2017-11-10T13:16:16.086Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6","webSecurityEnabled":true}
+[INFO  - 2017-11-10T13:16:16.086Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.customHeaders:  - {"Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx; "}
+[INFO  - 2017-11-10T13:16:16.087Z] Session [55012570-c619-11e7-90f9-319d68357110] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6","phantomjs.page.settings.resourceTimeout":2000,"phantomjs.page.settings.connection":"keep-alive","phantomjs.page.customHeaders.Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx; ","phantomjs.page.settings.disk-cache":true,"phantomjs.page.settings.accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","phantomjs.page.settings.loadImages":false}
+[INFO  - 2017-11-10T13:16:16.087Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 55012570-c619-11e7-90f9-319d68357110
+[ERROR - 2017-11-10T13:16:16.120Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Connection\":\"close\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:57776\",\"User-Agent\":\"Python http auth\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"sessionId\\\": \\\"55012570-c619-11e7-90f9-319d68357110\\\", \\\"pageLoad\\\": 10000}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/55012570-c619-11e7-90f9-319d68357110/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:14.851Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:22.387Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:14.851Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:22.387Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:15.119Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:22.486Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:15.119Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:22.486Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/012796.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:15.122Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:43.515Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:15.122Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:43.515Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/004911.htm:573)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:15.800Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
+[ERROR - 2017-11-10T13:16:46.736Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:15.800Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  sinaplistaAD (http://d4.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
+[ERROR - 2017-11-10T13:16:46.737Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/015886.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:21.388Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:47.815Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'y.getElementsByTagName')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:21.388Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:47.815Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  show (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:28)
+  o (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:24)
+  bind (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:28)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:30)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:28)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:25)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:10)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:21.487Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:47.831Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'y.getElementsByTagName')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:21.487Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:47.831Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  show (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:28)
+  o (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:24)
+  bind (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:28)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:30)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:28)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:25)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:10)
+  onreadystatechange (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6600005a05a6bff66800538d25%26s%3d300x600%26d%3d59420271%26t%3d1510319807&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F015886.htm&r=&tp=3&tsid=0bb4df6600005a05a6bff66800538d25&pid=mm_26051537_2367569_9322822:9)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:21.497Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:49.422Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:21.497Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:49.422Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:22.009Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
+[ERROR - 2017-11-10T13:16:49.611Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:22.010Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  sinaplistaAD (http://d0.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
+[ERROR - 2017-11-10T13:16:49.611Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/026536.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:27.656Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:50.921Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'y.getElementsByTagName')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:27.656Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:50.921Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  show (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:28)
+  o (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:24)
+  bind (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:28)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:30)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:28)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:25)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:10)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:27.820Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:50.936Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'y.getElementsByTagName')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:27.820Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:50.936Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  show (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:28)
+  o (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:24)
+  bind (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:28)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:30)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:28)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:25)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:10)
+  onreadystatechange (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4904500005a05a6c2108a0042dc6c%26s%3d300x600%26d%3d0%26t%3d1510319810&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4904500005a05a6c2108a0042dc6c:9)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:27.830Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:51.177Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:27.830Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:51.177Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:28.021Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
+[ERROR - 2017-11-10T13:16:51.400Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:28.021Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  sinaplistaAD (http://d0.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
+[ERROR - 2017-11-10T13:16:51.400Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/027860.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:35.738Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:54.303Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:35.738Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:54.303Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/028137.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:35.909Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:56.225Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:35.909Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:56.225Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:36.089Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+[ERROR - 2017-11-10T13:16:56.501Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:36.089Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
+[ERROR - 2017-11-10T13:16:56.501Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/028298.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:36.586Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
+[ERROR - 2017-11-10T13:16:59.677Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
 
   phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-09T14:00:36.586Z] Session [4dd7d820-c556-11e7-bd2a-19df6981222b] - page.onError - stack:
-  sinaplistaAD (http://d1.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
+[ERROR - 2017-11-10T13:16:59.677Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:16:59.913Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:16:59.913Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/028505.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:17:31.065Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:17:31.066Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/026300.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:17:45.916Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'e.data.ds2.keywords')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:17:45.916Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6800025a05a6f9a46500a651b9%26s%3d300x600%26d%3d59420271%26t%3d1510319865&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F005483.htm&r=&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&pid=mm_26051537_2367569_9322822:28)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6800025a05a6f9a46500a651b9%26s%3d300x600%26d%3d59420271%26t%3d1510319865&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F005483.htm&r=&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&pid=mm_26051537_2367569_9322822:25)
+  (anonymous function) (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6800025a05a6f9a46500a651b9%26s%3d300x600%26d%3d59420271%26t%3d1510319865&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F005483.htm&r=&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&pid=mm_26051537_2367569_9322822:10)
+  onreadystatechange (http://strip.alicdn.com/tfscom/TB1gDAOPXXXXXXeXFXXXXXXXXXX.html?tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6800025a05a6f9a46500a651b9%26s%3d300x600%26d%3d59420271%26t%3d1510319865&pid=mm_26051537_2367569_9322822&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&u=http%3A%2F%2Fstock.qq.com%2Fa%2F20171110%2F005483.htm&r=&tp=3&tsid=0bb4df6800025a05a6f9a46500a651b9&pid=mm_26051537_2367569_9322822:9)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:17:48.564Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:17:48.564Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:12.792Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:12.792Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:12.914Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:12.914Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/006672.htm:571)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:32.826Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'e.data.ds2.keywords')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:32.826Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6900025a05a728a19b007483f7%26s%3d300x600%26d%3d0%26t%3d1510319912&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4df6900025a05a728a19b007483f7:28)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6900025a05a728a19b007483f7%26s%3d300x600%26d%3d0%26t%3d1510319912&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4df6900025a05a728a19b007483f7:25)
+  (anonymous function) (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6900025a05a728a19b007483f7%26s%3d300x600%26d%3d0%26t%3d1510319912&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4df6900025a05a728a19b007483f7:10)
+  onreadystatechange (http://strip.taobaocdn.com/tfscom/TB182rjHpXXXXc1XVXXO04pFXXX.html?pid=mm_26051537_2367569_9322822&tanxdspv=https%3a%2f%2frdstat.tanx.com%2ftrd%3ff%3d%26k%3da09e279ad7f7a12a%26p%3dmm_26051537_2367569_9322822%26pvid%3d0bb4df6900025a05a728a19b007483f7%26s%3d300x600%26d%3d0%26t%3d1510319912&pid=mm_26051537_2367569_9322822&tp=4&tsid=0bb4df6900025a05a728a19b007483f7:9)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:33.895Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:33.895Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:34.107Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:34.107Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/014442.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:39.795Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:39.795Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:39.952Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:39.953Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/015856.htm:571)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:42.696Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:42.696Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:42.808Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:42.808Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/017801.htm:562)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:44.774Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:44.774Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:55.276Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:55.276Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:55.463Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:18:55.463Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/004984.htm:571)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:19:08.935Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: undefined is not an object (evaluating 'Tcss.d.cookie')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:19:08.936Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  pgvGetCookieByName (http://pingjs.qq.com/ping.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/st/p/popup/stk_info_new_v2.0_v20170321193717.js:1)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:43)
+  (anonymous function) (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+  each (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:2)
+  _hlReady (http://mat1.gtimg.com/finance/js/du/201111141052/fn-core.js:44)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:19:09.113Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: TypeError: null is not an object (evaluating 'document.getElementById("gdt_right").style')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:19:09.113Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  (anonymous function) (http://stock.qq.com/a/20171110/020209.htm:571)
+  dealcallback (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:84)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:82)
+  fillAd (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:9)
+  render (http://qzonestyle.gtimg.cn/qzone/biz/gdt/display/modules/mod/defaultrender_fd07d36.js?max_age=31536000:8)
+  (anonymous function) (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:98)
+  updateNeed (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:16)
+  define (http://qzonestyle.gtimg.cn/qzone/biz/ac/comm/gdtlib.20171009.js:6)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:19:50.031Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - msg: Error: 不支持播放hls文件也不支持mp4文件
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-11-10T13:19:50.032Z] Session [55012570-c619-11e7-90f9-319d68357110] - page.onError - stack:
+  runPlayer (http://player.livecdn.yicai.com/bravo/js/bravoPlayer.js:92)
+  (anonymous function) (http://www.yicai.com/resource/js/news.js?v1.01:68)
+  j (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
+  fireWith (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
+  ready (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
+  J (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
 
   phantomjs://platform/console++.js:263 in error

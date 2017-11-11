@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+#
+# 数据结构
+# by wooght 2017-11
+#
+
 __author__ = 'wooght'
 from sqlalchemy import create_engine, Table, Column ,MetaData, select
 from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey
@@ -6,6 +11,32 @@ import re
 
 engine = create_engine("mysql+pymysql://root:wooght565758@localhost:3306/scrapy?charset=utf8",encoding="utf-8", echo=True)
 metadata = MetaData()
+
+#地域表
+listed_region = Table('listed_region',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('father_id',Integer),            #上级
+    Column('name',String(32))
+)
+
+#上市公司表
+listed_company = Table('listed_company',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('father_id',Integer),            #总公司ID
+    Column('codeid',Integer,index=True),    #股票代码
+    Column('region_id',Integer),            #地区ID
+    Column('plate_id',Integer),             #板块ID
+    Column('name',String(32)),              #公司名称
+    Column('url',String(128)),              #公司官网
+    Column('blog_url',String(128))          #官方微博
+)
+
+#板块分类
+listed_plate = Table('listed_plate',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('father_id',Integer),
+    Column('name',String(32)),
+)
 
 #新闻表
 news = Table('news',metadata,
@@ -25,20 +56,30 @@ topic = Table('topic',metadata,
     Column('body',Text),                        #新闻内容
     Column('put_time',String(64))               #发布时间
 )
-
-
 metadata.create_all(engine)
 conn = engine.connect()
 
-import sys,io
-
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
-s = select([news.c.body,news.c.id]).where(news.c.id==7604)
-r = conn.execute(s)
-item = r.fetchone()
-str = "<a href='www.baidu.com'>哈哈</a>"
-re_str = re.sub(r'<[^<]*>','',item[0].strip())
-print(re_str)
+#
+# #删除html标签
+# def delete_html(str):
+#     re_str = re.sub(r'<[^>]*>','',str.strip())
+#     return re_str
+#
+# def alldelete(topic):
+#     s = select([topic.c.id,topic.c.body])
+#     r = conn.execute(s)
+#     num = 0
+#     for i in r.fetchall():
+#         new_body = delete_html(i[1])
+#         u = topic.update().where(topic.c.id==i[0]).values(body=new_body)
+#         result = conn.execute(u)
+#         if(result.rowcount==1):
+#             num+=1
+#         else:
+#             print('Error!--->行数为:',result.rowcount)
+#
+#         print(num,'修改成功!')
+# alldelete(news)
 
 # s = select([news.c.url,news.c.only_id,news.c.title,news.c.body,news.c.put_time]).where(news.c.put_time>10000000000)
 # r = conn.execute(s)

@@ -22,4 +22,14 @@ class TopicItem(scrapy.Item):
     only_id = scrapy.Field()
     title = scrapy.Field()
     body = scrapy.Field()
-    put_time = scrapy.Field()    
+    put_time = scrapy.Field()
+
+class CodesItem(scrapy.Item):
+    id = scrapy.Field()
+    father_id = scrapy.Field()
+    codeid = scrapy.Field()
+    region_id = scrapy.Field()
+    plate_id = scrapy.Field()
+    name = scrapy.Field()
+    url = scrapy.Field()
+    blog_url = scrapy.Field()

@@ -89,7 +89,7 @@ class NewsSpider(CrawlSpider):
         items['url'] = response.url
         h_num = re.search(r'\/(\d+)\.html',items['url'],re.I).group(1)
         items['only_id'] = h_num
-        items['body'] = response.xpath('//div[@class="m-text"]').extract()[0].strip().encode('utf-8')
+        items['body'] = response.xpath('//div[@class="m-text"]').extract()[0].strip()
         print(items['put_time'])
         yield items
 

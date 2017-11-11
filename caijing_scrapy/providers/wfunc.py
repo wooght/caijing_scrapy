@@ -5,6 +5,10 @@
 
 import time
 import re
+import sys,io
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+
 #字符串时间转换为时间暨
 def time_num(str,format):
     timeArray = time.strptime(str, format)
@@ -36,3 +40,8 @@ def sina_get_time(strr):
     else:
         time_str = today()
     return time_num(time_str,"%Y-%m-%d %H:%M:%S")
+
+#删除html标签
+def delete_html(str):
+    re_str = re.sub(r'<[^>]*>','',str.strip())
+    return re_str
