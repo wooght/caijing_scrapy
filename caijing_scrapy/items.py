@@ -33,3 +33,15 @@ class CodesItem(scrapy.Item):
     name = scrapy.Field()
     url = scrapy.Field()
     blog_url = scrapy.Field()
+    
+class QuotesItem(scrapy.Item):
+    id = scrapy.Field()
+    datatime = scrapy.Field()
+    code_id = scrapy.Field()
+    gao = scrapy.Field()
+    kai = scrapy.Field()
+    di = scrapy.Field()
+    shou = scrapy.Field()
+    before = scrapy.Field()
+    zd_money = scrapy.Field()
+    zd_range = scrapy.Field()

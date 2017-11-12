@@ -15,7 +15,7 @@ import caijing_scrapy.Db as T
 from scrapy.spiders import CrawlSpider,Rule
 from scrapy.linkextractors import LinkExtractor
 
-class NewsSpider(scrapy.Spider):
+class CodesSpider(scrapy.Spider):
     name = 'codes'
     allowed_domains = ['money.163.com']
     start_urls = ['http://quotes.money.163.com/old/#query=dy001000&DataType=HS_RANK&sort=PERCENT&order=desc&count=24&page=0']
@@ -47,7 +47,7 @@ class NewsSpider(scrapy.Spider):
     # # 地址生产
     # def __init__(self,*args,**kwargs):
     #     #调用父类沟站函数
-    #     super(NewsSpider,self).__init__(*args, **kwargs)
+    #     super(CodesSpider,self).__init__(*args, **kwargs)
     #
     #     print('__init__ is run......')
     #     str_url = "http://quotes.money.163.com/old/#query=dy0%s000&DataType=HS_RANK&sort=PERCENT&order=desc&count=24&page=0"

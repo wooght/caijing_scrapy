@@ -3,7 +3,7 @@
 # 新闻抓取保存
 # by wooght 2017-11
 
-from caijing_scrapy.items import NewsItem,TopicItem,CodesItem
+from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem
 import caijing_scrapy.Db as T
 import caijing_scrapy.providers.wfunc as wfunc
 
@@ -38,6 +38,9 @@ class CaijingScrapyPipeline(object):
             if(r.rowcount>0):
                 return None
             i = T.listed_company.insert()
+            r = T.conn.execute(i,dict(item))
+        elif(isinstance(item,QuotesItem)):
+            i = T.quotes.insert()
             r = T.conn.execute(i,dict(item))
 
         return None

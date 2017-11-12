@@ -11,6 +11,6 @@ from threading import Timer
 def scrapyrun(args):
     execute(["scrapy", "crawl", args])
 
-spiders = ['news']
+spiders = ['quotes']
 for item in spiders:
     scrapyrun(item)

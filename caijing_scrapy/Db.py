@@ -6,10 +6,10 @@
 
 __author__ = 'wooght'
 from sqlalchemy import create_engine, Table, Column ,MetaData, select
-from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey
+from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey,Date,Float,SmallInteger
 import re
 
-engine = create_engine("mysql+pymysql://root:wooght565758@localhost:3306/scrapy?charset=utf8",encoding="utf-8", echo=True)
+engine = create_engine("mysql+pymysql://root:wooght565758@localhost:3306/scrapy?charset=utf8",encoding="utf-8", echo=False) #echo表示是否输出执行过程内容
 metadata = MetaData()
 
 #地域表
@@ -29,6 +29,20 @@ listed_company = Table('listed_company',metadata,
     Column('name',String(32)),              #公司名称
     Column('url',String(128)),              #公司官网
     Column('blog_url',String(128))          #官方微博
+)
+
+#行情表
+quotes = Table('quotes',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('datatime',Date),                #日期
+    Column('code_id',SmallInteger),         #股票代码
+    Column('gao',Float),                    #高
+    Column('kai',Float),                    #开
+    Column('di',Float),                     #底
+    Column('shou',Float),                   #收
+    Column('before',Float),                 #前收
+    Column('zd_money',Float),               #涨跌额
+    Column('zd_range',Float)                #涨跌幅
 )
 
 #板块分类
@@ -56,7 +70,8 @@ topic = Table('topic',metadata,
     Column('body',Text),                        #新闻内容
     Column('put_time',String(64))               #发布时间
 )
-metadata.create_all(engine)
+
+metadata.create_all(engine)                     #创建所有表
 conn = engine.connect()
 
 #

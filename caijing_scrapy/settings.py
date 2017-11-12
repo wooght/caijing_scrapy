@@ -23,6 +23,16 @@ USER_AGENT = [
                 'Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11'
              ]
 
+HEADERS={
+    'Referer':'http://www.baidu.com',
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "Accept-Encoding": "gzip, deflate",
+    "Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6",
+    "Cache-Control": "no-cache",
+    "Connection": "keep-alive",
+    "Content-Type": "application/x-www-form-urlencoded"
+    }
+
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
