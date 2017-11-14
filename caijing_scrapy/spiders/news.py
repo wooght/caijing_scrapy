@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 
 #
-#     第一财经-新闻,腾讯证券,新闻股票,雪球头条
+#     第一财经-新闻,腾讯证券,新闻股票
 #     by wooght 2017-10
 #
 import scrapy
 import re
 import time
-from caijing_scrapy.items import NewsItem,TopicItem
+from caijing_scrapy.items import NewsItem
 import caijing_scrapy.providers.wfunc as wfunc
 
 import caijing_scrapy.Db as T
@@ -18,7 +18,7 @@ from scrapy.linkextractors import LinkExtractor
 
 class NewsSpider(CrawlSpider):
     name = 'news'
-    allowed_domains = ['www.yicai.com','xueqiu.com','sina.com.cn','qq.com']
+    allowed_domains = ['www.yicai.com','sina.com.cn','qq.com','163.com']
     download_delay = 1                                              #设置下载延时
     start_urls = [
                     # 'http://www.yicai.com/news/5365720.html',
@@ -26,30 +26,34 @@ class NewsSpider(CrawlSpider):
                     # 'http://finance.sina.com.cn/stock/s/2017-11-06/doc-ifynmvuq9022743.shtml'
 
                     'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
-                    'http://finance.sina.com.cn/stock/',
-                    'https://xueqiu.com',
-                    'http://www.yicai.com/data/',
-                    'http://www.yicai.com/news/comment/',
-                    'http://www.yicai.com/news/gushi/',
-                    'http://www.yicai.com/data/',
-                    'http://www.yicai.com/news/hongguan/',
+                    'http://money.163.com/',
+                    # 'http://finance.sina.com.cn/stock/',
+                    # 'http://www.yicai.com/data/',
+                    # 'http://www.yicai.com/news/comment/',
+                    # 'http://www.yicai.com/news/gushi/',
+                    # 'http://www.yicai.com/data/',
+                    # 'http://www.yicai.com/news/hongguan/',
+                    # 'http://money.163.com/17/1114/20/D37RQFP30025814U.html',
 
                  ]
 
     rules = (
-        #新浪股票新闻
-        Rule(LinkExtractor(allow=(r'\D*\/\d*\-\d*\-\d*\/doc\-\D*\d*\.shtml$',)),callback='parse_sina',follow=True,process_links='link_screen'),
+        # 新浪股票新闻 http://finance.sina.com.cn/stock/hyyj/2017-11-06/doc-ifynmnae234
+        Rule(LinkExtractor(allow=(r'\D*finance\.sina\D*\/\d*\-\d*\-\d*\/doc\-\D*\d*\.shtml$',)),callback='parse_sina',follow=True,process_links='link_screen'),
         #第一财经
         Rule(LinkExtractor(allow=('http\:\/\/www\.yicai\.com\/news\/\d+\.html',)),callback='parse_yicai',follow=True,process_links='link_screen'),
-        #雪球头条文章
-        Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
-        Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen'),
-        #腾讯证券
+        #腾讯证券 http://stock.qq.com/a/20171107/017324.htm
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm$',)),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
+        #腾讯证券要闻翻页 http://stock.qq.com/l/stock/ywq/list20150423143546_11.htm
+        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/l/stock\/ywq\/list20150423143546_\d*\.htm$',)),callback='parse',follow=False,process_links='link_screen'),
         # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d+.htm',)),callback='parse',follow=True,process_links='link_screen'),
-    )
+        #网易财经 http://money.163.com/17/1114/13/D375MGIB0025814V.html
+        Rule(LinkExtractor(allow=('.*\.163\.com\/\d+\/\d+\/\d+\/.*\.html$',)),callback='parse_163_money',follow=False,process_links='link_screen'),
+
         # LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*'),restrict_xpaths=('//div[@id="id"]/a')) LinkExtractor通过xpaths指定搜索范围
+    )
+
 
     old_link = []
 
@@ -57,7 +61,6 @@ class NewsSpider(CrawlSpider):
     custom_settings = {
         'LOGSTATS_INTERVAL': 10,
     }
-
 
     def __init__(self,*args,**kwargs):
         #调用父类沟站函数
@@ -91,21 +94,6 @@ class NewsSpider(CrawlSpider):
         items['only_id'] = h_num
         items['body'] = response.xpath('//div[@class="m-text"]').extract()[0].strip()
         print(items['put_time'])
-        yield items
-
-    #雪球头条
-    def parse_xueqiu(self,response):
-        items = TopicItem()
-        items['title'] = response.xpath('//title/text()').extract()[0].strip()
-        thetime = response.xpath('//a[@class="time"]/@data-created_at').extract()
-        if(len(thetime)<1):
-            thetime = response.xpath('//a[@class="edit-time"]/@data-created_at').extract()
-        # thetime = wfunc.search_time(thetime)
-        items['put_time'] = thetime[0][0:10].strip()                                             #截取长度   不包括后边界
-        url_re = re.search(r'.*\/(\d+)\/(\d+)$',response.url,re.I)
-        items['url'] = response.url
-        items['only_id'] = url_re.group(1)+url_re.group(2)
-        items['body'] = response.xpath('//div[@class="article__bd__detail"]').extract()[0].strip()
         yield items
 
     #新浪股票新闻
@@ -145,4 +133,22 @@ class NewsSpider(CrawlSpider):
         if(len(thetime)<1):
             thetime = response.xpath('//span[@class="pubTime article-time"]/text()')
         items['put_time'] = wfunc.time_num(thetime.extract()[0].strip(),"%Y-%m-%d %H:%M")
+        yield items
+
+    #网易财经新闻
+    def parse_163_money(self,response):
+        # http://money.163.com/17/1114/13/D375MGIB0025814V.html
+        items = NewsItem()
+        items['title'] = response.xpath('//div[@id="epContentLeft"]/h1[1]/text()').extract()[0].strip()
+        bodys = response.xpath('//div[@id="endText"]//p').extract()
+        body_str=''
+        for ii in bodys:
+            body_str+=ii.strip()
+        items['body'] = body_str
+        items['url'] = response.url
+        url_re = re.search(r'.*\.163\.com\/\d+\/\d+\/\d+\/(\w*)\.html$',items['url'],re.I)
+        items['only_id'] = url_re.group(1)
+        thetime = response.xpath('//div[@class="post_time_source"]/text()').extract_first().strip()
+        print(thetime[:16],',',items['only_id'])
+        items['put_time'] = wfunc.time_num(thetime[:16],"%Y-%m-%d %H:%M")
         yield items

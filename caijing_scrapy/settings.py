@@ -33,6 +33,17 @@ HEADERS={
     "Content-Type": "application/x-www-form-urlencoded"
     }
 
+PHANTOMJSPAGES={
+    "phantomjs.page.settings.resourceTimeout" : 2000,                             #请求超时时间 单位ms
+    "phantomjs.page.settings.loadImages" : False,
+    "phantomjs.page.settings.disk-cache" : True,
+    "phantomjs.page.settings.accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    "phantomjs.page.customHeaders.Cookie" : 'aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx; ',
+    'phantomjs.page.settings.connection' : 'keep-alive',
+    "browserName" : 'Chrome',
+}
+PHANTOMJSPATH='F:\homestead\scripy_wooght/phantomjs'
+
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
 
@@ -97,7 +108,7 @@ HTTP_IPS = [
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-   'caijing_scrapy.middlewares.middlewares.WooghtDownloadMiddleware': 543,
+   'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': 543,
 }
 
 # Enable or disable extensions

@@ -33,7 +33,7 @@ class CodesItem(scrapy.Item):
     name = scrapy.Field()
     url = scrapy.Field()
     blog_url = scrapy.Field()
-    
+
 class QuotesItem(scrapy.Item):
     id = scrapy.Field()
     datatime = scrapy.Field()
@@ -45,3 +45,16 @@ class QuotesItem(scrapy.Item):
     before = scrapy.Field()
     zd_money = scrapy.Field()
     zd_range = scrapy.Field()
+
+class PlatesItem(scrapy.Item):
+    id = scrapy.Field()
+    plateid = scrapy.Field()
+    father_id = scrapy.Field()
+    name = scrapy.Field()
+
+class NoticesItem(scrapy.Item):
+    id = scrapy.Field()
+    datatime = scrapy.Field()
+    code_id = scrapy.Field()
+    title = scrapy.Field()
+    body = scrapy.Field()

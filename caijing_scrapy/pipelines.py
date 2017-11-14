@@ -3,7 +3,7 @@
 # 新闻抓取保存
 # by wooght 2017-11
 
-from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem
+from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesItem,NoticesItem
 import caijing_scrapy.Db as T
 import caijing_scrapy.providers.wfunc as wfunc
 
@@ -32,15 +32,42 @@ class CaijingScrapyPipeline(object):
                 return None
             i = T.topic.insert()
             r = T.conn.execute(i,dict(item))
+
+        #股票代码
         elif(isinstance(item,CodesItem)):
-            s = T.select([T.listed_company]).where(T.listed_company.c.codeid==item['codeid'])
+            if(spider.name=='codes'):
+                s = T.select([T.listed_company]).where(T.listed_company.c.codeid==item['codeid'])
+                r = T.conn.execute(s)
+                if(r.rowcount>0):
+                    return None
+                i = T.listed_company.insert()
+                r = T.conn.execute(i,dict(item))
+            elif(spider.name=='upplates'):
+                u = T.listed_company.update().where(T.listed_company.c.codeid==item['codeid']).values(plate_id=item['plate_id'])
+                r = T.conn.execute(u)
+
+        #股票行情
+        elif(isinstance(item,QuotesItem)):
+            i = T.quotes.insert()
+            r = T.conn.execute(i,dict(item))
+
+        #股票板块
+        elif(isinstance(item,PlatesItem)):
+            s = T.select([T.listed_plate]).where(T.listed_plate.c.plateid==item['plateid'])
             r = T.conn.execute(s)
             if(r.rowcount>0):
                 return None
-            i = T.listed_company.insert()
+            i = T.listed_plate.insert()
             r = T.conn.execute(i,dict(item))
-        elif(isinstance(item,QuotesItem)):
-            i = T.quotes.insert()
+
+        #公司公告
+        elif(isinstance(item,NoticesItem)):
+            s = T.select([T.company_notice]).where(T.company_notice.c.title==item['title'])
+            r = T.conn.execute(s)
+            if(r.rowcount>0):
+                return None
+            item['body'] = wfunc.delete_html(item['body'])
+            i = T.company_notice.insert()
             r = T.conn.execute(i,dict(item))
 
         return None

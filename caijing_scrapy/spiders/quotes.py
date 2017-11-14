@@ -2,6 +2,7 @@
 #
 # 网易历史行情抓取
 # by wooght 2017-11
+# 使用scrapy自带的下载中间件
 #
 
 import scrapy
@@ -24,8 +25,8 @@ class QuotesSpider(scrapy.Spider):
     url_module = 'http://quotes.money.163.com/service/chddata.html?code=%s&start=%s&end=%s'
     custom_settings = {
         'DOWNLOADER_MIDDLEWARES': {
-           'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 543,
-           'caijing_scrapy.middlewares.middlewares.WooghtDownloadMiddleware': None,
+           'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 543,               #用scrapy自带的下载器中间件
+           'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': None,
         },
         'LOG_LEVEL':'WARNING',
         'TELNETCONSOLE_PORT':'50855'

@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, Table, Column ,MetaData, select
 from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey,Date,Float,SmallInteger
 import re
 
-engine = create_engine("mysql+pymysql://root:wooght565758@localhost:3306/scrapy?charset=utf8",encoding="utf-8", echo=False) #echo表示是否输出执行过程内容
+engine = create_engine("mysql+pymysql://homestead:secret@192.168.10.10:3306/scrapy?charset=utf8",encoding="utf-8", echo=True) #echo表示是否输出执行过程内容
 metadata = MetaData()
 
 #地域表
@@ -45,10 +45,20 @@ quotes = Table('quotes',metadata,
     Column('zd_range',Float)                #涨跌幅
 )
 
+#公司公告
+company_notice = Table('company_notice',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('datatime',Date),                #日期
+    Column('code_id',SmallInteger),         #股票代码
+    Column('title',String(128)),
+    Column('body',Text),                    
+)
+
 #板块分类
 listed_plate = Table('listed_plate',metadata,
     Column('id',Integer,primary_key=True),
-    Column('father_id',Integer),
+    Column('plateid',SmallInteger,index=True),         #网易行业ID
+    Column('father_id',Integer),                       #父类ID
     Column('name',String(32)),
 )
 
