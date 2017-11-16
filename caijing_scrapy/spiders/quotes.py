@@ -11,13 +11,92 @@ from caijing_scrapy.settings import USER_AGENT
 from scrapy import Request
 import random
 import csv
-from caijing_scrapy.items import QuotesItem
+from caijing_scrapy.items import QuotesItem,quotes_itemItem
 import caijing_scrapy.Db as T
 import time
-import sys,io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码from scrapy import Request
+import json
+
+#历史行情查询 一只股票一行
+class Quotes_itemSpider(scrapy.Spider):
+    name = 'quotes_item'
+    allowed_domains = ['money.163.com/']
+    start_urls = []
+    url_module = 'http://quotes.money.163.com/service/chddata.html?code=%s&start=%s&end=%s'
+    custom_settings = {
+        'DOWNLOADER_MIDDLEWARES': {
+           'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 543,               #用scrapy自带的下载器中间件
+           'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': None,
+        },
+        "ITEM_PIPELINES" : {
+           'caijing_scrapy.pipelines.QuotesPipelines.Pipeline': 300,
+        },
+        'LOG_LEVEL':'WARNING',
+        'TELNETCONSOLE_PORT':'50855'
+    }
+    HEADERS['User-Agent'] = random.choice(USER_AGENT)
+
+    #查询地址生产器
+    def __init__(self,*args,**kwargs):
+        super(Quotes_itemSpider,self).__init__(*args,**kwargs)
+        self.select_data()
+        s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz]).where(T.listed_company.c.codeid>600000)
+        r = T.conn.execute(s)
+        for item in r.fetchall():
+            id = str(item[0])
+            #调整编码长度
+            if(len(id)<6):
+                while len(id)<6:
+                    id='0'+id
+                id='1'+id
+            elif(item[1]=='sz'):
+                id='1'+id
+            elif(item[1]=='sh'):
+                id='0'+id
+            self.start_urls.append(self.url_module%(str(id),self.startdata,self.enddata))
+        print('共需查询:',len(self.start_urls),'支股票行情.......')
+    #构建带头的请求
+    def start_requests(self):
+        for url in self.start_urls:
+            yield Request(url,headers=HEADERS,callback=self.parse)
+    def parse(self, response):
+        items = quotes_itemItem()
+        quotes = {}
+        all_str = []
+        csvstr = response.body                      #获取response返回的byte内容
+        csvstr = csvstr.decode('gbk').strip()       #编码转换
+        csvlist = csvstr.split('\r\n')              #分隔行
+        csvlist = csvlist[1:]                       #删除第一行
+        for item in csvlist:
+            item=item.split(',')
+            quotes['datatime'] = item[0]
+            quotes['gao'] = item[4]
+            quotes['kai'] = item[6]
+            quotes['di'] = item[5]
+            quotes['shou'] =item[3]
+            quotes['before'] = item[7]
+            quotes['zd_money'] = '0' if item[8]=='None' else item[8]
+            quotes['zd_range'] = '0' if item[9]=='None' else item[9]
+            items['code_id'] = item[1][1:]
+            all_str.append(quotes)
+            quotes={}                               #元祖赋值后不能改变
+        items['quotes'] = json.dumps(all_str,ensure_ascii=False)
+        try:
+            print(':',items['code_id'],'抓取成功,保存中.....')
+            yield items
+        except KeyError as e:
+            print(response.url,',code_id error')
+
+    #构建查询时间
+    def select_data(self):
+        starttimes = int(time.time())-90*24*3600    #三个月
+        self.startdata = time.strftime("%Y%m%d",time.localtime(starttimes))
+        self.enddata = time.strftime("%Y%m%d",time.localtime())  #当天
 
 
+
+
+
+'''历史行情查询  一天一条'''
 class QuotesSpider(scrapy.Spider):
     name = 'quotes'
     allowed_domains = ['money.163.com/']
@@ -37,7 +116,7 @@ class QuotesSpider(scrapy.Spider):
     def __init__(self,*args,**kwargs):
         super(QuotesSpider,self).__init__(*args,**kwargs)
         self.select_data()
-        s = T.select([T.listed_company.c.codeid]).where(T.listed_company.c.codeid<1000000)
+        s = T.select([T.listed_company.c.codeid]).where(T.listed_company.c.codeid<10)
         r = T.conn.execute(s)
         for item in r.fetchall():
             id = str(item[0])
@@ -52,7 +131,6 @@ class QuotesSpider(scrapy.Spider):
     #构建带头的请求
     def start_requests(self):
         for url in self.start_urls:
-            print('查询:',url)
             yield Request(url,headers=HEADERS,callback=self.parse)
 
     def parse(self, response):

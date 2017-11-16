@@ -27,13 +27,13 @@ class NewsSpider(CrawlSpider):
 
                     'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
                     'http://money.163.com/',
-                    # 'http://finance.sina.com.cn/stock/',
-                    # 'http://www.yicai.com/data/',
-                    # 'http://www.yicai.com/news/comment/',
-                    # 'http://www.yicai.com/news/gushi/',
-                    # 'http://www.yicai.com/data/',
-                    # 'http://www.yicai.com/news/hongguan/',
-                    # 'http://money.163.com/17/1114/20/D37RQFP30025814U.html',
+                    'http://finance.sina.com.cn/stock/',
+                    'http://www.yicai.com/data/',
+                    'http://www.yicai.com/news/comment/',
+                    'http://www.yicai.com/news/gushi/',
+                    'http://www.yicai.com/data/',
+                    'http://www.yicai.com/news/hongguan/',
+                    'http://money.163.com/17/1114/20/D37RQFP30025814U.html',
 
                  ]
 

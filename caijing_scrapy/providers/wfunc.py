@@ -45,3 +45,16 @@ def sina_get_time(strr):
 def delete_html(str):
     re_str = re.sub(r'<[^>]*>','',str.strip())
     return re_str
+
+
+def e_error(self,str):
+    print("""!!!!!!============
+            str
+    !!!!!!============""")
+def e(self,str):
+    print("""------------
+            str
+    ------------""")
+class Werror(Exception):
+    def __init__(self,value='Werror'):
+        Exception.__init__(self,value)

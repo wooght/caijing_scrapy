@@ -9,7 +9,7 @@ from sqlalchemy import create_engine, Table, Column ,MetaData, select
 from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey,Date,Float,SmallInteger
 import re
 
-engine = create_engine("mysql+pymysql://homestead:secret@192.168.10.10:3306/scrapy?charset=utf8",encoding="utf-8", echo=True) #echo表示是否输出执行过程内容
+engine = create_engine("mysql+pymysql://homestead:secret@192.168.10.10:3306/scrapy?charset=utf8",encoding="utf-8", echo=False) #echo表示是否输出执行过程内容
 metadata = MetaData()
 
 #地域表
@@ -28,7 +28,8 @@ listed_company = Table('listed_company',metadata,
     Column('plate_id',Integer),             #板块ID
     Column('name',String(32)),              #公司名称
     Column('url',String(128)),              #公司官网
-    Column('blog_url',String(128))          #官方微博
+    Column('blog_url',String(128)),         #官方微博
+    Column('shsz',String(16))               #沪深板块
 )
 
 #行情表
@@ -45,13 +46,20 @@ quotes = Table('quotes',metadata,
     Column('zd_range',Float)                #涨跌幅
 )
 
+#行情一行表
+quotes_item = Table('quotes_item',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('code_id',SmallInteger,index=True),      #股票代码
+    Column('quotes',Text),                          #60天行情
+)
+
 #公司公告
 company_notice = Table('company_notice',metadata,
     Column('id',Integer,primary_key=True),
     Column('datatime',Date),                #日期
     Column('code_id',SmallInteger),         #股票代码
     Column('title',String(128)),
-    Column('body',Text),                    
+    Column('body',Text),
 )
 
 #板块分类

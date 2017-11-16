@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
-# 下载中间件
+# 新闻下载中间件
 # by wooght 2011-11
 # 依赖.settings
-# phantomjs 实现下载
 
 from caijing_scrapy.middlewares.Wmiddlewares import Wdownloadmiddlewares as Dobj
 
@@ -11,6 +10,7 @@ import time
 import random
 import numpy as np
 from scrapy.http import Request, FormRequest, HtmlResponse
+from caijing_scrapy.providers.werror import Werror
 
 class WooghtDownloadMiddleware(Dobj):
     #默认开启webdriver
@@ -21,14 +21,17 @@ class WooghtDownloadMiddleware(Dobj):
     def process_request(self, request, spider):
         js = "var q=document.body.scrollTop=2000"
         url=request.url;
-        delay_time = random.randint(0,2)
+        delay_time = random.randint(0,1)
         print('休息中....',delay_time)
         time.sleep(delay_time)                                               #随机休息时间
         try:
             self.open_url(url)
-        except Exception as e:
+        except Werror as e:
             print('open_url deild',e)
+        except ConnectionRefusedError:
             return None
+
+        #雪球头条
         if(spider.name=='topics'):
             print('------------>xueqiu------>')
             if(url=="https://xueqiu.com"):
@@ -42,6 +45,7 @@ class WooghtDownloadMiddleware(Dobj):
                     button_class = self.driver.find_element_by_class_name('home__timeline__more')
                     print(button_class,'-=-=---===button click--====--=-=-=-=')
                     button_class.click()
+        #新闻
         elif(spider.name=='news'):
             not_html = 'html' in url
             if(not not_html and 'yicai' in url):
@@ -62,4 +66,5 @@ class WooghtDownloadMiddleware(Dobj):
                 print('------------>sina,qq,web-->---------->')
         body = self.driver.page_source
         print(self.driver.title,'=-=-=-=-=---SUCCESS--给spider处理--=-=-=-=-=-')
+        self.driver.close()
         return HtmlResponse(body=body, encoding='utf-8',request=request,url=str(url))

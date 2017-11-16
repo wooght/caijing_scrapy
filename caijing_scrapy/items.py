@@ -46,6 +46,11 @@ class QuotesItem(scrapy.Item):
     zd_money = scrapy.Field()
     zd_range = scrapy.Field()
 
+class quotes_itemItem(scrapy.Item):
+    id = scrapy.Field()
+    quotes = scrapy.Field()
+    code_id = scrapy.Field()
+
 class PlatesItem(scrapy.Item):
     id = scrapy.Field()
     plateid = scrapy.Field()

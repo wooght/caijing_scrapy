@@ -35,10 +35,10 @@ HEADERS={
 
 PHANTOMJSPAGES={
     "phantomjs.page.settings.resourceTimeout" : 2000,                             #请求超时时间 单位ms
-    "phantomjs.page.settings.loadImages" : False,
+    "phantomjs.page.settings.loadImages" : False,                                 #不加载图片
     "phantomjs.page.settings.disk-cache" : True,
     "phantomjs.page.settings.accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "phantomjs.page.customHeaders.Cookie" : 'aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx; ',
+    "phantomjs.page.customHeaders.Cookie" : 'aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;',
     'phantomjs.page.settings.connection' : 'keep-alive',
     "browserName" : 'Chrome',
 }
@@ -71,7 +71,7 @@ LOG_LEVEL = 'WARNING'                                  #运行日志级别 DEBUG
 LOGSTATS_INTERVAL = 60                              #打印item处理数据
 
 TELNETCONSOLE_ENABLED = True
-TELNETCONSOLE_PORT = '50853'                          #监控端口
+# TELNETCONSOLE_PORT = '50853'                          #监控端口
 
 #IP池
 HTTP_IPS = [
@@ -120,7 +120,7 @@ DOWNLOADER_MIDDLEWARES = {
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-   'caijing_scrapy.pipelines.CaijingScrapyPipeline': 300,
+   'caijing_scrapy.pipelines.pipelines.CaijingScrapyPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)

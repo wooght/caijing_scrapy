@@ -62,11 +62,10 @@ class CaijingScrapyPipeline(object):
 
         #公司公告
         elif(isinstance(item,NoticesItem)):
-            s = T.select([T.company_notice]).where(T.company_notice.c.title==item['title'])
+            s = T.select([T.company_notice]).where(T.company_notice.c.title==item['title']).where(T.company_notice.c.code_id==item['code_id'])
             r = T.conn.execute(s)
             if(r.rowcount>0):
                 return None
-            item['body'] = wfunc.delete_html(item['body'])
             i = T.company_notice.insert()
             r = T.conn.execute(i,dict(item))
 

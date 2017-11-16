@@ -25,6 +25,7 @@ class WooghtDownloadMiddleware(Dobj):
         self.set_cap()
         self.open_url(self.url)             #打开地址
         self.set_data()                     #输入日期
+        # self.driver.refresh()               #页面刷新
         time.sleep(5)
         self.click_more()                   #点击更多N次
         # body = self.driver.find_element_by_id('ul_his_fulltext').get_attribute('innerHTML') 这里得到的ID和实际ID不同  ????????
@@ -33,15 +34,16 @@ class WooghtDownloadMiddleware(Dobj):
 
     #点击加载更多
     def click_more(self):
-        arr = np.arange(1000)
+        arr = np.arange(200)
         for i in arr:
-            print(i)
             time.sleep(2)
             try:
                 more_button = self.driver.find_element_by_xpath('//div[@class="show-more"]')
                 more_button.click()                                         #每次页面加载后,都要重新获取焦点
+                print('more_button click..',i)
             except:
-                self.driver.execute_script('addMore();')
+                self.driver.execute_script('var a = addMore();')
+                print('script run..',i)
             js = "var a=document.body.scrollTop="+str(i*2000)+";"
             self.driver.execute_script(js)
             self.driver.implicitly_wait(10)                             #隐式等待页面加载
@@ -59,6 +61,7 @@ class WooghtDownloadMiddleware(Dobj):
     #时间生产
     def get_data(self):
         today = time.strftime("%Y-%m-%d",time.localtime())
+        print(today)
         start_time  = int(time.time())-10*3600*24
         start_data = time.strftime("%Y-%m-%d",time.localtime(start_time))
         return start_data+" ~ "+today
