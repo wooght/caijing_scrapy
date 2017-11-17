@@ -1,443 +1,105 @@
-[INFO  - 2017-11-14T21:47:34.346Z] GhostDriver - Main - running on port 51644
-[INFO  - 2017-11-14T21:47:37.800Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11","webSecurityEnabled":true}
-[INFO  - 2017-11-14T21:47:37.800Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.customHeaders:  - {"Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
-[INFO  - 2017-11-14T21:47:37.800Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.customHeaders.Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;","phantomjs.page.settings.loadImages":false,"phantomjs.page.settings.resourceTimeout":2000,"phantomjs.page.settings.disk-cache":true,"phantomjs.page.settings.userAgent":"Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11","phantomjs.page.settings.accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","phantomjs.page.settings.connection":"keep-alive"}
-[INFO  - 2017-11-14T21:47:37.800Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 6e638a20-c985-11e7-944b-11ecc15ea20e
-[ERROR - 2017-11-14T21:47:37.810Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Connection\":\"close\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:51644\",\"User-Agent\":\"Python http auth\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"sessionId\\\": \\\"6e638a20-c985-11e7-944b-11ecc15ea20e\\\", \\\"pageLoad\\\": 10000}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/6e638a20-c985-11e7-944b-11ecc15ea20e/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:39.314Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:39.314Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:39.540Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:39.540Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:39.579Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:39.579Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:40.077Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:40.077Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  sinaplistaAD (http://d8.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.555Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.555Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.556Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.556Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.568Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.568Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.753Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:47:56.753Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  sinaplistaAD (http://d8.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.572Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.572Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.573Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.573Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.616Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.616Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.914Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:03.914Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  sinaplistaAD (http://d0.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:17.698Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:17.698Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:17.909Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:17.909Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:17.925Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:17.925Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:20.323Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:20.323Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  sinaplistaAD (http://d0.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:39.878Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:39.878Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:40.010Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:40.010Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:40.081Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:40.081Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  global code (http://beacon.sina.com.cn/h.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:41.170Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: TypeError: undefined is not an object (evaluating 'document.getElementsByTagName("meta").sinaPlistaAD.content')
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:48:41.170Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  sinaplistaAD (http://d5.sina.com.cn/litong/zhitou/sinaads/release/spec/sinaPlistaAD.js:1)
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:49:08.852Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - msg: Error: 不支持播放hls文件也不支持mp4文件
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T21:49:08.853Z] Session [6e638a20-c985-11e7-944b-11ecc15ea20e] - page.onError - stack:
-  runPlayer (http://player.livecdn.yicai.com/bravo/js/bravoPlayer.js:92)
-  (anonymous function) (http://www.yicai.com/resource/js/news.js?v1.01:68)
-  j (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
-  fireWith (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
-  ready (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
-  J (http://www.yicai.com/js/jquery-1.11.1.min.js:2)
-
-  phantomjs://platform/console++.js:263 in error
-[INFO  - 2017-11-14T21:52:34.339Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T21:57:34.345Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:02:34.347Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:07:34.347Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:12:34.347Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:17:34.350Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:22:34.351Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:27:34.351Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:32:34.352Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:37:34.362Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:42:34.363Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:47:34.363Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:52:34.376Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T22:57:34.375Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:02:34.377Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:07:34.384Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:12:34.391Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:17:34.391Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:22:34.407Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:27:34.407Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:32:34.495Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:37:34.500Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:42:34.500Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:47:34.505Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:52:34.505Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-14T23:57:34.505Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:02:34.516Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:07:34.524Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:12:34.531Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:17:34.533Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:22:34.533Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:27:34.534Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:32:34.534Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:37:34.535Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:42:34.535Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:47:34.537Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:52:34.537Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T00:57:34.537Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:02:34.548Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:07:34.548Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:12:34.549Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:17:34.551Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:22:34.551Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:27:34.553Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:32:34.553Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:37:34.553Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:42:34.553Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:47:34.554Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:52:34.565Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T01:57:34.565Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:02:34.566Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:07:34.567Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:12:34.567Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:17:34.567Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:22:34.568Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:27:34.580Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:32:34.593Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:37:34.595Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:42:34.595Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:47:34.596Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:52:34.598Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T02:57:34.598Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:02:34.598Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:07:34.614Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:12:34.612Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:17:34.612Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:22:34.613Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:27:34.625Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:32:34.627Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:37:34.627Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:42:34.642Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:47:34.643Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:52:34.660Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T03:57:34.660Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:02:34.674Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:07:34.675Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:12:34.677Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:17:34.677Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:22:34.679Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:27:34.687Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:32:34.687Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:37:34.687Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:42:34.689Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:47:34.694Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:52:34.694Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T04:57:34.704Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:02:34.704Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:07:34.705Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:12:34.706Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:17:34.706Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:22:34.706Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:27:34.706Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:32:34.719Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:37:34.721Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:42:34.728Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:47:34.728Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:52:34.728Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T05:57:34.728Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:02:34.734Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:07:34.734Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:12:34.737Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:17:34.742Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:22:34.750Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:27:34.751Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:32:34.752Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:37:34.753Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:42:34.753Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:47:34.754Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:52:34.754Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T06:57:34.754Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T07:02:34.754Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T07:07:34.755Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T07:12:34.766Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T07:17:34.767Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T07:22:34.769Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[INFO  - 2017-11-15T07:27:34.769Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-ator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510696947333
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:02:50.375Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510696970346
-
-  phantomjs://platform/console++.js:263 in error
-[INFO  - 2017-11-14T22:03:01.701Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[ERROR - 2017-11-14T22:03:13.762Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510696993738
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:03:36.808Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697016786
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:04:00.255Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697040249
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:04:23.533Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697063528
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:04:47.109Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697087033
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:05:10.421Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697110394
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:05:33.561Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697133542
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:05:56.484Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697156443
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:06:19.777Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697179750
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:06:42.890Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697202837
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:07:06.269Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697226255
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:07:29.340Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697249334
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:07:52.424Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697272381
-
-  phantomjs://platform/console++.js:263 in error
-[INFO  - 2017-11-14T22:08:03.442Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[ERROR - 2017-11-14T22:08:15.499Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697295474
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:08:38.592Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697318551
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:09:01.663Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697341601
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:09:24.887Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697364868
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:09:48.310Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697388285
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:10:11.484Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697411446
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:10:34.366Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697434326
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:10:57.528Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697457484
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:11:20.578Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697480519
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:11:43.903Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697503860
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:12:07.069Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697527046
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:12:30.359Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697550309
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:12:53.797Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697573739
-
-  phantomjs://platform/console++.js:263 in error
-[INFO  - 2017-11-14T22:13:04.636Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[ERROR - 2017-11-14T22:13:16.702Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697596673
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:13:39.779Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697619736
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:14:03.140Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697643068
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:14:26.109Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697666101
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:14:49.302Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697689264
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:15:12.622Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697712573
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:15:35.626Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697735621
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:15:58.499Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697758491
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:16:21.719Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697781671
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:16:44.917Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697804871
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:17:07.907Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697827848
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:17:30.904Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697850852
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:17:54.173Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697874126
-
-  phantomjs://platform/console++.js:263 in error
-[INFO  - 2017-11-14T22:18:05.198Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
-[ERROR - 2017-11-14T22:18:17.281Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697897234
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:18:40.420Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697920379
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:19:03.374Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697943336
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:19:26.654Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697966642
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:19:49.796Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510697989772
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:20:13.099Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698013053
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:20:35.969Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698035932
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:20:59.422Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698059371
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:21:22.888Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698082868
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:21:46.030Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698105979
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:22:09.420Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698129403
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:22:33.014Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698152959
-
-  phantomjs://platform/console++.js:263 in error
-[ERROR - 2017-11-14T22:22:56.314Z] WebElementLocator - _handleLocateCommand - Element(s) NOT Found: GAVE UP. Search Stop Time: 1510698176256
-
-  phantomjs://platform/console++.js:263 in error
-[INFO  - 2017-11-14T22:23:07.820Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:04:51.989Z] GhostDriver - Main - running on port 61339
+[INFO  - 2017-11-16T19:04:55.486Z] Session [086bd560-cb01-11e7-9936-d7725c031746] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE","webSecurityEnabled":true}
+[INFO  - 2017-11-16T19:04:55.486Z] Session [086bd560-cb01-11e7-9936-d7725c031746] - page.customHeaders:  - {"Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
+[INFO  - 2017-11-16T19:04:55.486Z] Session [086bd560-cb01-11e7-9936-d7725c031746] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.settings.connection":"keep-alive","phantomjs.page.settings.loadImages":false,"phantomjs.page.settings.accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","phantomjs.page.settings.disk-cache":false,"phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE","phantomjs.page.settings.resourceTimeout":200,"phantomjs.page.customHeaders.Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
+[INFO  - 2017-11-16T19:04:55.486Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 086bd560-cb01-11e7-9936-d7725c031746
+[ERROR - 2017-11-16T19:04:55.499Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Connection\":\"close\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:61339\",\"User-Agent\":\"Python http auth\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"pageLoad\\\": 20000, \\\"sessionId\\\": \\\"086bd560-cb01-11e7-9936-d7725c031746\\\"}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/086bd560-cb01-11e7-9936-d7725c031746/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
+
+  phantomjs://platform/console++[INFO  - 2017-11-1[INFO  - 2017-11-16T19:09:51.987Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up ph[INFO  - 2017-11-1[INFO  - 2017-11-16T19:14:51.997Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up ph[INFO  - 2017-11-1[INFO  - 2017-11-16T19:19:51.997Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up ph[INFO  - 2017-11-1[INFO  - 2017-11-16T19:24:51.997Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up ph[INFO  - 2017-11-16T19:26:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:31:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:36:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:41:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:46:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:51:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:56:16.365Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:01:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:06:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:11:16.366Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:16:16.366Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:21:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:26:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:31:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:36:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:41:16.366Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:46:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:51:16.367Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:56:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:01:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:06:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:11:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:16:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:21:16.368Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:26:16.369Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:31:16.369Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:36:16.369Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:41:16.369Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:46:16.369Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:51:16.369Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:56:16.370Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:01:16.371Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:06:16.373Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:11:16.373Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:16:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:21:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:26:16.379Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:31:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:36:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:41:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:46:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:51:16.378Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:56:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:01:16.380Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:06:16.380Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:11:16.380Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:16:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:21:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:26:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:31:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:36:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:41:16.382Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:46:16.382Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:51:16.381Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T23:56:16.382Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-17T00:01:16.382Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-17T00:06:16.383Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-17T00:11:16.382Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-17T00:16:16.383Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-17T00:21:16.384Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-17T00:26:16.383Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+ase starting NOW
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            [INFO  - 2017-11-16T19:05:11.626Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:10:11.904Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:15:11.905Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:20:11.904Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:25:11.904Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:30:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:35:11.905Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:40:11.905Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:45:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:50:11.905Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T19:55:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:00:11.905Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:05:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:10:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:15:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:20:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:25:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:30:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:35:11.906Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:40:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:45:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:50:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T20:55:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:00:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:05:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:10:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:15:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:20:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:25:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:30:11.907Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:35:11.908Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:40:11.908Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:45:11.908Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:50:11.908Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T21:55:11.908Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2017-11-16T22:00:11.909Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-u

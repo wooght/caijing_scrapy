@@ -16,8 +16,8 @@ NEWSPIDER_MODULE = 'caijing_scrapy.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
+#要注意版本问题 版本太旧 读出来的JS内容不一样
 USER_AGENT = [
-                'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6',
                 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
                 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE',
                 'Mozilla/5.0 (X11; CrOS i686 2268.111.0) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.57 Safari/536.11'
@@ -34,9 +34,9 @@ HEADERS={
     }
 
 PHANTOMJSPAGES={
-    "phantomjs.page.settings.resourceTimeout" : 2000,                             #请求超时时间 单位ms
+    "phantomjs.page.settings.resourceTimeout" : 200,                              #资源请求超时时间 单位ms
     "phantomjs.page.settings.loadImages" : False,                                 #不加载图片
-    "phantomjs.page.settings.disk-cache" : True,
+    "phantomjs.page.settings.disk-cache" : False,                                 #启用缓存
     "phantomjs.page.settings.accept" : "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "phantomjs.page.customHeaders.Cookie" : 'aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;',
     'phantomjs.page.settings.connection' : 'keep-alive',
@@ -93,10 +93,11 @@ HTTP_IPS = [
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-#DEFAULT_REQUEST_HEADERS = {
-#   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-#   'Accept-Language': 'en',
-#}
+DEFAULT_REQUEST_HEADERS = {
+  'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en',
+  'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+}
 
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html

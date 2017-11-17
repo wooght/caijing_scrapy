@@ -6,8 +6,6 @@
 #
 
 import sys,io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
-
 import selenium
 from selenium import webdriver
 import time
@@ -21,7 +19,16 @@ from caijing_scrapy.providers.werror import Werror
 # from selenium.webdriver.common.proxy import ProxyType
 
 class Wdownloadmiddlewares(object):
-    #创建webdriver
+
+    save_error_pic = True       #保存错误页面图片
+    random_agent = False        #随机agent
+    disk_cache = False          #启用浏览器缓存
+    stdout_utf8 = False         #输出缓冲编码
+    timeout = 10                #加载超时时间
+
+
+    # 创建webdriver
+    # 设置driver属性
     def set_cap(self):
         cap = webdriver.DesiredCapabilities.PHANTOMJS
         refererlist = [
@@ -30,41 +37,46 @@ class Wdownloadmiddlewares(object):
         for key,value in PHANTOMJSPAGES.items():
             cap[key] = value
         cap['phantomjs.page.settings.userAgent'] = random.choice(USER_AGENT)
-
-        print(cap)
+        if(self.disk_cache):
+            cap['phantomjs.page.settings.disk-cache'] = True
+        if(self.stdout_utf8):
+            sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
+        wfunc.e(cap)
 
         #创建webdriver
-        # #service_args=['..'] 具备访问加密请求https的功能
+        # #service_args中:--ssl-protocol=any具备访问加密请求https的功能
         self.driver = webdriver.PhantomJS(service_args=['--ssl-protocol=any'],executable_path=PHANTOMJSPATH,desired_capabilities=cap)
-        self.driver.maximize_window()             #设置全屏
-        self.driver.set_page_load_timeout(5)      #设置JS超时时间 两则同时设置才有效 及渲染时间
+        self.driver.maximize_window()                       #设置全屏
+        self.driver.set_page_load_timeout(self.timeout)      #设置超时时间
 
-        # self.driver.set_script_timeout(5)         #设置异步超时时间
-        # self.driver.implicitly_wait(5)            #设置只能等待时间
+        self.driver.set_script_timeout(self.timeout*2)         #设置异步超时时间
+        # self.driver.implicitly_wait(5)                    #设置只能等待时间
 
-        wfunc.e('new driver run')
+        wfunc.e('!+!+=new driver run=+!+!')
 
     #爬虫执行完后 余下操作
     def spider_closed(self, spider, reason):
-        print ('.........driver closed......')
+        wfunc.e('driver closed')
         self.driver.quit()                          #关闭浏览器
 
     #访问连接,浏览器解析连接response
     def open_url(self,url):
         #动态设置agent
-        self.driver.desired_capabilities['phantomjs.page.settings.userAgent'] = random.choice(USER_AGENT)
+        if(self.random_agent):
+            self.driver.desired_capabilities['phantomjs.page.settings.userAgent'] = random.choice(USER_AGENT)
         try:
             wfunc.e(wfunc.today()+'open url:'+url)
             t_one = time.time()
             self.driver.get(url)
             t_two = time.time()
-            wfunc.e('spend times:'+t_two-t_one)
+            wfunc.e('spend times:'+str(t_two-t_one))
         except selenium.common.exceptions.TimeoutException as e:
             wfunc.e("Timeout")
-            self.driver.save_screenshot('errpic/'+str(int(time.time()))+".png")                       #保存报错图片
-            raise Werror('连接超时.......')
+            if(self.save_error_pic):
+                self.driver.save_screenshot('errpic/'+str(int(time.time()))+".png") #保存报错图片
+            raise Werror('...Timeout....')
         except Exception as e:
-            wfunc.e_error("closed connect"+e)
+            wfunc.e_error(e)
             self.driver.quit()                                                      #退出旧的driver,减小内存
             self.set_cap()                                                          #10061错误,及phantomjs内容溢出,需重新启动
             raise ConnectionRefusedError()
@@ -78,3 +90,9 @@ class Wdownloadmiddlewares(object):
         # 将代理设置添加到webdriver.DesiredCapabilities.PHANTOMJS中
         proxy.add_to_capabilities(webdriver.DesiredCapabilities.PHANTOMJS)
         self.driver.start_session(webdriver.DesiredCapabilities.PHANTOMJS)
+
+    #随机等待时间
+    def delay(self):
+        delay_time = random.randint(0,2)
+        wfunc.e('delayd....'+str(delay_time))
+        time.sleep(delay_time)

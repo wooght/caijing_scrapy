@@ -26,9 +26,11 @@ class NoticesSpider(scrapy.Spider):
 
     def parse(self, response):
         items = NoticesItem()
-        body = response.xpath('//ul[@id="ul_a_latest"]/li')
+        body = response.xpath('//ul[@id="ul_his_fulltext"]/li')
+        print(len(body))
         for i in body:
             items['code_id'] = i.xpath('div[@class="t1"]/font/text()').extract_first()
             items['title'] = i.xpath('div[@class="t3"]/dd/span/a/text()').extract_first()
-            items['datatime'] = i.xpath('div[@class="t3"]/dd/span[3]/text()').extract_first()
+            items['datatime'] = i.xpath('div[@class="t3"]/dd/span[2]/text()').extract_first()
+            print(items)
             yield items

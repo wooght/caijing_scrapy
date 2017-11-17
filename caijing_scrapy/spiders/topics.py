@@ -25,12 +25,21 @@ class TopicsSpider(CrawlSpider):
     rules = (
         #雪球头条文章
         Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
-        Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
     )
     old_link = []
 
     #动态修改配置内容
     custom_settings = {
+        'LOG_LEVEL':'WARNING'
+    }
+
+    #动态修改配置内容
+    custom_settings = {
+        'DOWNLOADER_MIDDLEWARES': {
+           'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 654,           #处理普通静态页面
+           'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': 543,
+        },
         'LOG_LEVEL':'WARNING'
     }
 
@@ -47,6 +56,16 @@ class TopicsSpider(CrawlSpider):
 
     def parse_start_url(self,response):
         pass
+
+    def start_requests(self):
+        r = scrapy.Request(self.start_urls[0],callback=self.parse)
+        r.meta['phantomjs'] = True
+        yield r
+
+    def wnews_request(self,requests):
+        r = scrapy.Request(requests.url,callback=self.parse)
+        r.meta['phantomjs'] = True
+        return r
 
     #地址去重/过滤
     def link_screen(self,links):

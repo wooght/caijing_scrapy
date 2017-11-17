@@ -13,17 +13,25 @@ from scrapy.http import Request, FormRequest, HtmlResponse
 from caijing_scrapy.providers.werror import Werror
 
 class WooghtDownloadMiddleware(Dobj):
-    #默认开启webdriver
+    #开启webdriver 设置phantomjs
     def __init__(self):
+        self.stdout_utf8=False
+        self.timeout = 20
         self.set_cap()
 
     #执行下载操作,返回response
     def process_request(self, request, spider):
         js = "var q=document.body.scrollTop=2000"
         url=request.url;
-        delay_time = random.randint(0,1)
-        print('休息中....',delay_time)
-        time.sleep(delay_time)                                               #随机休息时间
+        self.delay()
+
+        #返回None  将交由下一个middle操作
+        #返回request 将从新构建请求
+        #返回response 返回给spider的paser操作,跳过后面的downloadermiddlewares
+        if('phantomjs' not in request.meta.keys()):
+            print('get agentmiddleware to run',request.url)
+            return None
+        #尝试打开网页 无法打开则跳过 返回None
         try:
             self.open_url(url)
         except Werror as e:
@@ -55,16 +63,22 @@ class WooghtDownloadMiddleware(Dobj):
                     button_id = self.driver.find_element_by_id('divMore')        #多次点击更多按钮
                     time.sleep(2)
                     button_id.click()
-            elif(url=="http://money.163.com/"):
+            elif("money.163.com" in url):
                 print('------------>mony163------>')
-                # arr_num = np.arange(10)
-                # for i in arr_num:
-                #     time.sleep(2)
-                #     js = 'clickLoadMore();'
-                #     self.driver.execute_script(js)
+                arr_num = np.arange(10)
+                for i in arr_num:
+                    time.sleep(2)
+                    # js = 'var a = clickLoadMore();'
+                    # self.driver.execute_script(js)
+                    try:
+                        load_more_btn = self.driver.find_element_by_class_name('load_more_btn')
+                        load_more_btn.click()
+                    except Exception as e:
+                        print('no more..')
+                        break
             else:
-                print('------------>sina,qq,web-->---------->')
+                print('------------>sina,qq-->---------->')
         body = self.driver.page_source
-        print(self.driver.title,'=-=-=-=-=---SUCCESS--给spider处理--=-=-=-=-=-')
-        self.driver.close()
+        print(self.driver.title+'SUCCESS--To spider')
+        # print(self.driver.window_handles)                   #打印当前所有窗口
         return HtmlResponse(body=body, encoding='utf-8',request=request,url=str(url))

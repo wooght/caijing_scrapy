@@ -5,9 +5,6 @@
 
 import time
 import re
-import sys,io
-
-# sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
 
 #字符串时间转换为时间暨
 def time_num(str,format):
@@ -15,8 +12,11 @@ def time_num(str,format):
     timestamp = time.mktime(timeArray)
     return int(timestamp)
 
-def today():
-    return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime()) #格式化时间 2017-10-23 17:10:54
+def today(strtime=True):
+    if(strtime):
+        return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime()) #格式化时间 2017-10-23 17:10:54
+    else:
+        return time.strftime("%Y-%m-%d",time.localtime()) #格式化时间 2017-10-23 17:10:54
 
 #雪球时间匹配
 def search_time(str):
@@ -46,15 +46,10 @@ def delete_html(str):
     re_str = re.sub(r'<[^>]*>','',str.strip())
     return re_str
 
-
-def e_error(self,str):
-    print("""!!!!!!============
-            str
-    !!!!!!============""")
-def e(self,str):
-    print("""------------
-            str
-    ------------""")
-class Werror(Exception):
-    def __init__(self,value='Werror'):
-        Exception.__init__(self,value)
+#多种输出方式
+def e_error(str):
+    print("""   !!!!!!=====================!!!!!!""")
+    print(str)
+    print("""   !!!!!!=====================!!!!!!""")
+def e(str):
+    print('-=-=-=-=-=-=-=-=-=-=-=-=-=>',str)

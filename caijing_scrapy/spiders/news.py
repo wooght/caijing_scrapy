@@ -5,6 +5,7 @@
 #     by wooght 2017-10
 #
 import scrapy
+from scrapy.http import Request
 import re
 import time
 from caijing_scrapy.items import NewsItem
@@ -15,6 +16,9 @@ import caijing_scrapy.Db as T
 #以下两项 是spider拥有链接管理和追踪功能
 from scrapy.spiders import CrawlSpider,Rule
 from scrapy.linkextractors import LinkExtractor
+
+def wnews_request(x):
+    print('-=-=-=-=-=-=-=>',x)
 
 class NewsSpider(CrawlSpider):
     name = 'news'
@@ -27,39 +31,40 @@ class NewsSpider(CrawlSpider):
 
                     'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
                     'http://money.163.com/',
+                    'http://money.163.com/stock/',
                     'http://finance.sina.com.cn/stock/',
                     'http://www.yicai.com/data/',
                     'http://www.yicai.com/news/comment/',
                     'http://www.yicai.com/news/gushi/',
                     'http://www.yicai.com/data/',
                     'http://www.yicai.com/news/hongguan/',
-                    'http://money.163.com/17/1114/20/D37RQFP30025814U.html',
 
                  ]
 
     rules = (
         # 新浪股票新闻 http://finance.sina.com.cn/stock/hyyj/2017-11-06/doc-ifynmnae234
-        Rule(LinkExtractor(allow=(r'\D*finance\.sina\D*\/\d*\-\d*\-\d*\/doc\-\D*\d*\.shtml$',)),callback='parse_sina',follow=True,process_links='link_screen'),
+        Rule(LinkExtractor(allow=(r'\D*finance\.sina\D*\/\d*\-\d*\-\d*\/doc\-\D*\d*\.shtml$',),deny_domains=['qq.com','163.com']),callback='parse_sina',follow=True,process_links='link_screen'),
         #第一财经
         Rule(LinkExtractor(allow=('http\:\/\/www\.yicai\.com\/news\/\d+\.html',)),callback='parse_yicai',follow=True,process_links='link_screen'),
         #腾讯证券 http://stock.qq.com/a/20171107/017324.htm
-        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm$',)),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
-        #腾讯证券要闻翻页 http://stock.qq.com/l/stock/ywq/list20150423143546_11.htm
-        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/l/stock\/ywq\/list20150423143546_\d*\.htm$',)),callback='parse',follow=False,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm$',),deny_domains=['sina.com.cn','163.com','yicai.com']),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
         # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm
-        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d+.htm',)),callback='parse',follow=True,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d+.htm',)),follow=True,process_links='link_screen',process_request='wnews_request'),
+        # process_request 指定对请求进行处理函数
         #网易财经 http://money.163.com/17/1114/13/D375MGIB0025814V.html
-        Rule(LinkExtractor(allow=('.*\.163\.com\/\d+\/\d+\/\d+\/.*\.html$',)),callback='parse_163_money',follow=False,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('.*\.163\.com\/\d+\/\d+\/\d+\/.*\.html$',)),callback='parse_163_money',follow=True,process_links='link_screen'),
 
         # LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*'),restrict_xpaths=('//div[@id="id"]/a')) LinkExtractor通过xpaths指定搜索范围
     )
-
-
     old_link = []
 
     #动态修改配置内容
     custom_settings = {
-        'LOGSTATS_INTERVAL': 10,
+        'DOWNLOADER_MIDDLEWARES': {
+           'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 654,           #处理普通静态页面
+           'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': 543,
+        },
+        'LOG_LEVEL':'WARNING'
     }
 
     def __init__(self,*args,**kwargs):
@@ -74,14 +79,31 @@ class NewsSpider(CrawlSpider):
             self.old_link.append(one[0])
 
     #地址去重/过滤
+    #must return dict
     def link_screen(self,links):
         new_links = []
         for i in links:
             if(i.url not in self.old_link):
                 new_links.append(i)
                 self.old_link.append(i.url)
-        print('新页面:',len(new_links),'个-=-=-==-旧地址:',len(links)-len(new_links),'个')
+        print('news urls:',len(new_links),' -=-=-==-old urls:',len(links)-len(new_links))
         return new_links
+
+    #首页处理,入口页面处理
+    def parse_start_url(self,response):
+        pass
+    #入口网页构建带参数request
+    def start_requests(self):
+        for url in self.start_urls:
+            yield Request(url,meta={'phantomjs':True},callback=self.parse)
+        
+    #新地址构建request 带参数
+    #must return Requets/None/Item
+    def wnews_request(self,wrequests):
+        print('new request run....',wrequests.url)
+        r = scrapy.Request(wrequests.url,callback=self.parse)
+        r.meta['phantomjs'] = True
+        return r
 
     #第一财经
     def parse_yicai(self,response):
@@ -132,7 +154,12 @@ class NewsSpider(CrawlSpider):
         thetime = response.xpath('//span[@class="a_time"]/text()')
         if(len(thetime)<1):
             thetime = response.xpath('//span[@class="pubTime article-time"]/text()')
-        items['put_time'] = wfunc.time_num(thetime.extract()[0].strip(),"%Y-%m-%d %H:%M")
+        try:
+            items['put_time'] = wfunc.time_num(thetime.extract()[0].strip(),"%Y-%m-%d %H:%M")
+        except IndexError as e:
+            print('IndexError:dont fond time-->',response.url)
+            return None
+        print(response.url,'-->seccess')
         yield items
 
     #网易财经新闻

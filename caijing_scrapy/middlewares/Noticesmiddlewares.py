@@ -22,6 +22,7 @@ class WooghtDownloadMiddleware(Dobj):
     def process_request(self, request, spider):
         self.body=''
         self.url=request.url;
+        self.stdout_utf8 = True
         self.set_cap()
         self.open_url(self.url)             #打开地址
         self.set_data()                     #输入日期
@@ -34,16 +35,18 @@ class WooghtDownloadMiddleware(Dobj):
 
     #点击加载更多
     def click_more(self):
-        arr = np.arange(200)
+        arr = np.arange(100)
         for i in arr:
-            time.sleep(2)
+            time.sleep(1)
             try:
                 more_button = self.driver.find_element_by_xpath('//div[@class="show-more"]')
+                print(self.driver.find_element_by_xpath('//div[@class="show-more"]/a').text)
                 more_button.click()                                         #每次页面加载后,都要重新获取焦点
                 print('more_button click..',i)
             except:
                 self.driver.execute_script('var a = addMore();')
                 print('script run..',i)
+            self.driver.save_screenshot('errpic/'+str(i*1000)+'.png')
             js = "var a=document.body.scrollTop="+str(i*2000)+";"
             self.driver.execute_script(js)
             self.driver.implicitly_wait(10)                             #隐式等待页面加载
@@ -54,14 +57,16 @@ class WooghtDownloadMiddleware(Dobj):
         data_input.clear()                                              #清空内容
         data_input.send_keys(self.get_data())                           #写入内容
 
-        search_button = self.driver.find_element_by_class_name('com-search-btn')
-        search_button.click()
-        self.driver.switch_to_window(self.driver.window_handles[0])     #窗口切换
+        form = self.driver.find_element_by_id('AnnoucementsQueryForm')
+        js = "var a = document.getElementById('AnnoucementsQueryForm');a.submit();"
+        self.driver.execute_script(js)
+        self.driver.switch_to_window(self.driver.window_handles[1])     #窗口切换
+        time.sleep(2)
 
     #时间生产
     def get_data(self):
         today = time.strftime("%Y-%m-%d",time.localtime())
         print(today)
-        start_time  = int(time.time())-10*3600*24
+        start_time  = int(time.time())-20*3600*24
         start_data = time.strftime("%Y-%m-%d",time.localtime(start_time))
         return start_data+" ~ "+today

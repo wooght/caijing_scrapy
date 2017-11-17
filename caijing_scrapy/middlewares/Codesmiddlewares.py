@@ -26,9 +26,7 @@ class WooghtDownloadMiddleware(Dobj):
         self.url=request.url;
         self.open_url(self.url)             #打开地址
         self.set_region()
-        delay_time = random.randint(0,2)
-        print('休息中....',delay_time)
-        time.sleep(delay_time)
+        self.delay()
         self.get_tr()                       #获取tbody里股票内容
         print(self.driver.title,'=-=-=-=-=---SUCCESS--给spider处理--=-=-=-=-=-')
         return HtmlResponse(body=self.body, encoding='utf-8',request=request,url=str(self.url))
