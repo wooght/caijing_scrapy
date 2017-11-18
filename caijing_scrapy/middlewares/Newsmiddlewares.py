@@ -51,7 +51,7 @@ class WooghtDownloadMiddleware(Dobj):
                 for i in arr_num:
                     time.sleep(2)
                     button_class = self.driver.find_element_by_class_name('home__timeline__more')
-                    print(button_class,'-=-=---===button click--====--=-=-=-=')
+                    print('-=-=---===button click--====--=-=-=-=')
                     button_class.click()
         #新闻
         elif(spider.name=='news'):

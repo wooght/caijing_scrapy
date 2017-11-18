@@ -31,7 +31,7 @@ class WooghtDownloadMiddleware(Dobj):
     #点击加载更多
     def click_more(self):
         self.body+=self.driver.page_source
-        arr = np.arange(200)
+        arr = np.arange(100)
         for i in arr:
             try:
                 more_button = self.driver.find_element_by_xpath("//ul[@class='pagination']/li[last()]/a")   #通过位置筛选时,一定要层层去找

@@ -2,6 +2,7 @@
 
 #
 #     雪球头条 评论/话题型文章抓取
+#     金融界精华观点抓取
 #     by wooght 2017-10
 #
 import scrapy
@@ -18,14 +19,19 @@ from scrapy.linkextractors import LinkExtractor
 
 class TopicsSpider(CrawlSpider):
     name = 'topics'
-    allowed_domains = ['xueqiu.com']
+    allowed_domains = ['xueqiu.com','jrj.com.cn']
     start_urls = [
                     'https://xueqiu.com',
+                    'http://opinion.jrj.com.cn/list/zjh.shtml',
                  ]
     rules = (
         #雪球头条文章
-        Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.sina.*','.*\.htm',',*\.qq.*')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
+        Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.jrj.*','.*\.htm',',*\.shtml$')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
         Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
+        #金融界观点导航页 http://opinion.jrj.com.cn/list/zjh-3.shtml
+        Rule(LinkExtractor(allow=('com\.cn\/list\/zjh\-\d+\.shtml$',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
+        #金融界观点详情页 http://opinion.jrj.com.cn/2017/11/16080923394008.shtml
+        Rule(LinkExtractor(allow=('.*\.com\.cn\/\d+\/\d+\/\d+\.shtml$',)),callback='parse_jrj',follow=False,process_links='link_screen'),
     )
     old_link = []
 
@@ -58,9 +64,10 @@ class TopicsSpider(CrawlSpider):
         pass
 
     def start_requests(self):
-        r = scrapy.Request(self.start_urls[0],callback=self.parse)
-        r.meta['phantomjs'] = True
-        yield r
+        for url in self.start_urls:
+            r = scrapy.Request(url,callback=self.parse)
+            r.meta['phantomjs'] = True
+            yield r
 
     def wnews_request(self,requests):
         r = scrapy.Request(requests.url,callback=self.parse)
@@ -90,4 +97,19 @@ class TopicsSpider(CrawlSpider):
         items['url'] = response.url
         items['only_id'] = url_re.group(1)+url_re.group(2)
         items['body'] = response.xpath('//div[@class="article__bd__detail"]').extract()[0].strip()
+        wfunc.e('xueqiu_topic:'+items['title'])
+        yield items
+
+    #金融界观点文章
+    def parse_jrj(self,response):
+        items = TopicItem()
+        items['title'] = response.xpath('//div[@class="titmain"]/h1/text()').extract()[2].strip()
+        thetime = response.xpath('//p[@class="inftop"]//span[1]/text()').extract_first().strip()
+        thedata = thetime.split(" ")
+        items['put_time'] = wfunc.time_num(thedata[0],'%Y-%m-%d')
+        url_re = re.search(r'.*\/(\d+)\/(\d+)\/(\d+)\.shtml$',response.url,re.I)
+        items['url'] = response.url
+        items['only_id'] = url_re.group(3)
+        items['body'] = response.xpath('//div[@class="texttit_m1"]').extract()[0].strip()
+        wfunc.e('jrj_topic:'+items['title'])
         yield items

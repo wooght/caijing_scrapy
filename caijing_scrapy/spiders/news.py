@@ -36,7 +36,6 @@ class NewsSpider(CrawlSpider):
                     'http://www.yicai.com/data/',
                     'http://www.yicai.com/news/comment/',
                     'http://www.yicai.com/news/gushi/',
-                    'http://www.yicai.com/data/',
                     'http://www.yicai.com/news/hongguan/',
 
                  ]
@@ -96,7 +95,7 @@ class NewsSpider(CrawlSpider):
     def start_requests(self):
         for url in self.start_urls:
             yield Request(url,meta={'phantomjs':True},callback=self.parse)
-        
+
     #新地址构建request 带参数
     #must return Requets/None/Item
     def wnews_request(self,wrequests):
