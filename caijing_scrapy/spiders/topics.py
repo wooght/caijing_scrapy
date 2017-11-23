@@ -23,6 +23,7 @@ class TopicsSpider(CrawlSpider):
     start_urls = [
                     'https://xueqiu.com',
                     'http://opinion.jrj.com.cn/list/zjh.shtml',
+                    'http://opinion.jrj.com.cn/list/tglj.shtml',
                  ]
     rules = (
         #雪球头条文章
@@ -30,7 +31,9 @@ class TopicsSpider(CrawlSpider):
         Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
         #金融界观点导航页 http://opinion.jrj.com.cn/list/zjh-3.shtml
         Rule(LinkExtractor(allow=('com\.cn\/list\/zjh\-\d+\.shtml$',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
-        #金融界观点详情页 http://opinion.jrj.com.cn/2017/11/16080923394008.shtml
+        #金融界谈股论金导航页 http://opinion.jrj.com.cn/list/tglj-3.shtml
+        Rule(LinkExtractor(allow=('com\.cn\/list\/tglj\-\d+\.shtml$',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
+        #金融界详情页 http://opinion.jrj.com.cn/2017/11/16080923394008.shtml
         Rule(LinkExtractor(allow=('.*\.com\.cn\/\d+\/\d+\/\d+\.shtml$',)),callback='parse_jrj',follow=False,process_links='link_screen'),
     )
     old_link = []

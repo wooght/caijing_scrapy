@@ -3,8 +3,8 @@
 # 新闻抓取保存
 # by wooght 2017-11
 
-from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesItem,NoticesItem
-import caijing_scrapy.Db as T
+from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesItem,NoticesItem,QandaItem
+import caijing_scrapy.model.Db as T
 import caijing_scrapy.providers.wfunc as wfunc
 
 class CaijingScrapyPipeline(object):
@@ -67,6 +67,15 @@ class CaijingScrapyPipeline(object):
             if(r.rowcount>0):
                 return None
             i = T.company_notice.insert()
+            r = T.conn.execute(i,dict(item))
+
+        #问答
+        elif(isinstance(item,QandaItem)):
+            s = T.select([T.qanda.c.id]).where(T.qanda.c.only_id==item['only_id'])
+            r = T.conn.execute(s)
+            if(r.rowcount>0):
+                return None
+            i = T.qanda.insert()
             r = T.conn.execute(i,dict(item))
 
         return None

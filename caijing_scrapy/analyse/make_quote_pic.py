@@ -10,6 +10,8 @@ import numpy as np
 import pandas as pd
 import json
 
+mpl.rcParams['font.sans-serif'] = ['SimHei']    #指定默认字体 解决中文问题
+
 try:
     code_id = sys.argv[1]               #股票代码
 except:
@@ -34,7 +36,7 @@ def quotes_ys(df):
     sns.set(style="ticks",palette="muted",color_codes=True)
     plt.xlabel('datatime')
     plt.ylabel('shou')
-    plt.title('quotes lmplot',fontsize=16,color='red')
+    plt.title('lmplot 线性行情',fontsize=16,color='red')
     plt.grid(True)                  #是否显示网格
     plt.plot(df.loc[:,['shou','gao','di']])
     plt.legend()                    #图例

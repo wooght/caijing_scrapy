@@ -8,7 +8,7 @@ from caijing_scrapy.items import NoticesItem
 
 
 class SseinfoSpider(scrapy.Spider):
-    name = 'sseinfo'
+    name = 'sse_notices'
     allowed_domains = ['sse']
     start_urls = ['http://www.sse.com.cn/disclosure/listedinfo/announcement/']
     custom_settings = {

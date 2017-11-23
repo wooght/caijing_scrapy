@@ -22,7 +22,7 @@ class WooghtDownloadMiddleware(Dobj):
     def process_request(self, request, spider):
         self.body=''
         self.url=request.url;
-        self.stdout_utf8 = True
+        self.stdout_utf8 = False
         self.set_cap()
         self.open_url(self.url)             #打开地址
         self.set_data()                     #输入日期
@@ -35,7 +35,7 @@ class WooghtDownloadMiddleware(Dobj):
 
     #点击加载更多
     def click_more(self):
-        arr = np.arange(100)
+        arr = np.arange(50)
         for i in arr:
             time.sleep(1)
             try:
@@ -65,8 +65,9 @@ class WooghtDownloadMiddleware(Dobj):
 
     #时间生产
     def get_data(self):
-        today = time.strftime("%Y-%m-%d",time.localtime())
-        print(today)
+        #正式运行应该时 结束日期应该为今天
+        end_time  = int(time.time())
+        today = time.strftime("%Y-%m-%d",time.localtime(end_time))
         start_time  = int(time.time())-20*3600*24
         start_data = time.strftime("%Y-%m-%d",time.localtime(start_time))
         return start_data+" ~ "+today

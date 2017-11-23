@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# 数据结构
+# 数据库操作 sqlalchemy
 # by wooght 2017-11
 #
 
@@ -82,11 +82,33 @@ news = Table('news',metadata,
 #话题表-分析文章
 topic = Table('topic',metadata,
     Column('id',Integer,primary_key=True),
-    Column('url',Integer,nullable=False),       #网页地址ID号
+    Column('url',String(128),nullable=False),
     Column('only_id',String(32)),               #唯一标识,去重
     Column('title',String(128),nullable=True),  #新闻标题
     Column('body',Text),                        #新闻内容
-    Column('put_time',String(64))               #发布时间
+    Column('body_fenci',Text),                  #内容分词
+    Column('key_words',String(255)),            #关键词
+    Column('put_time',String(64)),              #发布时间
+    Column('code_id',Integer),                  #公司codeid
+    Column('cp_attitude',Float),                #公司态度
+    Column('plate_id',Integer),                 #板块plateid
+    Column('plate_attitude',Float)              #板块态度
+)
+
+#问答表-专家或机构回答
+qanda =  Table('qanda',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('url',String(255),nullable=False),
+    Column('only_id',String(32)),               #唯一标识,去重
+    Column('title',String(128)),                #问答标题
+    Column('body',Text),                        #问答内容
+    Column('body_fenci',Text),                  #内容分词
+    Column('key_words',String(255)),            #关键词
+    Column('put_time',String(64)),              #发布时间
+    Column('code_id',Integer),                  #公司codeid
+    Column('cp_attitude',Float),                #公司态度
+    Column('plate_id',Integer),                 #板块plateid
+    Column('plate_attitude',Float)              #板块态度
 )
 
 metadata.create_all(engine)                     #创建所有表

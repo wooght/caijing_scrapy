@@ -2,7 +2,7 @@
 
 # 新闻下载中间件
 # by wooght 2011-11
-# 依赖.settings
+# 雪球头条,新浪/网易/腾讯 股票相关新闻,雪球访谈
 
 from caijing_scrapy.middlewares.Wmiddlewares import Wdownloadmiddlewares as Dobj
 
@@ -78,6 +78,12 @@ class WooghtDownloadMiddleware(Dobj):
                         break
             else:
                 print('------------>sina,qq-->---------->')
+
+        #雪球访谈
+        elif(spider.name=='xq_talks'):
+            #获取token的值 并存放在title标签中,供spider使用
+            js = "var a = WATCH.appStart;var b = SNB.data.access_token;document.getElementsByTagName('title')[0].innerHTML=a+','+b;"
+            self.driver.execute_script(js)
         body = self.driver.page_source
         print(self.driver.title+'SUCCESS--To spider')
         # print(self.driver.window_handles)                   #打印当前所有窗口

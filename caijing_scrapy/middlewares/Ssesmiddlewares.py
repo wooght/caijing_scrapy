@@ -28,16 +28,16 @@ class WooghtDownloadMiddleware(Dobj):
         print(self.driver.title,'=-=-=-=-=---SUCCESS--给spider处理--=-=-=-=-=-')
         return HtmlResponse(body=self.body, encoding='utf-8',request=request,url=str(self.url))
 
-    #点击加载更多
+    #点击下一页
     def click_more(self):
         self.body+=self.driver.page_source
-        arr = np.arange(100)
+        arr = np.arange(50)
         for i in arr:
             try:
                 more_button = self.driver.find_element_by_xpath("//ul[@class='pagination']/li[last()]/a")   #通过位置筛选时,一定要层层去找
                 print(more_button.get_attribute('innerHTML'),'-=-=-=-=-=-=-=-')
                 more_button.click()                                         #每次页面加载后,都要重新获取焦点
-                print('more_button click..',i)
+                print('next_button click..',i)
                 self.driver.save_screenshot('errpic/'+str(i)+'.png')
             except Exception as e:
                 print('is last one:',i,'----error:',e)

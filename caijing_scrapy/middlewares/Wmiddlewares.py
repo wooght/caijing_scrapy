@@ -45,7 +45,7 @@ class Wdownloadmiddlewares(object):
 
         #创建webdriver
         # #service_args中:--ssl-protocol=any具备访问加密请求https的功能
-        self.driver = webdriver.PhantomJS(service_args=['--ssl-protocol=any'],executable_path=PHANTOMJSPATH,desired_capabilities=cap)
+        self.driver = webdriver.PhantomJS(service_args=['--ssl-protocol=any'],desired_capabilities=cap)
         self.driver.maximize_window()                       #设置全屏
         self.driver.set_page_load_timeout(self.timeout)      #设置超时时间
 
