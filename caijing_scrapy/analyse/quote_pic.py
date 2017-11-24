@@ -1,4 +1,8 @@
 #encoding utf-8
+# 行情展示
+# by wooght
+# 2017-11
+
 import sys
 sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
 import Db as T

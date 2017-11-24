@@ -6,7 +6,7 @@
 import model.Db as T
 
 def all():
-    s = T.select([T.topic.c.body,T.topic.c.id]).where(T.topic.c.id>2274)
+    s = T.select([T.topic.c.body,T.topic.c.id]).where(T.topic.c.id>21441)
     r = T.conn.execute(s)
     return r.fetchall()
 

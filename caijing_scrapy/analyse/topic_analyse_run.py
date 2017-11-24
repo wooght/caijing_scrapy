@@ -1,8 +1,6 @@
 #encoding utf-8
 #
-# 文章对象筛选
-# 文章对象板块筛选
-# 计算文章语义
+# 计算tpic文章语义
 # by Wooght
 # 2017-11
 #
@@ -17,9 +15,9 @@ from snownlp import SnowNLP
 
 
 #股票词典
-jieba.load_userdict("F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy\analyse\words\key_words.txt")
+jieba.load_userdict("F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy/analyse\words\key_words.txt")
 #停用词
-jieba.analyse.set_stop_words("F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy\analyse\words\stop_words.txt")
+jieba.analyse.set_stop_words("F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy/analyse\words\stop_words.txt")
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
 
 
