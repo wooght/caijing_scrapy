@@ -16,7 +16,7 @@ def today(strtime=True):
     if(strtime):
         return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime()) #格式化时间 2017-10-23 17:10:54
     else:
-        return time.strftime("%Y-%m-%d",time.localtime()) #格式化时间 2017-10-23 17:10:54
+        return time.strftime("%Y-%m-%d",time.localtime()) #格式化时间 2017-10-23
 
 #雪球时间匹配
 def search_time(str):
@@ -52,4 +52,4 @@ def e_error(str):
     print(str)
     print("""   !!!!!!=====================!!!!!!""")
 def e(str):
-    print('-=-=-=-=-=-=-=-=-=-=-=-=-=>',str)
+    print('-='*10,'>'*5,str)

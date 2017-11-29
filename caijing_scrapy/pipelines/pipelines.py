@@ -6,10 +6,15 @@
 from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesItem,NoticesItem,QandaItem
 import caijing_scrapy.model.Db as T
 import caijing_scrapy.providers.wfunc as wfunc
+from caijing_scrapy.analyse.pipeline_article_analyse import article_analyse
 
 class CaijingScrapyPipeline(object):
+    def __init__(self,*args,**kwargs):
+        super(CaijingScrapyPipeline,self).__init__(*args,**kwargs)
+        self.article_analyse = article_analyse()
+        wfunc.e('analyse new success!')
     def open_spider(self,spider):
-        print(spider.name,'--->open============>>>>>')
+        wfunc.e('spider '+spider.name+' --->opend')
 
     def process_item(self, item, spider):
         #新闻文章
@@ -20,6 +25,7 @@ class CaijingScrapyPipeline(object):
             r = T.conn.execute(s)
             if(r.rowcount>0):
                 return None
+            item = self.article_analyse.run(item)
             i = T.news.insert()
             r = T.conn.execute(i,dict(item))
         #专题分析文章
@@ -30,6 +36,7 @@ class CaijingScrapyPipeline(object):
             r = T.conn.execute(s)
             if(r.rowcount>0):
                 return None
+            item = self.article_analyse.run(item)
             i = T.topic.insert()
             r = T.conn.execute(i,dict(item))
 

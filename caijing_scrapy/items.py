@@ -15,6 +15,10 @@ class NewsItem(scrapy.Item):
     title = scrapy.Field()
     body = scrapy.Field()
     put_time = scrapy.Field()
+    code_id = scrapy.Field()
+    cp_attitude = scrapy.Field()
+    plate_id = scrapy.Field()
+    plate_attitude = scrapy.Field()
 
 class QandaItem(scrapy.Item):
     id = scrapy.Field()
@@ -22,7 +26,7 @@ class QandaItem(scrapy.Item):
     only_id = scrapy.Field()
     title = scrapy.Field()
     body = scrapy.Field()
-    put_time = scrapy.Field()    
+    put_time = scrapy.Field()
 
 class TopicItem(scrapy.Item):
     id = scrapy.Field()
@@ -31,6 +35,10 @@ class TopicItem(scrapy.Item):
     title = scrapy.Field()
     body = scrapy.Field()
     put_time = scrapy.Field()
+    code_id = scrapy.Field()
+    cp_attitude = scrapy.Field()
+    plate_id = scrapy.Field()
+    plate_attitude = scrapy.Field()
 
 class CodesItem(scrapy.Item):
     id = scrapy.Field()
@@ -58,6 +66,7 @@ class quotes_itemItem(scrapy.Item):
     id = scrapy.Field()
     quotes = scrapy.Field()
     code_id = scrapy.Field()
+    update_at = scrapy.Field()
 
 class PlatesItem(scrapy.Item):
     id = scrapy.Field()

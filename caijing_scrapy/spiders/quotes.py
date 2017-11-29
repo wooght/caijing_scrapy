@@ -15,6 +15,7 @@ from caijing_scrapy.items import QuotesItem,quotes_itemItem
 import caijing_scrapy.Db as T
 import time
 import json
+import caijing_scrapy.providers.wfunc as wfunc
 
 #历史行情查询 一只股票一行
 class Quotes_itemSpider(scrapy.Spider):
@@ -36,24 +37,31 @@ class Quotes_itemSpider(scrapy.Spider):
     HEADERS['User-Agent'] = random.choice(USER_AGENT)
 
     #查询地址生产器
-    def __init__(self,*args,**kwargs):
+    def __init__(self,codeid=None,*args,**kwargs):
         super(Quotes_itemSpider,self).__init__(*args,**kwargs)
         self.select_data()
-        s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz]).where(T.listed_company.c.codeid>600000)
+        if(codeid != None):
+            s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz]).where(T.listed_company.c.codeid==codeid)
+        else:
+            s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz])
         r = T.conn.execute(s)
         for item in r.fetchall():
-            id = str(item[0])
+            id = self.builde_code(item[0],item[1])
             #调整编码长度
-            if(len(id)<6):
-                while len(id)<6:
-                    id='0'+id
-                id='1'+id
-            elif(item[1]=='sz'):
-                id='1'+id
-            elif(item[1]=='sh'):
-                id='0'+id
             self.start_urls.append(self.url_module%(str(id),self.startdata,self.enddata))
         print('共需查询:',len(self.start_urls),'支股票行情.......')
+    # 股票代码生产
+    def builde_code(self,id,zh):
+        id = str(id)
+        if(len(id)<6):
+            while len(id)<6:
+                id='0'+id
+            id='1'+id
+        elif(zh=='sz'):
+            id='1'+id
+        elif(zh=='sh'):
+            id='0'+id
+        return id
     #构建带头的请求
     def start_requests(self):
         for url in self.start_urls:
@@ -79,6 +87,7 @@ class Quotes_itemSpider(scrapy.Spider):
             items['code_id'] = item[1][1:]
             all_str.append(quotes)
             quotes={}                               #元祖赋值后不能改变
+        items['update_at'] = wfunc.today(strtime=False)
         items['quotes'] = json.dumps(all_str,ensure_ascii=False)
         try:
             print(':',items['code_id'],'抓取成功,保存中.....')
@@ -91,8 +100,6 @@ class Quotes_itemSpider(scrapy.Spider):
         starttimes = int(time.time())-90*24*3600    #三个月
         self.startdata = time.strftime("%Y%m%d",time.localtime(starttimes))
         self.enddata = time.strftime("%Y%m%d",time.localtime())  #当天
-
-
 
 
 

@@ -13,7 +13,8 @@ BOT_NAME = 'caijing_scrapy'
 
 SPIDER_MODULES = ['caijing_scrapy.spiders']
 NEWSPIDER_MODULE = 'caijing_scrapy.spiders'
-
+BOT_PATH = 'F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy'
+PHANTOMJSPATH='F:\homestead\scripy_wooght/phantomjs'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #要注意版本问题 版本太旧 读出来的JS内容不一样
@@ -42,7 +43,6 @@ PHANTOMJSPAGES={
     'phantomjs.page.settings.connection' : 'keep-alive',
     "browserName" : 'Chrome',
 }
-PHANTOMJSPATH='F:\homestead\scripy_wooght/phantomjs'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False

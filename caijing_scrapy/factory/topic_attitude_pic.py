@@ -1,6 +1,8 @@
 #encoding utf-8
 #
 # topic语义分析图
+# company_attitude
+# Plate_Attitude
 # by wooght
 # 2017-11
 #
@@ -21,7 +23,7 @@ mpl.rcParams['font.sans-serif'] = ['SimHei']    #指定默认字体 解决中文
 try:
     code_id = sys.argv[1]
 except:
-    code_id = 1
+    code_id = 600519
 
 #查询plate_id
 ps = T.select([T.listed_company.c.plate_id]).where(T.listed_company.c.codeid==code_id)
@@ -54,6 +56,12 @@ class topic_attitude_pic():
                 n+=1
             new_list.append(obj)
         new_pd = pd.DataFrame(data=new_list)
+        #查询为空 返回模拟数据
+        if(len(new_pd)<1):
+            new_pd['time'] = pd.Series([1,2,3,4,5])
+            for item in kargs['columns']:
+                new_pd[item] = 0.01
+            return new_pd
         new_pd['time'] = pd.to_datetime(new_pd['time'])
         for item in kargs['columns']:
             new_pd[item] = pd.to_numeric(new_pd[item])
@@ -71,7 +79,10 @@ class topic_attitude_pic():
     def select_plate_atd(self):
         #文章plate_attitude查询
         s = T.select([T.topic.c.put_time,T.topic.c.plate_attitude]).where(T.topic.c.plate_id==self.plate_id).where(T.topic.c.put_time>self.start)
-        pddata = self.select_atd(s,columns = ['plate_attitude'])
+        try:
+            pddata = self.select_atd(s,columns = ['plate_attitude'])
+        except:
+            print(self.plate_id)
         return pddata
 
     #行情数据查询
@@ -117,7 +128,7 @@ class topic_attitude_pic():
             else:
                 quotes.loc[hang,['plate_attitude']]=0
         #划定0.5语义中性线
-        quotes.loc[:,'zero'] = 0.5
+        quotes.loc[:,'zero'] = 0.6
         return quotes
     #数据生成工厂
     def buide_datas(self):

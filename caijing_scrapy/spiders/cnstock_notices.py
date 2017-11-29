@@ -152,7 +152,7 @@ class Cnstock_topicsSpider(CrawlSpider):
     old_link = []
 
     def start_requests(self):
-        totle_news = np.arange(50)
+        totle_news = np.arange(10)
         for i in totle_news:
             url = 'http://ggjd.cnstock.com/gglist/search/qmtbbdj/'+str(i)
             yield scrapy.Request(url,callback=self.parse)

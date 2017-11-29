@@ -4,7 +4,7 @@
 # by wooght 2017-11
 
 from caijing_scrapy.items import quotes_itemItem
-import caijing_scrapy.Db as T
+import caijing_scrapy.model.Db as T
 import caijing_scrapy.providers.wfunc as wfunc
 
 class Pipeline(object):
