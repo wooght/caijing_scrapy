@@ -115,6 +115,11 @@ qanda =  Table('qanda',metadata,
     Column('plate_id',Integer),                 #板块plateid
     Column('plate_attitude',Float)              #板块态度
 )
+domains = Table('domains',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('url',String(255),nullable=False),
+    Column('name',String(32)),               
+)
 
 metadata.create_all(engine)                     #创建所有表
 conn = engine.connect()

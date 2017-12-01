@@ -21,7 +21,7 @@ class seman(object):
         self.words = {}
         self.ask = {}
         self.total = 0
-        self.pass_words = {'x','m','url','eng','nts','y'}   #pass的词性
+        self.pass_words = {'x','m','url','eng','nts','y','yue'}   #pass的词性
         self.passive_words = {'v','a'}                      #被动转义词性
         self.changehmm = changehmm()
 
@@ -77,7 +77,7 @@ class seman(object):
         marshal.dump(self.words,f)
         f.close()
 
-    #贝叶斯概率
+    #贝叶斯分类器 返回分类及分类概率
     def bayes(self, askwords):
         log_num = {}
         for i in self.ask:
@@ -120,7 +120,7 @@ seman.load(data_path+"semantics.wooght")
 if(__name__=='__main__'):
     import sys,io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
-    seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
-    seman.save(data_path+"semantics.wooght")
-# 调用方法
-# print(seman.attitude('怎能涨,没有涨,会涨吗'))
+    # seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
+    # seman.save(data_path+"semantics.wooght")
+    # 调用方法
+    print(seman.attitude('以创业板公司翰宇药业为例，该公司四季度以来分5次共接受了45家基金的组团调研，在所有公司中接受基金调研的次数和家数居首'))

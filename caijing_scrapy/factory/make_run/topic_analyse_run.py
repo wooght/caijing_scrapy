@@ -6,14 +6,14 @@
 #
 
 import sys,io
-dir = __file__.split('\\');del dir[-2:];path = '/'.join(dir);sys.path.append(path)
+dir = __file__.split('\\');del dir[-3:];path = '/'.join(dir);sys.path.append(path)
 from model import topic
 from analyse.pipeline_article_analyse import article_analyse
 import model.Db as T
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
-
+Table = T.topic
 def all():
-    s = T.select([T.topic.c.body,T.topic.c.id]).where(T.topic.c.id==24130)
+    s = T.select([Table.c.body,Table.c.id]).where(Table.c.id==24529)
     r = T.conn.execute(s)
     return r.fetchall()
 analyse = article_analyse()
@@ -26,5 +26,5 @@ for one in news:
     analyse.run(item)
     del item['body']
     print(item)
-    u = T.topic.update().where(T.topic.c['id']==one[1]).values(item)
+    u = Table.update().where(Table.c['id']==one[1]).values(item)
     r = T.conn.execute(u)
