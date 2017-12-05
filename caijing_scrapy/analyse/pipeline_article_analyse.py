@@ -8,13 +8,14 @@
 
 import sys,io
 # from ..settings import BOT_PATH
-dir = __file__.split('\\');del dir[-2:];path = '/'.join(dir);sys.path.append(path)
+dir = __file__.split('/');del dir[-2:];path = '/'.join(dir);sys.path.append(path)
+
 from model import topic
 from analyse.NLP.participle import pp
 from analyse.NLP.semantics import seman
 import re
-from snownlp import SnowNLP
-from snownlp import sentiment
+# from snownlp import SnowNLP
+# from snownlp import sentiment
 
 class article_analyse():
     #分词,获取关键词
@@ -43,7 +44,7 @@ class article_analyse():
                 # s = SnowNLP(j)
                 # totle.append(s.sentiments)
                 totle.append(seman.attitude(j))         #语义打分
-                print(j,'\t',totle[-1])
+                # print(j,'\t',totle[-1])
         try:
             avg = sum(totle)/len(totle)
         except:

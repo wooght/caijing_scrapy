@@ -115,10 +115,29 @@ qanda =  Table('qanda',metadata,
     Column('plate_id',Integer),                 #板块plateid
     Column('plate_attitude',Float)              #板块态度
 )
+#网址域
 domains = Table('domains',metadata,
     Column('id',Integer,primary_key=True),
     Column('url',String(255),nullable=False),
-    Column('name',String(32)),               
+    Column('name',String(32)),
+)
+#大单统计
+ddtj = Table('ddtj',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('code_id',Integer),
+    Column('only_id',String(32)),               #唯一标识
+    Column('totalamt',Float),                   #成交额
+    Column('totalamtpct',Float),                #成交占比
+    Column('totalvol',Float),                   #成交量
+    Column('totalvolpct',Float),                #成交量占比
+    Column('stockvol',Float),                   #总成交量
+    Column('stockamt',Float),                   #总成交额
+    Column('kuvolume',Float),                   #主买量
+    Column('kdvolume',Float),                   #主卖量
+    Column('kuamount',Float),                   #主买额
+    Column('kdamount',Float),                   #主卖额
+    Column('avgprice',Float),                   #均价
+    Column('opendate',Date),                    #日期
 )
 
 metadata.create_all(engine)                     #创建所有表

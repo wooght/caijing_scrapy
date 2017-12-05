@@ -60,7 +60,7 @@ RANDOMIZE_DOWNLOAD_DELAY = True                     #随机等待时间 在downl
 DNS_TIMEOUT = 10                                    #DNS解析等等最大时间
 DOWNLOAD_TIMEOUT = 5                                #等待/超时的最大时间 S
 
-HTTPERROR_ALLOWED_CODES= [521]                      #可继续执行的访问错误
+# HTTPERROR_ALLOWED_CODES= [521]                      #可继续执行的访问错误
 
 RETRY_ENABLED = True
 RETRY_TIMES = 1                                     #重试一次即可放弃

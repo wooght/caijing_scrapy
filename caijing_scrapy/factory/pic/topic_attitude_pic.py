@@ -1,10 +1,12 @@
 #encoding utf-8
 #
+# ####################################
 # topic语义分析图
 # company_attitude
 # Plate_Attitude
 # by wooght
 # 2017-11
+# ####################################
 #
 import sys
 sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
@@ -38,33 +40,6 @@ class topic_attitude_pic(Basepic):
         #查询开始时间
         self.start = int(time.time()-90*3600*24)
 
-    #attitude数据组装施工
-    def select_atd(self,*args,**kargs):
-        result = T.conn.execute(args[0])
-        new_list = []
-        for item in result.fetchall():
-            obj = {};n=1
-            put_time = time.strftime("%Y-%m-%d",time.localtime(int(item[0])))
-            obj['time'] = put_time
-            for i in kargs['columns']:
-                # if(item[n]<0.5):
-                #     obj[i] = (item[n]-1)*2
-                # else:
-                obj[i] = item[n]
-                n+=1
-            new_list.append(obj)
-        new_pd = self.pd.DataFrame(data=new_list)
-        #查询为空 返回模拟数据
-        if(len(new_pd)<1):
-            new_pd['time'] = self.pd.Series([1,2,3,4,5])
-            for item in kargs['columns']:
-                new_pd[item] = 0.01
-            return new_pd
-        new_pd['time'] = self.pd.to_datetime(new_pd['time'])
-        for item in kargs['columns']:
-            new_pd[item] = self.pd.to_numeric(new_pd[item])
-        return new_pd
-
     #company_attitude 数据组装车间
     def select_cp_atd(self):
         #文章cp_attitude查询
@@ -82,19 +57,13 @@ class topic_attitude_pic(Basepic):
             print(self.plate_id)
         return pddata
 
-    #数据分组求平均
-    def atd_mean(self,pandas,attitude,time):
-        #分组
-        attitudes = pandas.groupby('time',as_index=False)[attitude].agg({attitude:'mean'})
-        return attitudes
-
     #分析数据组装
     def last_pandas(self,quotes,cp_atd,plate_atd):
         quotes.insert(1,'time',self.pd.to_datetime(quotes['datatime']))
         cp_atd = self.atd_mean(cp_atd,'cp_attitude','time')
         plate_atd = self.atd_mean(plate_atd,'plate_attitude','time')
         #合并
-        quotes = self.pd.merge(quotes,cp_atd,on=['time'],how='left')
+        quotes = self.pd.merge(quotes,cp_atd,on=['time'],how='left').fillna(cp_atd.cp_attitude.median())
         quotes = self.pd.merge(quotes,plate_atd,on=['time'],how='left')
         quotes.index = quotes['time']
         #划定0.5语义中性线
@@ -114,10 +83,11 @@ class topic_attitude_pic(Basepic):
         self.sns.set(style="ticks",palette="muted",color_codes=True)
         self.plt.xlabel('datatime')
         self.plt.ylabel('shou')
-        self.plt.title('Topic Attitude',fontsize=16,color='red')
+        self.plt.title('态度与涨幅',fontsize=16,color='red')
         self.plt.grid(True)                  #是否显示网格
         #绘制 情感平均图/涨跌幅对比图
         self.plt.plot(df.loc[:,['zd_range','cp_attitude','zero']])
+        # self.sns.pointplot(df.cp_attitude,df.zd_range, alpha=0.8, color='red')
         self.plt.savefig(self.pic_path)
         self.plt.show()
         #绘制 情感分布散点图

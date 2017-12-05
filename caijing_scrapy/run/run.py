@@ -4,8 +4,7 @@ import threading
 from threading import Timer
 import subprocess
 import signal
-import sys,io
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gbk') #改变标准输出的默认编码
+import sys
 
 #开启线程操作
 class SpiderThread(threading.Thread):
@@ -21,7 +20,7 @@ scrapy = {}     #爬虫池
 thread = []     #线程池
 def scrapyrun(sig):
     global scrapy
-    scrapy[sig] = subprocess.Popen('python spidersun.py '+sig)
+    scrapy[sig] = subprocess.Popen('python3 spidersun.py '+sig)
     # scrapy['returnCode'] = subprocess.Popen('python spidersun.py '+sig,shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT) #将输出传递出来 不会自动显示
     print(sig,scrapy[sig],'开始运行')
 for arg in sys.argv[1:]:        #sys.argv[0] 位当前脚本名

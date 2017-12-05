@@ -97,7 +97,7 @@ class Quotes_itemSpider(scrapy.Spider):
 
     #构建查询时间
     def select_data(self):
-        starttimes = int(time.time())-90*24*3600    #三个月
+        starttimes = int(time.time())-120*24*3600    #四个月
         self.startdata = time.strftime("%Y%m%d",time.localtime(starttimes))
         self.enddata = time.strftime("%Y%m%d",time.localtime())  #当天
 

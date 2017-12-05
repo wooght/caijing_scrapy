@@ -13,7 +13,7 @@ import model.Db as T
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
 Table = T.topic
 def all():
-    s = T.select([Table.c.body,Table.c.id]).where(Table.c.id==24529)
+    s = T.select([Table.c.body,Table.c.id]).where(Table.c.id==25534)
     r = T.conn.execute(s)
     return r.fetchall()
 analyse = article_analyse()

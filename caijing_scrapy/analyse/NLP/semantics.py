@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-#
-# 语义分析 wooght
+################################################
+# 语义分析
+# 朴素贝叶斯分类
 # by wooght
 # 2017-11
-#
+################################################
 import os,sys
 sys.path.append(os.path.dirname(__file__))
 from participle import pp
@@ -16,12 +17,13 @@ from math import log,exp
 
 data_path = os.path.dirname(__file__)+"/corpus/"
 
-class seman(object):
+#朴素贝叶斯 模型
+class NB(object):
     def __init__(self):
         self.words = {}
         self.ask = {}
         self.total = 0
-        self.pass_words = {'x','m','url','eng','nts','y','yue'}   #pass的词性
+        self.pass_words = {'x','m','url','nian','eng','nts','ntp','y','yue'}   #pass的词性
         self.passive_words = {'v','a'}                      #被动转义词性
         self.changehmm = changehmm()
 
@@ -46,7 +48,7 @@ class seman(object):
             f.close()
             self.pp_rate(map[0],lines)
 
-    #简单分词
+    #简单分词,返回词性
     def pp(self,str):
         pp_words = pp.flag_cut(str)
         words = []
@@ -55,7 +57,7 @@ class seman(object):
                 words.append((word.word,word.flag))
         return words
 
-    #分词,计词频
+    #分词,返回词性,词频
     def pp_rate(self,map,lines):
         totle = 0
         dicts = {}
@@ -71,14 +73,14 @@ class seman(object):
         dicts['total'] = totle
         self.words[map] = dicts
 
-    #序列化数据
+    #序列化数据 保存训练好的语料库
     def save(self,path):
         f = open(path,'wb')
         marshal.dump(self.words,f)
         f.close()
 
     #贝叶斯分类器 返回分类及分类概率
-    def bayes(self, askwords):
+    def classfaly(self, askwords):
         log_num = {}
         for i in self.ask:
             log_num[i] = log(self.ask[i].total) - log(self.total)               #组单词总量的对数差 <0
@@ -108,13 +110,13 @@ class seman(object):
     #态度分析
     def attitude(self,str):
         words = self.pp(str)
-        ret,prob = self.bayes(words)
+        ret,prob = self.classfaly(words)
         if(ret=='neg'):
             return 1-prob                                                        #负面态度 设定为负数
         return prob
 
 
-seman = seman()
+seman = NB()
 seman.load(data_path+"semantics.wooght")
 
 if(__name__=='__main__'):

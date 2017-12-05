@@ -116,3 +116,7 @@ class TopicsSpider(CrawlSpider):
         items['body'] = response.xpath('//div[@class="texttit_m1"]').extract()[0].strip()
         wfunc.e('jrj_topic:'+items['title'])
         yield items
+
+    #新浪财经研究报告
+    def sina_vreport(self,response):
+        pass
