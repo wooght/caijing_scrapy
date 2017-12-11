@@ -18,6 +18,7 @@ PHANTOMJSPATH='F:\homestead\scripy_wooght/phantomjs'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #要注意版本问题 版本太旧 读出来的JS内容不一样
+#默认user-agent
 USER_AGENT = [
                 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36',
                 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE',
@@ -45,11 +46,17 @@ PHANTOMJSPAGES={
 }
 
 # Obey robots.txt rules
+# 是否遵循robots协议
 ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 
+#整个系统并发量
 CONCURRENT_REQUESTS = 32
+#同个域 并发量
+CONCURRENT_REQUESTS_PER_DOMAIN = 4
+#同个IP 并发量
+CONCURRENT_REQUESTS_PER_IP = 4
 
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
@@ -93,6 +100,7 @@ HTTP_IPS = [
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
+# Request 请求默认 HEADERS
 DEFAULT_REQUEST_HEADERS = {
   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
   'Accept-Language': 'en',

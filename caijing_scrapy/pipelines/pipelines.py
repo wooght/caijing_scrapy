@@ -7,16 +7,28 @@ from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesI
 import caijing_scrapy.model.Db as T
 import caijing_scrapy.providers.wfunc as wfunc
 from caijing_scrapy.analyse.pipeline_article_analyse import article_analyse
+import time
 
 class CaijingScrapyPipeline(object):
     def __init__(self,*args,**kwargs):
         super(CaijingScrapyPipeline,self).__init__(*args,**kwargs)
         self.article_analyse = article_analyse()
+        self.add_nums = 0
+        self.min_time = time.time()-90*24*3600  #只提取三个月内的数据
         wfunc.e('analyse new success!')
     def open_spider(self,spider):
         wfunc.e('spider '+spider.name+' --->opend')
 
+    def add_attitude_relation(self,item):
+        if(len(item)>0):
+            i = T.attitude_relation.insert()
+            r = T.conn.execute(i,item)
+
     def process_item(self, item, spider):
+        if('put_time' in dict(item)):
+            if(float(item['put_time'])<self.min_time):
+                return None
+        self.add_nums+=1
         #新闻文章
         if(isinstance(item,NewsItem)):
             #去除body中的html标签
@@ -25,9 +37,14 @@ class CaijingScrapyPipeline(object):
             r = T.conn.execute(s)
             if(r.rowcount>0):
                 return None
-            item = self.article_analyse.run(item)
             i = T.news.insert()
             r = T.conn.execute(i,dict(item))
+            #语义分析
+            att_item = item
+            att_item['article_id'] = r.inserted_primary_key
+            att_item['article_type'] = 2
+            result = self.article_analyse.run(att_item)
+            self.add_attitude_relation(result)
         #专题分析文章
         elif(isinstance(item,TopicItem)):
             #去除body中的html标签
@@ -36,9 +53,14 @@ class CaijingScrapyPipeline(object):
             r = T.conn.execute(s)
             if(r.rowcount>0):
                 return None
-            item = self.article_analyse.run(item)
             i = T.topic.insert()
             r = T.conn.execute(i,dict(item))
+            #语义分析
+            att_item = item
+            att_item['article_id'] = r.inserted_primary_key
+            att_item['article_type'] = 1
+            result = self.article_analyse.run(att_item)
+            self.add_attitude_relation(result)
 
         #股票代码
         elif(isinstance(item,CodesItem)):
@@ -88,4 +110,5 @@ class CaijingScrapyPipeline(object):
         return None
 
     def close_spider(self,spider):
-        print(spider.name,'--->close========>>>>>>>>>>')
+        wfunc.e('spider '+spider.name+' --->closed')
+        wfunc.e('add total nums :'+str(self.add_nums))

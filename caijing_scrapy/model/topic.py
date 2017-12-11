@@ -35,5 +35,5 @@ def s_company_id(str):
 def s_plate_id(str):
     s = T.select([T.listed_plate.c.plateid]).where(T.listed_plate.c.name.like(str))
     r = T.conn.execute(s)
-    result = r.fetchall()
-    return result[0][0]
+    result = r.fetchone()
+    return result[0]

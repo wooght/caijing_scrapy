@@ -12,6 +12,7 @@ from caijing_scrapy.items import NewsItem
 import caijing_scrapy.providers.wfunc as wfunc
 
 import caijing_scrapy.Db as T
+import json
 
 #以下两项 是spider拥有链接管理和追踪功能
 from scrapy.spiders import CrawlSpider,Rule
@@ -23,12 +24,8 @@ def wnews_request(x):
 class NewsSpider(CrawlSpider):
     name = 'news'
     allowed_domains = ['www.yicai.com','sina.com.cn','qq.com','163.com']
-    download_delay = 1                                              #设置下载延时
+    download_delay = 0.5                                              #设置下载延时
     start_urls = [
-                    # 'http://www.yicai.com/news/5365720.html',
-                    # 'https://xueqiu.com/7859591518/95051267',
-                    # 'http://finance.sina.com.cn/stock/s/2017-11-06/doc-ifynmvuq9022743.shtml'
-
                     'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
                     'http://money.163.com/',
                     'http://money.163.com/stock/',
@@ -37,8 +34,11 @@ class NewsSpider(CrawlSpider):
                     'http://www.yicai.com/news/comment/',
                     'http://www.yicai.com/news/gushi/',
                     'http://www.yicai.com/news/hongguan/',
-
+                    #自选股新闻API
+                    'http://183.57.48.75/ifzqgtimg/appstock/news/yaowen/get?nkey=getQQNewsIndexAndItemsVerify&returnType=0,1,6,100,102&ids=&_columnId=stock_yaowen_v2_new&check=1&app=3G&_rndtime=1512981869&_appName=ios&_dev=iPhone8,2&_devId=b7f6945c2c01d5275408b475f9d3d77deccf4fce&_appver=5.8.1&_ifChId=&_isChId=1&_osVer=10.3.3&_uin=10000&_wxuin=20000'
                  ]
+    #自选股文章API模型
+    url_models = 'http://183.57.48.75/ifzqgtimg/appstock/news/NewsOpenProxy/get?nkey=getQQNewsSimpleHtmlContentVerify&id=%s&chlid=news_news_istock&return=0,1,6,100,102&devid=b7f6945c2c01d5275408b475f9d3d77deccf4fce&appver=iphone5.8.1&_omgid=7f37d4eaf6195b4505da3fa034f73aacf580001011161c&_columnId=stock_yaowen_v2_new&_rndtime=1512996494&_appName=ios&_dev=iPhone8,2&_devId=b7f6945c2c01d5275408b475f9d3d77deccf4fce&_appver=5.8.1&_ifChId=&_isChId=1&_osVer=10.3.3&_uin=10000&_wxuin=20000'
 
     rules = (
         # 新浪股票新闻 http://finance.sina.com.cn/stock/hyyj/2017-11-06/doc-ifynmnae234
@@ -47,8 +47,8 @@ class NewsSpider(CrawlSpider):
         Rule(LinkExtractor(allow=('http\:\/\/www\.yicai\.com\/news\/\d+\.html',)),callback='parse_yicai',follow=True,process_links='link_screen'),
         #腾讯证券 http://stock.qq.com/a/20171107/017324.htm
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm$',),deny_domains=['sina.com.cn','163.com','yicai.com']),callback='parse_qq_ywq',follow=False,process_links='link_screen'),
-        # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm
-        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d+.htm',)),follow=True,process_links='link_screen',process_request='wnews_request'),
+        # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm 只查询前9页数据
+        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d.htm',)),follow=True,process_links='link_screen',process_request='wnews_request'),
         # process_request 指定对请求进行处理函数
         #网易财经 http://money.163.com/17/1114/13/D375MGIB0025814V.html
         Rule(LinkExtractor(allow=('.*\.163\.com\/\d+\/\d+\/\d+\/.*\.html$',)),callback='parse_163_money',follow=True,process_links='link_screen'),
@@ -64,6 +64,28 @@ class NewsSpider(CrawlSpider):
            'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': 543,
         },
         'LOG_LEVEL':'WARNING'
+    }
+
+    #自选股新闻API接口headers
+    api_headers = {
+          'Accept': '*/*',
+          'Accept-Encoding': 'gzip,deflate',
+          'Accept-Language': 'zh-cn',
+          'User-Agent' : 'QQStock/17082410 CFNetwork/811.5.4 Darwin/16.7.0',
+          'Referer':'http://zixuanguapp.finance.qq.com',
+          "Connection": "keep-alive",
+          "Host": "183.57.48.75",
+          "Connection": "keep-alive",
+
+    }
+    #自选股新闻列表headers
+    api_headers_index = {
+      'Accept': '*/*',
+      'Accept-Encoding': 'gzip,deflate',
+      'Accept-Language': 'zh-cn',
+      'User-Agent' : 'QQStock/17082410 CFNetwork/811.5.4 Darwin/16.7.0',
+      'Referer':'http://zixuanguapp.finance.qq.com',
+      "Connection": "keep-alive",
     }
 
     def __init__(self,*args,**kwargs):
@@ -94,7 +116,33 @@ class NewsSpider(CrawlSpider):
     #入口网页构建带参数request
     def start_requests(self):
         for url in self.start_urls:
-            yield Request(url,meta={'phantomjs':True},callback=self.parse)
+            if('183.57.48.75' not in url):
+                yield Request(url,meta={'phantomjs':True},callback=self.parse)
+            else:
+                R = Request(url=url,callback=self.parse_zxg_index,headers=self.api_headers_index,dont_filter=True)
+                yield R
+
+    #自选股新闻列表API
+    def parse_zxg_index(self,response):
+        response_json = self.get_json(response)
+        ids = response_json['data']['ids']
+        print(ids)
+        for id in ids:
+            if('STO' in id):
+                continue
+            url = self.url_models%(id)
+            R = Request(url=url,callback=self.parse_zxg_apinews,headers=self.api_headers,dont_filter=True)
+            yield R
+    #自选股新闻API
+    def parse_zxg_apinews(self,response):
+        items = NewsItem()
+        api = self.get_json(response)
+        items['title'] = api['data']['title']
+        items['only_id'] = api['data']['id']
+        items['body'] = api['data']['content']['text']
+        items['put_time'] = wfunc.time_num(api['data']['id'][:8],"%Y%m%d")
+        items['url'] = api['data']['surl']
+        yield items
 
     #新地址构建request 带参数
     #must return Requets/None/Item
@@ -178,3 +226,8 @@ class NewsSpider(CrawlSpider):
         print(thetime[:16],',',items['only_id'])
         items['put_time'] = wfunc.time_num(thetime[:16],"%Y-%m-%d %H:%M")
         yield items
+
+    def get_json(self,str):
+        response_str = str.body.decode('utf-8')
+        response_json = json.loads(response_str,encoding='utf8')
+        return response_json

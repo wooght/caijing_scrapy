@@ -28,7 +28,7 @@ class TopicsSpider(CrawlSpider):
     rules = (
         #雪球头条文章
         Rule(LinkExtractor(allow=('\/\d+\/\d+',),deny=('.*\.jrj.*','.*\.htm',',*\.shtml$')),callback='parse_xueqiu',follow=True,process_links='link_screen'),
-        Rule(LinkExtractor(allow=('\/\d+\/column',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
+        Rule(LinkExtractor(allow=('\/\d+\/column$',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
         #金融界观点导航页 http://opinion.jrj.com.cn/list/zjh-3.shtml
         Rule(LinkExtractor(allow=('com\.cn\/list\/zjh\-\d+\.shtml$',)),callback='parse',follow=True,process_links='link_screen',process_request='wnews_request'),
         #金融界谈股论金导航页 http://opinion.jrj.com.cn/list/tglj-3.shtml

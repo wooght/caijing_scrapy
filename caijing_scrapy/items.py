@@ -19,6 +19,8 @@ class NewsItem(scrapy.Item):
     cp_attitude = scrapy.Field()
     plate_id = scrapy.Field()
     plate_attitude = scrapy.Field()
+    article_id = scrapy.Field()
+    article_type = scrapy.Field()
 
 class QandaItem(scrapy.Item):
     id = scrapy.Field()
@@ -39,6 +41,8 @@ class TopicItem(scrapy.Item):
     cp_attitude = scrapy.Field()
     plate_id = scrapy.Field()
     plate_attitude = scrapy.Field()
+    article_id = scrapy.Field()
+    article_type = scrapy.Field()
 
 class CodesItem(scrapy.Item):
     id = scrapy.Field()

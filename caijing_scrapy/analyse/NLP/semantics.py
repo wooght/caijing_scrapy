@@ -86,7 +86,6 @@ class NB(object):
             log_num[i] = log(self.ask[i].total) - log(self.total)               #组单词总量的对数差 <0
             key = 0
             for word in askwords:
-                print(i,word,self.ask[i].get_rate(word[0]),log_num[i])
                 if(word[1] in self.passive_words):
                     if(self.changehmm.hmm(askwords,key)):
                         print('\t',i,word,self.ask[i].zero_freq())
@@ -122,7 +121,7 @@ seman.load(data_path+"semantics.wooght")
 if(__name__=='__main__'):
     import sys,io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
-    # seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
-    # seman.save(data_path+"semantics.wooght")
+    seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
+    seman.save(data_path+"semantics.wooght")
     # 调用方法
     print(seman.attitude('以创业板公司翰宇药业为例，该公司四季度以来分5次共接受了45家基金的组团调研，在所有公司中接受基金调研的次数和家数居首'))

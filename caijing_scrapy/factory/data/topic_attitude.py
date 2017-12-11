@@ -24,9 +24,9 @@ class  attitude_data(basedata):
         self.start = int(time.time()-90*3600*24)
 
     #company_attitude 数据组装车间
-    def select_cp_atd(self,Tb):
+    def select_cp_atd(self,Tb,a_type):
         #文章cp_attitude查询
-        s = T.select([Tb.c.put_time,Tb.c.cp_attitude]).where(Tb.c.code_id==self.code_id).where(Tb.c.put_time>self.start)
+        s = T.select([Tb.c.put_time,Tb.c.cp_attitude]).where(Tb.c.code_id==self.code_id).where(Tb.c.put_time>self.start).where(Tb.c.article_type==a_type)
         pddata = self.select_atd(s,columns = ['cp_attitude'])
         return pddata
 
@@ -45,8 +45,8 @@ class  attitude_data(basedata):
 
     #数据生成工厂
     def buide_datas(self):
-        cp_atd = self.select_cp_atd(T.topic)
-        cp_news_atd = self.select_cp_atd(T.news)
+        cp_atd = self.select_cp_atd(T.attitude_relation,1)      
+        cp_news_atd = self.select_cp_atd(T.attitude_relation,2)
         quotes = self.select_quotes(self.code_id)
         last_pandas = self.last_pandas(quotes,cp_atd,cp_news_atd)
         return last_pandas,cp_atd

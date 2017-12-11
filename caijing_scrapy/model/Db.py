@@ -26,6 +26,7 @@ listed_company = Table('listed_company',metadata,
     Column('codeid',Integer,index=True),    #股票代码
     Column('region_id',Integer),            #地区ID
     Column('plate_id',Integer),             #板块ID
+    Column('concept_id',String(255)),        #概念板块
     Column('name',String(32)),              #公司名称
     Column('url',String(128)),              #公司官网
     Column('blog_url',String(128)),         #官方微博
@@ -67,6 +68,13 @@ company_notice = Table('company_notice',metadata,
 listed_plate = Table('listed_plate',metadata,
     Column('id',Integer,primary_key=True),
     Column('plateid',SmallInteger,index=True),         #网易行业ID
+    Column('father_id',Integer),                       #父类ID
+    Column('name',String(32)),
+)
+#概念板块
+listed_concept = Table('listed_concept',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('conceptid',SmallInteger,index=True),         #网易行业ID
     Column('father_id',Integer),                       #父类ID
     Column('name',String(32)),
 )
@@ -139,6 +147,18 @@ ddtj = Table('ddtj',metadata,
     Column('avgprice',Float),                   #均价
     Column('opendate',Date),                    #日期
 )
+#语义打分关联表
+attitude_relation = Table('attitude_relation',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('code_id',Integer,index=True),
+    Column('cp_attitude',Float),
+    Column('plate_id',Integer),
+    Column('plate_attitude',Float),
+    Column('article_id',Integer),
+    Column('article_type',SmallInteger),        #文章分类,1位topic,2位news
+    Column('put_time',String(64)),
+)
+
 
 metadata.create_all(engine)                     #创建所有表
 conn = engine.connect()

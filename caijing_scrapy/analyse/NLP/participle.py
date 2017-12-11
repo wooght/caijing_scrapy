@@ -45,8 +45,9 @@ class pp(object):
             if(word.word not in self.stop_words and word.flag not in stop_flag):
                 words.append(word)
         return words
-    #关键词提取
-    def tags(self,str,allpos=('n','c','nt','nts','ntp','v','a','i','d','y','r','p','nz','ad')):
+    # 关键词提取
+    # 自定义词性 nts 股票公司名称,ntp 板块分类名称
+    def tags(self,str,allpos=('nt','nts','ntp')):
         return jieba.analyse.extract_tags(str,withWeight=True,withFlag=True,allowPOS=allpos)
 
 pp = pp()

@@ -30,7 +30,7 @@ class changehmm(object):
                             return True
                         num+=1
                 elif(c=='lty'):
-                    while key<len(tags) and num<self.pass_num:
+                    while key<len(tags)-1 and num<self.pass_num:
                         key+=1
                         if(tags[key]==c):
                             return True

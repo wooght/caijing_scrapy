@@ -30,7 +30,7 @@ class DdtjSpider(scrapy.Spider):
            'caijing_scrapy.pipelines.QuotesPipelines.Pipeline': 300,
         },
         'LOG_LEVEL':'WARNING',
-        'DOWNLOAD_DELAY' : 0.5,                                  #同一网站延迟时间
+        'DOWNLOAD_DELAY' : 0.6,                                  #同一网站延迟时间
         'RANDOMIZE_DOWNLOAD_DELAY' : True                     #随机等待时间 在download-delay的基础上
     }
     HEADERS['User-Agent'] = random.choice(USER_AGENT)
@@ -59,7 +59,7 @@ class DdtjSpider(scrapy.Spider):
         return id
     #构建带头的请求
     def start_requests(self):
-        total_date = np.arange(6)  #共查询最近6天大单记录
+        total_date = np.arange(8)  #共查询最近6天大单记录
         nowtimes = int(time.time())
         for url in self.start_urls:
             for i in total_date:
