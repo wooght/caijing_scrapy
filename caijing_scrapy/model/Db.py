@@ -6,7 +6,7 @@
 
 __author__ = 'wooght'
 from sqlalchemy import create_engine, Table, Column ,MetaData, select
-from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey,Date,Float,SmallInteger
+from sqlalchemy import VARCHAR as Varchar,TEXT as Text, Integer, String, ForeignKey,Date,Float,SmallInteger,BigInteger
 from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine("mysql+pymysql://homestead:secret@192.168.10.10:3306/scrapy?charset=utf8",encoding="utf-8", echo=False) #echo表示是否输出执行过程内容
@@ -158,7 +158,26 @@ attitude_relation = Table('attitude_relation',metadata,
     Column('article_type',SmallInteger),        #文章分类,1位topic,2位news
     Column('put_time',String(64)),
 )
-
+#雪球组合
+xq_zuhe = Table('xq_zuhe',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('zh_symbol',String(16),index=True),  #组合编号
+    Column('zh_id',Integer),                    #组合ID
+    Column('owner_id',BigInteger),                 #所属者ID
+    Column('zh_name',String(64)),               #组合名称
+)
+#组合调仓记录
+zuhe_change = Table('zuhe_change',metadata,
+    Column('id',Integer,primary_key=True),
+    Column('zh_symbol',String(16),index=True),  #组合编号
+    Column('change_id',Integer),                #调仓ID
+    Column('stock_name',String(32)),            #股票名称
+    Column('code_id',Integer),                  #股票代码
+    Column('prev_weight',Float),                 #前值
+    Column('target_weight',Float),               #后值
+    Column('change_status',Float),               #变化
+    Column('updated_at',String(32)),            #调整时间
+)
 
 metadata.create_all(engine)                     #创建所有表
 conn = engine.connect()

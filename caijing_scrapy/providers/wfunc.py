@@ -18,6 +18,12 @@ def today(strtime=True):
     else:
         return time.strftime("%Y-%m-%d",time.localtime()) #格式化时间 2017-10-23
 
+def the_day(nums,t=False):
+    if(not t):
+        return time.strftime("%Y-%m-%d",time.localtime(nums))
+    else:
+        return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(nums))
+
 #雪球时间匹配
 def search_time(str):
     str_search=re.search(r'\D*(\d{4}-\d{2}-\d{2} .*)',str)

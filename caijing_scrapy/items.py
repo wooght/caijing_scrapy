@@ -101,3 +101,20 @@ class DdtjItem(scrapy.Item):
     kdamount = scrapy.Field()
     avgprice = scrapy.Field()
     opendate = scrapy.Field()
+class ZhchangeItem(scrapy.Item):
+    id = scrapy.Field()
+    zh_symbol  = scrapy.Field()
+    change_id = scrapy.Field()
+    stock_name = scrapy.Field()
+    code_id = scrapy.Field()
+    prev_weight = scrapy.Field()
+    target_weight = scrapy.Field()
+    change_status = scrapy.Field()
+    updated_at = scrapy.Field()
+
+class ZuheItem(scrapy.Item):
+    id = scrapy.Field()
+    zh_symbol  = scrapy.Field()
+    zh_id = scrapy.Field()
+    owner_id = scrapy.Field()
+    zh_name = scrapy.Field()
