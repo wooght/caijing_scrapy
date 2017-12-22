@@ -14,12 +14,16 @@ from caijing_scrapy.items import DdtjItem
 import caijing_scrapy.model.Db as T
 import time
 import json
+from caijing_scrapy.providers import wfunc
 
 #历史行情查询 一只股票一行
 class DdtjSpider(scrapy.Spider):
+    before_day = 8      #几天之前
     name = 'ddtj'
     allowed_domains = ['sina.com.cn']
     start_urls = []
+    only_id = []
+    nowtimes = int(time.time())
     url_module = 'http://vip.stock.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_Bill.GetBillSum?symbol=%s&num=60&sort=ticktime&asc=0&volume=0&amount=500000&type=0&day='
     custom_settings = {
         'DOWNLOADER_MIDDLEWARES': {
@@ -30,7 +34,7 @@ class DdtjSpider(scrapy.Spider):
            'caijing_scrapy.pipelines.QuotesPipelines.Pipeline': 300,
         },
         'LOG_LEVEL':'WARNING',
-        'DOWNLOAD_DELAY' : 0.6,                                  #同一网站延迟时间
+        'DOWNLOAD_DELAY' : 1,                                  #同一网站延迟时间
         'RANDOMIZE_DOWNLOAD_DELAY' : True                     #随机等待时间 在download-delay的基础上
     }
     HEADERS['User-Agent'] = random.choice(USER_AGENT)
@@ -38,34 +42,36 @@ class DdtjSpider(scrapy.Spider):
     #查询地址生产器
     def __init__(self,codeid=None,*args,**kwargs):
         super(DdtjSpider,self).__init__(*args,**kwargs)
+        total_date = self.total_data()
         if(codeid != None):
             s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz]).where(T.listed_company.c.codeid==codeid)
+            p = T.select([T.ddtj.c.only_id]).where(T.ddtj.c.codeid==codeid)
         else:
             s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz])
+            search_times = time.strftime("%Y-%m-%d",time.localtime(self.nowtimes-self.before_day*3600*24))   #载入指定时间的only_id
+            p = T.select([T.ddtj.c.only_id]).where(T.ddtj.c.opendate>search_times)
         r = T.conn.execute(s)
+        pr = T.conn.execute(p)
+        for item in pr.fetchall():
+            self.only_id.append(item[0])
         for item in r.fetchall():
-            id = self.builde_code(item[0],item[1])
-            #调整编码长度
-            print(id,'---')
-            self.start_urls.append(self.url_module%(str(id)))
+            id = wfunc.builde_code(item[0],item[1]) #调整编码长度
+            code = str(id[2:])
+            for d in total_date:
+                only_id = d+code
+                if(only_id not in self.only_id):
+                    self.start_urls.append(self.url_module%(str(id))+str(d))
+
         print('共需查询:',len(self.start_urls),'支股票大单统计')
-    # 股票代码生产
-    def builde_code(self,id,zh):
-        id = str(id)
-        if(len(id)<6):
-            while len(id)<6:
-                id='0'+id
-        id = zh+id
-        return id
+
     #构建带头的请求
     def start_requests(self):
-        total_date = np.arange(8)  #共查询最近6天大单记录
-        nowtimes = int(time.time())
+        total_date = self.total_data()
         for url in self.start_urls:
-            for i in total_date:
-                search_times = time.strftime("%Y-%m-%d",time.localtime(nowtimes-i*3600*24))
-                newurl = url+str(search_times)
-                yield Request(newurl,headers=HEADERS,callback=self.parse)
+            print(url)
+            yield Request(url,headers=HEADERS,callback=self.parse)
+
+    #解析json
     def parse(self, response):
         items = DdtjItem()
         response_str = response.body
@@ -84,3 +90,11 @@ class DdtjSpider(scrapy.Spider):
             items['only_id'] = items['opendate']+items['code_id']
             print(items['opendate'],items['code_id'])
             yield items
+
+    #查询日期生产
+    def total_data(self):
+        total = np.arange(self.before_day)
+        all_date = []
+        for item in total:
+            all_date.append(time.strftime("%Y-%m-%d",time.localtime(self.nowtimes-item*3600*24)))
+        return all_date

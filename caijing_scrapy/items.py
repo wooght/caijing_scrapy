@@ -53,6 +53,7 @@ class CodesItem(scrapy.Item):
     name = scrapy.Field()
     url = scrapy.Field()
     blog_url = scrapy.Field()
+    shsz = scrapy.Field()
 
 class QuotesItem(scrapy.Item):
     id = scrapy.Field()

@@ -13,7 +13,7 @@ import os,json
 try:
     code_id = sys.argv[1]
 except:
-    code_id = 300406
+    code_id = 300249
 
 class quotes_data(basedata):
     def get_quotes(self):
@@ -27,7 +27,7 @@ class quotes_data(basedata):
         obj = sorted(obj,key=lambda d:d['datatime'],reverse=False)
         result = ''
         for i in obj:
-            result+='["'+i['datatime']+'","'+i['kai']+'","'+i['shou']+'","'+i['di']+'","'+i['gao']+'"],'
+            result+='["'+i['datatime']+'","'+i['kai']+'","'+i['shou']+'","'+i['di']+'","'+i['gao']+'","'+i['liang']+'"],'
         return "["+result+"]"
 
 a = quotes_data()

@@ -64,7 +64,7 @@ class CaijingScrapyPipeline(object):
 
         #股票代码
         elif(isinstance(item,CodesItem)):
-            if(spider.name=='codes'):
+            if(spider.name in ['codes','newcodes']):
                 s = T.select([T.listed_company]).where(T.listed_company.c.codeid==item['codeid'])
                 r = T.conn.execute(s)
                 if(r.rowcount>0):

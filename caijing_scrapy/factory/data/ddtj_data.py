@@ -33,7 +33,7 @@ class ddtj_data(basedata):
         pandas_ddtj['kdvolume'] = -pandas_ddtj['kdvolume']
         quotes_data['datatime'] = self.pd.to_datetime(quotes_data['datatime'],format='%Y-%m-%d')
         del pandas_ddtj['opendate']
-        pandas_ddtj = self.pd.merge(pandas_ddtj,quotes_data,on=['datatime'],how='left')
+        pandas_ddtj = self.pd.merge(quotes_data,pandas_ddtj,on=['datatime'],how='left')
         pandas_ddtj = pandas_ddtj.sort_values(by='datatime',ascending=True)
         result = self.web_data(pandas_ddtj,'datatime',columns=['zd_range','dk_contrast','kuvolume','kdvolume'])
         return result

@@ -84,6 +84,7 @@ class Quotes_itemSpider(scrapy.Spider):
             quotes['before'] = item[7]
             quotes['zd_money'] = '0' if item[8]=='None' else item[8]
             quotes['zd_range'] = '0' if item[9]=='None' else item[9]
+            quotes['liang'] = '0' if item[11]=='None' else item[11]
             items['code_id'] = item[1][1:]
             all_str.append(quotes)
             quotes={}                               #元祖赋值后不能改变
@@ -97,7 +98,7 @@ class Quotes_itemSpider(scrapy.Spider):
 
     #构建查询时间
     def select_data(self):
-        starttimes = int(time.time())-120*24*3600    #四个月
+        starttimes = int(time.time())-360*24*3600    #一年
         self.startdata = time.strftime("%Y%m%d",time.localtime(starttimes))
         self.enddata = time.strftime("%Y%m%d",time.localtime())  #当天
 

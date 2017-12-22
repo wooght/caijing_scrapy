@@ -121,7 +121,7 @@ seman.load(data_path+"semantics.wooght")
 if(__name__=='__main__'):
     import sys,io
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8') #改变标准输出的默认编码
-    seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
-    seman.save(data_path+"semantics.wooght")
+    # seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
+    # seman.save(data_path+"semantics.wooght")
     # 调用方法
-    print(seman.attitude('以创业板公司翰宇药业为例，该公司四季度以来分5次共接受了45家基金的组团调研，在所有公司中接受基金调研的次数和家数居首'))
+    print(seman.attitude('上市之路一波三折，是谁拖住三只松鼠的“尾巴”？'))

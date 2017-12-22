@@ -1,17 +1,91 @@
 # -*- coding: utf-8 -*-
-#
+#########################################################
 #     网易财经上市公司及股票代码,板块分类爬取
+#     网易财经APP行业爬取,新股爬取
 #     by wooght 2017-10
-#
+#########################################################
 import scrapy
 import re
 import time
 from caijing_scrapy.items import CodesItem,PlatesItem
 import caijing_scrapy.providers.wfunc as wfunc
-
+import json
 import caijing_scrapy.Db as T
 
 from scrapy.http import Request
+
+#新股爬取  网易财经APP分类获取新股
+class NewCodeSpider(scrapy.Spider):
+    name = 'newcodes'
+    allowed_domains = '163.com'
+    url_model = 'http://m.money.163.com/stock/service/plate.json?appversion=ios_3.3.3&count=500&page=0&plateid=hy0%s'
+    company_url_model = 'http://quotes.money.163.com/app/stock/%s_summary.json'
+    new_companys = []
+    custom_settings = {
+        'DOWNLOADER_MIDDLEWARES': {
+           'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': 543,
+           'caijing_scrapy.middlewares.Newsmiddlewares.WooghtDownloadMiddleware': None,
+        },
+        'LOG_LEVEL':'WARNING'
+    }
+    def __init__(self,*args,**kwargs):
+        super(NewCodeSpider,self).__init__(*args,**kwargs)
+        self.plates = []
+        self.companys = []
+        self.regions = {}
+        self.select_plates()
+    def select_plates(self):
+        s = T.select([T.listed_plate.c.plateid]).where(T.listed_plate.c.father_id!=0)
+        r = T.conn.execute(s)
+        for pid in r.fetchall():
+            plateid = pid[0]
+            if(len(str(plateid))<5):
+                plateid = '0'+str(plateid)
+            self.plates.append(plateid)
+        s = T.select([T.listed_company.c.codeid])
+        r = T.conn.execute(s)
+        for code in r.fetchall():
+            self.companys.append(str(code[0]))
+        s = T.select([T.listed_region.c.id,T.listed_region.c.name])
+        r = T.conn.execute(s)
+        for region in r.fetchall():
+            region_dict = {}
+            self.regions[region[1]] = region[0]
+    def start_requests(self):
+        for url in self.plates:
+            rurl = self.url_model%(url)
+            print(rurl)
+            R = scrapy.Request(rurl,callback=self.parse)
+            yield R
+    def parse(self,response):
+        json_str = response.body.decode('utf8')
+        json_obj = json.loads(json_str,encoding='utf8')
+        for code in json_obj['list']:
+            symbol = int(code['SYMBOL'])
+            if(str(symbol) not in self.companys):
+                newscode = {}
+                newscode['codeid'] = symbol
+                newscode['plate_id'] = json_obj['PLATEID'][2:]
+                newscode['name'] = code['NAME']
+                newscode['code'] = code['CODE']
+                print(newscode)
+                R = scrapy.Request(self.company_url_model%(newscode['code']),meta=newscode,callback=self.companysparse,dont_filter=True)
+                yield R
+    def companysparse(self,response):
+        items = CodesItem()
+        json_str = response.body.decode('utf8')
+        json_obj = json.loads(json_str,encoding='utf8')
+        if(response.meta['code'][0]=='1'):
+            shsz = 'sz'
+        else:
+            shsz = 'sh'
+        items['codeid'] = json_obj['SYMBOL']
+        items['plate_id'] = response.meta['plate_id']
+        items['shsz'] = shsz
+        items['region_id'] = self.regions[json_obj['data'][0]['DI_YU']]
+        items['name'] = response.meta['name']
+        print(items)
+        yield items
 
 #股票代码抓取
 class CodesSpider(scrapy.Spider):

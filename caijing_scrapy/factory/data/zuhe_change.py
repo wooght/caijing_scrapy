@@ -15,7 +15,7 @@ import pandas
 try:
     code_id = sys.argv[1]
 except:
-    code_id = 601313
+    code_id = 601318
 
 class change_data(basedata):
 
@@ -36,9 +36,11 @@ class change_data(basedata):
         pd_mean = pandas_change.groupby('datatime',as_index=False)['change_status'].agg({'change_status':'mean'})
         quotes_data['datatime'] = self.pd.to_datetime(quotes_data['datatime'],format='%Y-%m-%d')
         del pandas_change['updated_at']
-        pd_mean = self.pd.merge(quotes_data,pd_mean,on=['datatime'],how='left')
+        pd_mean = self.pd.merge(quotes_data,pd_mean,on=['datatime'],how='left').fillna(0)
         pd_mean = pd_mean.sort_values(by='datatime',ascending=True)
-        result = self.web_data(pd_mean,'datatime',columns=['change_status'])
+        # pd_mean['change_status'].fillna(method='pad')    #用前值填充NaN值
+        pd_mean['cumsum'] = pd_mean['change_status'].cumsum()   #cumsum累加  前值的和
+        result = self.web_data(pd_mean,'datatime',columns=['cumsum','shou'])
         return result
 
 a = change_data()

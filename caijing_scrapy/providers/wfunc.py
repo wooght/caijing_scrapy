@@ -6,6 +6,16 @@
 import time
 import re
 
+
+# 股票代码生产
+def builde_code(id,zh):
+    id = str(id)
+    if(len(id)<6):
+        while len(id)<6:
+            id='0'+id
+    id = zh+id
+    return id
+
 #字符串时间转换为时间暨
 def time_num(str,format):
     timeArray = time.strptime(str, format)
