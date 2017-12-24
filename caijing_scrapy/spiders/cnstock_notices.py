@@ -86,7 +86,7 @@ class Cnstock_newsSpider(CrawlSpider):
     old_link = []
 
     def start_requests(self):
-        totle_news = np.arange(100)
+        totle_news = np.arange(20)
         for i in totle_news:
             url = 'http://company.cnstock.com/company/scp_gsxw/'+str(i)
             yield scrapy.Request(url,callback=self.parse)

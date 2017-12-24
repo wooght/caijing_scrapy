@@ -33,14 +33,16 @@ class change_data(basedata):
             data_arr.append(i)
         pandas_change = self.pd.DataFrame(data_arr)
         pandas_change['datatime'] = self.pd.to_datetime(pandas_change['updated_at'],format='%Y-%m-%d')
-        pd_mean = pandas_change.groupby('datatime',as_index=False)['change_status'].agg({'change_status':'mean'})
+        pd_mean = pandas_change.groupby('datatime',as_index=False)['change_status'].agg({'change_status':'sum'})
+        pd_count = pandas_change.groupby('datatime',as_index=False)['change_status'].agg({'change_count':'count'})
         quotes_data['datatime'] = self.pd.to_datetime(quotes_data['datatime'],format='%Y-%m-%d')
         del pandas_change['updated_at']
         pd_mean = self.pd.merge(quotes_data,pd_mean,on=['datatime'],how='left').fillna(0)
+        pd_mean = self.pd.merge(pd_mean,pd_count,on=['datatime'],how='left').fillna(0)
         pd_mean = pd_mean.sort_values(by='datatime',ascending=True)
         # pd_mean['change_status'].fillna(method='pad')    #用前值填充NaN值
         pd_mean['cumsum'] = pd_mean['change_status'].cumsum()   #cumsum累加  前值的和
-        result = self.web_data(pd_mean,'datatime',columns=['cumsum','shou'])
+        result = self.web_data(pd_mean,'datatime',columns=['cumsum','shou','change_count'])
         return result
 
 a = change_data()

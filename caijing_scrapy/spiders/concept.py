@@ -27,11 +27,19 @@ class ConceptSpider(scrapy.Spider):
         'CONCURRENT_REQUESTS_PER_DOMAIN':1  #并发为1 只有序进行
     }
 
+    #过程
+    #1:读取概念ID
+    #2:读取概念ID下 股票ID
+    #3:股票对应概念ID组合
+    #4:修改股票对应concept
+    #5:读取概念ID对应的名字
+
     def parse(self, response):
         bkqt = response.body.decode('utf8')[4:-3]
         tmp = bkqt.split("data:'")
         bkqt_nums = tmp[1].split(",")
         bkqt_id = [];for_num = 0;bkqu_len = len(bkqt_nums)
+        #读取概念ID下对应的股票ID
         for col in bkqt_nums:
             for_num+=1
             bkqt_id.append(col[4:])
@@ -44,9 +52,11 @@ class ConceptSpider(scrapy.Spider):
             yield wnews_request
         print(bkqt_id)
         print('get_name run...')
+
+        #读取概念ID对应概念名称
         new_formart = []
         for_num = 1
-        d = T.listed_concept.delete()
+        d = T.listed_concept.delete()   #删除原油概念数据
         r = T.conn.execute(d)
         for item in bkqt_id:
             new_formart.append("bkhz"+item)

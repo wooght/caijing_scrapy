@@ -59,6 +59,7 @@ class DdtjSpider(scrapy.Spider):
             code = str(id[2:])
             for d in total_date:
                 only_id = d+code
+                #只查询不存在的大单
                 if(only_id not in self.only_id):
                     self.start_urls.append(self.url_module%(str(id))+str(d))
 
