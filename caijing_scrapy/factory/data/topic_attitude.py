@@ -4,8 +4,9 @@
 # by wooght
 # 2017-11
 # ##################################
+from data_config import sys_path
 import sys
-sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+sys.path.append(sys_path)
 from factory.basedata import basedata
 import model.Db as T
 import time
@@ -45,7 +46,7 @@ class  attitude_data(basedata):
 
     #数据生成工厂
     def buide_datas(self):
-        cp_atd = self.select_cp_atd(T.attitude_relation,1)      
+        cp_atd = self.select_cp_atd(T.attitude_relation,1)
         cp_news_atd = self.select_cp_atd(T.attitude_relation,2)
         quotes = self.select_quotes(self.code_id)
         last_pandas = self.last_pandas(quotes,cp_atd,cp_news_atd)

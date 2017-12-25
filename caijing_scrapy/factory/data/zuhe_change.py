@@ -4,8 +4,9 @@
 # by wooght
 # 2017-12
 # ##################################
+from data_config import sys_path
 import sys
-sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+sys.path.append(sys_path)
 from factory.basedata import basedata
 import providers.wfunc as wfunc
 import os,json

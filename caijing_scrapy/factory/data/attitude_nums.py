@@ -4,11 +4,13 @@
 # by wooght
 # 2017-11
 # ##################################
+from data_config import sys_path
 import sys
-sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+sys.path.append(sys_path)
 from factory.basedata import basedata
 import model.Db as T
 import time
+
 
 #获取参数股票代码
 try:

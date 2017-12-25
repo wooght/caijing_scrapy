@@ -11,7 +11,7 @@ class Pipeline(object):
     add_nums = 0
     def open_spider(self,spider):
         print(spider.name,'--->start============>>>>>')
-        if(spider.name=='ddtj'):
+        if(spider.name in ['ddtj','detailshistory']):
             s = T.select([T.ddtj.c.only_id])
             r = T.conn.execute(s)
             ddtj_onlyid = []

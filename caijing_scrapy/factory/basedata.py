@@ -5,7 +5,7 @@
 # 2017-11
 # ##################################
 import sys
-sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+sys.path.append('/home/vagrant/www/scripy_wooght/caijing_scrapy/caijing_scrapy')
 import model.Db as T
 import numpy as np
 import pandas as pd

@@ -4,8 +4,9 @@
 # by wooght
 # 2017-11
 # ##################################
+from data_config import sys_path
 import sys
-sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+sys.path.append(sys_path)
 from factory.basedata import basedata
 import providers.wfunc as wfunc
 import os,json
@@ -19,7 +20,7 @@ class quotes_data(basedata):
     def get_quotes(self):
         quotes = self.select_quotes(code_id,getpd=False)
         if(str(quotes[1]) != wfunc.today(strtime=False)):
-            os.chdir('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+            os.chdir('/home/vagrant/www/scripy_wooght/caijing_scrapy/caijing_scrapy')
             osrun = os.system("scrapy crawl quotes_item -a codeid="+str(code_id))
             quotes = self.select_quotes(code_id,getpd=False)
         obj = json.loads(quotes[0])

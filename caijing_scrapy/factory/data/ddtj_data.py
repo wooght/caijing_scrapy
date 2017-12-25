@@ -4,8 +4,9 @@
 # by wooght
 # 2017-11
 # ##################################
+from data_config import sys_path
 import sys
-sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
+sys.path.append(sys_path)
 from factory.basedata import basedata
 import providers.wfunc as wfunc
 import os,json
@@ -33,9 +34,11 @@ class ddtj_data(basedata):
         pandas_ddtj['kdvolume'] = -pandas_ddtj['kdvolume']
         quotes_data['datatime'] = self.pd.to_datetime(quotes_data['datatime'],format='%Y-%m-%d')
         del pandas_ddtj['opendate']
-        pandas_ddtj = self.pd.merge(quotes_data,pandas_ddtj,on=['datatime'],how='left')
+        pandas_ddtj = self.pd.merge(quotes_data,pandas_ddtj,on=['datatime'],how='left').fillna(0)
         pandas_ddtj = pandas_ddtj.sort_values(by='datatime',ascending=True)
-        result = self.web_data(pandas_ddtj,'datatime',columns=['zd_range','dk_contrast','kuvolume','kdvolume'])
+        pandas_ddtj['dk_cumsum'] = pandas_ddtj['dk_contrast'].cumsum()
+        # print(pandas_ddtj.loc[:,['dk_contrast','kuvolume','kdvolume']])
+        result = self.web_data(pandas_ddtj,'datatime',columns=['shou','dk_cumsum','totalvolpct'])
         return result
 
 a = ddtj_data()
