@@ -17,7 +17,7 @@ from caijing_scrapy.model import Db as T
 import json
 
 class DetailsSpider(scrapy.Spider):
-    name = 'detailshistory'
+    name = 'ddtj_history'
     url_models = 'http://market.finance.sina.com.cn/downxls.php?date=%s&symbol=%s'
     #动态修改配置内容
     custom_settings = {
@@ -30,12 +30,13 @@ class DetailsSpider(scrapy.Spider):
         "ITEM_PIPELINES" : {
            'caijing_scrapy.pipelines.QuotesPipelines.Pipeline': 300,
         },
+        'CONCURRENT_REQUESTS_PER_DOMAIN':8,
     }
     ddtj_onlyid = []
 
     #构建查询code_id及查询日期--->根据行情构建有效日期
     def select_quotes(self):
-        r = T.select([T.quotes_item.c.quotes,T.quotes_item.c.code_id]).where(T.quotes_item.c.code_id==600048)
+        r = T.select([T.quotes_item.c.quotes,T.quotes_item.c.code_id])
         s = T.conn.execute(r)
         code = []
         for quotes in s.fetchall():
@@ -45,7 +46,7 @@ class DetailsSpider(scrapy.Spider):
             opendate = []
             for dateitem in quotes_json:
                 if(float(dateitem['shou'])>0):
-                    #收大于0 没停盘的才有效
+                    #行情收大于0 没停盘的才有效
                     opendate.append(dateitem['datatime'])
             one.append(opendate)
             code.append(one)
@@ -97,7 +98,7 @@ class DetailsSpider(scrapy.Spider):
             print(items)
             yield items
 
-
+    #数据处理
     def editor_data(self,csvdata,items):
         items['kdvolume'] = 0
         items['kuvolume'] = 0
@@ -113,6 +114,7 @@ class DetailsSpider(scrapy.Spider):
         items['totalamt'] = 0
         for i in csvdata:
             itemlist = i.split('\t')
+            #大单量设置为500000成交额
             if(int(itemlist[4])>=500000):
                 if(itemlist[5]=='中性盘'):
                     zxvolume+=int(itemlist[3])

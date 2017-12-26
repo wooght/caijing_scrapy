@@ -12,7 +12,7 @@ from caijing_scrapy.items import NoticesItem,NewsItem,TopicItem
 import caijing_scrapy.providers.wfunc as wfunc
 import numpy as np
 
-import caijing_scrapy.Db as T
+import caijing_scrapy.model.Db as T
 
 #以下两项 是spider拥有链接管理和追踪功能
 from scrapy.spiders import CrawlSpider,Rule

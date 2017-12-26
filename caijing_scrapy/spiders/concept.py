@@ -60,6 +60,7 @@ class ConceptSpider(scrapy.Spider):
         r = T.conn.execute(d)
         for item in bkqt_id:
             new_formart.append("bkhz"+item)
+            #接口一次最多查询15条数据
             if(for_num%15==0 or for_num==len(bkqt_id)-1):
                 url_formart = ",".join(new_formart)
                 urls = self.bkqt_name_models%(url_formart)

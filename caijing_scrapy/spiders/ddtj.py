@@ -15,8 +15,10 @@ import caijing_scrapy.model.Db as T
 import time
 import json
 from caijing_scrapy.providers import wfunc
+from caijing_scrapy.model.repository.quotes import Table_quotes
+Q = Table_quotes()
 
-#历史行情查询 一只股票一行
+#新浪大单爬取 最多查询最近11天
 class DdtjSpider(scrapy.Spider):
     before_day = 8      #几天之前
     name = 'ddtj'
@@ -44,20 +46,22 @@ class DdtjSpider(scrapy.Spider):
         super(DdtjSpider,self).__init__(*args,**kwargs)
         total_date = self.total_data()
         if(codeid != None):
-            s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz]).where(T.listed_company.c.codeid==codeid)
-            p = T.select([T.ddtj.c.only_id]).where(T.ddtj.c.codeid==codeid)
+            r = Q.exists_quotes(id=int(codeid))
+            p = T.select([T.ddtj.c.only_id]).where(T.ddtj.c.code_id==codeid)
         else:
-            s = T.select([T.listed_company.c.codeid,T.listed_company.c.shsz])
+            r = Q.exists_quotes()
             search_times = time.strftime("%Y-%m-%d",time.localtime(self.nowtimes-self.before_day*3600*24))   #载入指定时间的only_id
             p = T.select([T.ddtj.c.only_id]).where(T.ddtj.c.opendate>search_times)
-        r = T.conn.execute(s)
         pr = T.conn.execute(p)
         for item in pr.fetchall():
             self.only_id.append(item[0])
-        for item in r.fetchall():
-            id = wfunc.builde_code(item[0],item[1]) #调整编码长度
+        for item in r:
+            code_id = item[0]
+            shsz = 'sh' if code_id>=600000 else 'sz'
+            id = wfunc.builde_code(item[0],shsz)
             code = str(id[2:])
-            for d in total_date:
+            #只查询有行情存在的大单
+            for d in item[1][:self.before_day]:
                 only_id = d+code
                 #只查询不存在的大单
                 if(only_id not in self.only_id):

@@ -13,8 +13,11 @@ BOT_NAME = 'caijing_scrapy'
 
 SPIDER_MODULES = ['caijing_scrapy.spiders']
 NEWSPIDER_MODULE = 'caijing_scrapy.spiders'
+#windows环境配置
 BOT_PATH = 'F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy'
 PHANTOMJSPATH='F:\homestead\scripy_wooght/phantomjs'
+#linux环境配置
+SYS_PATH = '/home/vagrant/www/scripy_wooght/caijing_scrapy/caijing_scrapy'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #要注意版本问题 版本太旧 读出来的JS内容不一样
@@ -75,7 +78,7 @@ RETRY_TIMES = 1                                     #重试一次即可放弃
 LOG_ENABLED = True                                   #日志
 LOG_LEVEL = 'WARNING'                                  #运行日志级别 DEBUG,INFO,WARNING,ERROR,CRITICAL,SILENT
 
-LOGSTATS_INTERVAL = 60                              #打印item处理数据
+LOGSTATS_INTERVAL = 20                              #打印item处理数据
 
 TELNETCONSOLE_ENABLED = True
 # TELNETCONSOLE_PORT = '50853'                          #监控端口
