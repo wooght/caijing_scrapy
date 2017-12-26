@@ -4,9 +4,9 @@
 # by wooght 2017-11
 
 from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesItem,NoticesItem,QandaItem
-import caijing_scrapy.model.Db as T
-import caijing_scrapy.providers.wfunc as wfunc
-from caijing_scrapy.analyse.pipeline_article_analyse import article_analyse
+from model import T
+import providers.wfunc as wfunc
+from analyse import article_analyse
 import time
 
 class CaijingScrapyPipeline(object):

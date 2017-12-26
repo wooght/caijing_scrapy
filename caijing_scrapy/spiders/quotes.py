@@ -10,14 +10,13 @@ from caijing_scrapy.settings import HEADERS
 from caijing_scrapy.settings import USER_AGENT
 from scrapy import Request
 import random
-import csv
 from caijing_scrapy.items import QuotesItem,quotes_itemItem
-from model import *
+from model import T
 import time
 import json
-import caijing_scrapy.providers.wfunc as wfunc
+import providers.wfunc
 
-#历史行情查询 一只股票一行
+# 历史行情查询 一只股票一行
 class Quotes_itemSpider(scrapy.Spider):
     name = 'quotes_item'
     allowed_domains = ['money.163.com/']
@@ -88,7 +87,7 @@ class Quotes_itemSpider(scrapy.Spider):
             items['code_id'] = item[1][1:]
             all_str.append(quotes)
             quotes={}                               #元祖赋值后不能改变
-        items['update_at'] = wfunc.today(strtime=False)
+        items['update_at'] = providers.wfunc.today(strtime=False)
         items['quotes'] = json.dumps(all_str,ensure_ascii=False)
         try:
             print(':',items['code_id'],'抓取成功,保存中.....')

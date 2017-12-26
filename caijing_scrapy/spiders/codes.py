@@ -8,9 +8,8 @@ import scrapy
 import re
 import time
 from caijing_scrapy.items import CodesItem,PlatesItem
-import caijing_scrapy.providers.wfunc as wfunc
 import json
-from model import *
+from model import T
 
 from scrapy.http import Request
 

@@ -4,10 +4,7 @@
 # by wooght 2017-11
 #
 import scrapy
-import re
-import time
 from caijing_scrapy.items import NoticesItem
-import caijing_scrapy.providers.wfunc as wfunc
 
 
 class NoticesSpider(scrapy.Spider):
@@ -15,7 +12,7 @@ class NoticesSpider(scrapy.Spider):
     allowed_domains = ['www.cninfo.com']
     start_urls = ['http://www.cninfo.com.cn/cninfo-new/disclosure/szse']
 
-    #动态修改配置内容
+    # 动态修改配置内容
     custom_settings = {
         'DOWNLOADER_MIDDLEWARES': {
            'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,

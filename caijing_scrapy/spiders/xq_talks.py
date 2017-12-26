@@ -7,12 +7,9 @@
 
 import scrapy
 import json
-import caijing_scrapy.model.Db as T
-import caijing_scrapy.providers.wfunc as wfunc
+import providers.wfunc as wfunc
 import re
-import time
 from caijing_scrapy.items import QandaItem
-import random
 
 class XqTalksSpider(scrapy.Spider):
     name = 'xq_talks'

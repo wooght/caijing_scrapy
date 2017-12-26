@@ -9,7 +9,7 @@ import scrapy
 import re
 import time
 from caijing_scrapy.items import NoticesItem,NewsItem,TopicItem
-import caijing_scrapy.providers.wfunc as wfunc
+import providers.wfunc as wfunc
 import numpy as np
 from model import *
 

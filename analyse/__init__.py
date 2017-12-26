@@ -1,0 +1,1 @@
+from .pipeline_article_analyse import article_analyse

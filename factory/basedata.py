@@ -1,11 +1,10 @@
-#encoding utf-8
+# encoding utf-8
 # ##################################
 # 数据结构组装 基础模块
 # by wooght
 # 2017-11
 # ##################################
-import sys
-sys.path.append('/home/vagrant/www/scripy_wooght/caijing_scrapy/caijing_scrapy')
+
 from model import T
 import numpy as np
 import pandas as pd

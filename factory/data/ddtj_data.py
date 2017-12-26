@@ -4,13 +4,16 @@
 # by wooght
 # 2017-11
 # ##################################
-from data_config import sys_path
+
 import sys
+from data_config import sys_path
 sys.path.append(sys_path)
+
 from factory.basedata import basedata
-import providers.wfunc as wfunc
+import providers.wfunc
 import os,json
 from model import T
+
 #获取参数股票代码
 try:
     code_id = sys.argv[1]

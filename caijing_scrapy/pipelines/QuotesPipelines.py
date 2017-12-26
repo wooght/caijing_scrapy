@@ -3,9 +3,9 @@
 # 行情抓取保存 行
 # by wooght 2017-11
 
-from caijing_scrapy.items import quotes_itemItem,DdtjItem,ZuheItem,ZhchangeItem,ZhchangeItem
-import caijing_scrapy.model.Db as T
-import caijing_scrapy.providers.wfunc as wfunc
+from caijing_scrapy.items import quotes_itemItem,DdtjItem,ZuheItem, ZhchangeItem
+from model import T
+
 
 class Pipeline(object):
     add_nums = 0
