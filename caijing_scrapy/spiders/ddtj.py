@@ -1,4 +1,4 @@
-#encoding:utf-8
+# encoding:utf-8
 # ###################################
 # 新浪大单统计爬取
 # by wooght
@@ -11,14 +11,12 @@ from scrapy import Request
 import numpy as np
 import random
 from caijing_scrapy.items import DdtjItem
-import caijing_scrapy.model.Db as T
 import time
 import json
 from caijing_scrapy.providers import wfunc
-from caijing_scrapy.model.repository.quotes import Table_quotes
-Q = Table_quotes()
+from model import *
 
-#新浪大单爬取 最多查询最近11天
+# 新浪大单爬取 最多查询最近11天
 class DdtjSpider(scrapy.Spider):
     before_day = 8      #几天之前
     name = 'ddtj'

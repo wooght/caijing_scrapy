@@ -25,9 +25,10 @@ class CaijingScrapyPipeline(object):
             r = T.conn.execute(i,item)
 
     def process_item(self, item, spider):
-        if('put_time' in dict(item)):
-            if(float(item['put_time'])<self.min_time):
-                return None
+        # 提取时间过滤
+        # if('put_time' in dict(item)):
+        #     if(float(item['put_time'])<self.min_time):
+        #         return None
         self.add_nums+=1
         #新闻文章
         if(isinstance(item,NewsItem)):

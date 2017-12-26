@@ -10,16 +10,12 @@ import re
 import time
 from caijing_scrapy.items import NewsItem
 import caijing_scrapy.providers.wfunc as wfunc
-
-import caijing_scrapy.model.Db as T
+from model import *
 import json
 
 #以下两项 是spider拥有链接管理和追踪功能
 from scrapy.spiders import CrawlSpider,Rule
 from scrapy.linkextractors import LinkExtractor
-
-def wnews_request(x):
-    print('-=-=-=-=-=-=-=>',x)
 
 class NewsSpider(CrawlSpider):
     name = 'news'

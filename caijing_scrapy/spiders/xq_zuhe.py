@@ -9,7 +9,7 @@ import scrapy
 from scrapy import Request
 import json
 from caijing_scrapy.items import ZuheItem,ZhchangeItem
-import caijing_scrapy.model.Db as T
+from model import *
 
 #组合100强查询
 #一般两天更新一次

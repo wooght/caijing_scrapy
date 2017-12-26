@@ -6,8 +6,7 @@
 # ########################################
 import scrapy
 from scrapy.http import Request
-
-from caijing_scrapy.model import Db as T
+from model import *
 
 class ConceptSpider(scrapy.Spider):
     name = 'concept'

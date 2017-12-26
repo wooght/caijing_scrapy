@@ -6,14 +6,16 @@
 # 2017-11
 #
 
-import sys,io,os
+import sys
+
 # from ..settings import BOT_PATH
 dir = __file__.split('/');del dir[-2:];path = '/'.join(dir);sys.path.append(path)
 
-from model import topic
+from model.repository import topic
 from analyse.NLP.participle import pp
 from analyse.NLP.semantics import seman
-import re
+
+
 # from snownlp import SnowNLP
 # from snownlp import sentiment
 

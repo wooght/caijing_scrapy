@@ -7,10 +7,11 @@
 import sys
 sys.path.append('..')
 import caijing_scrapy.model.Db as T
+# from ..Db import *
 import json
 
 class Table_quotes():
-    table = T.quotes_item
+    table = quotes_item
     cols = table.c
 
     #存在大于0的行情

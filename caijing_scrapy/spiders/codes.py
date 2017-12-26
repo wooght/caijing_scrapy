@@ -10,7 +10,7 @@ import time
 from caijing_scrapy.items import CodesItem,PlatesItem
 import caijing_scrapy.providers.wfunc as wfunc
 import json
-import caijing_scrapy.model.Db as T
+from model import *
 
 from scrapy.http import Request
 

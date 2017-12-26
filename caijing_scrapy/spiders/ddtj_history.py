@@ -12,8 +12,7 @@ import re
 import time
 from caijing_scrapy.items import DdtjItem
 import caijing_scrapy.providers.wfunc as wfunc
-
-from caijing_scrapy.model import Db as T
+from model import *
 import json
 
 class DetailsSpider(scrapy.Spider):

@@ -12,7 +12,7 @@ from scrapy import Request
 import random
 import csv
 from caijing_scrapy.items import QuotesItem,quotes_itemItem
-import caijing_scrapy.model.Db as T
+from model import *
 import time
 import json
 import caijing_scrapy.providers.wfunc as wfunc
