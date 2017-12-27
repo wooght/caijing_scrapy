@@ -7,6 +7,7 @@
 # @File     : pipeline_attitude_analyse.py
 
 from model import topic
+from .common import *
 from .NLP.participle import pp
 from .NLP.semantics import seman
 
@@ -20,43 +21,8 @@ from .NLP.semantics import seman
 # 对关键词所在句子语义情感打分
 # 计算情感分平均值
 
-def get_index(str):
-    listed_plate = {}
-    listed_company = {}
-    for x in pp.tags(str):
-        # x[0] 为pair对象: 单词/词性   x[1]为:权重
-        # x[0].word 为单词 x[0].flag为词性
-        if (x[0].flag == 'nts'):
-            listed_company[x[0].word] = '%.2f' % x[1]
-        if (x[0].flag == 'ntp'):
-            listed_plate[x[0].word] = '%.2f' % x[1]
-    return listed_plate, listed_company
-
-
-def get_sentiments(str, ju):
-    totle = []
-    for j in ju:
-        if (str in j):
-            if (len(str) * 3 > len(j)):
-                # 长度不够,视为无判断意义
-                continue
-            # s = SnowNLP(j)
-            # totle.append(s.sentiments)
-            totle.append(seman.attitude(j))  # 语义打分
-            # print(j,'\t',totle[-1])
-    try:
-        avg = sum(totle) / len(totle)
-    except:
-        avg = 0.1  # 返回0.1 与没有的区分开
-    return '%.2f' % avg
-
 
 class article_analyse():
-    # 分词,获取关键词
-    # return 关键词,权重
-
-    # 获取语义平均值
-
     # 分析接口
     # x.run(TopicItem)
     def run(self, item):
@@ -64,13 +30,13 @@ class article_analyse():
         listed_plate, listed_company = get_index(item['body'])
         title_plate, title_company = get_index(item['title'])
         title_attitude = False
-        if (len(title_company) > 0):
+        if len(title_company) > 0:
             title_sentiments = seman.attitude(item['title'])
             print('title_sentiments:', title_sentiments)
             title_words = list(title_company)[0]
             title_attitude = True
         article_ju = pp.cut_ju(item['body'])
-        if (len(listed_plate) > 0):
+        if len(listed_plate) > 0:
             # the_plate = max(listed_plate.items(),key=lambda d:d[1])     #只计算权重最大的一个
             for plate in listed_plate.items():
                 one_item = {}
@@ -84,12 +50,12 @@ class article_analyse():
                 one_item['code_id'] = None
                 one_item['cp_attitude'] = None
                 result_item.append(one_item)
-        if (len(listed_company) > 0):
+        if len(listed_company) > 0:
             # the_company = max(listed_company.items(),key=lambda d:d[1])
             for company in listed_company.items():
                 one_item = {}
                 the_sentiments = get_sentiments(company[0], article_ju)
-                if (title_attitude and company[0] == title_words):
+                if title_attitude and company[0] == title_words:
                     the_sentiments = float(the_sentiments) * 0.4 + float(title_sentiments) * 0.6  # 如果与表填相关,则标题占比提高
                 one_item['code_id'] = topic.s_company_id(company[0])
                 one_item['cp_attitude'] = the_sentiments
@@ -105,7 +71,7 @@ class article_analyse():
 
 
 # 调用方法
-if (__name__ == '__main__'):
+if __name__ == '__main__':
     import sys, io
 
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='gbk')  # 改变标准输出的默认编码

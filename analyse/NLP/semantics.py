@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-################################################
-# 语义分析
-# 朴素贝叶斯分类
-# by wooght
-# 2017-11
-################################################
-import os, sys
+#
+# @method   : 朴素贝叶斯分类->语义分析
+# @return   : prob(nums)
+# @Time     : 2017/11/26
+# @Author   : wooght
+# @File     : semantics.py
+import os
+import sys
 
 sys.path.append(os.path.dirname(__file__))
 from participle import pp
 from frequency import freq
 from changeask import changehmm
-import pickle
 import marshal
 
 from math import log, exp
@@ -55,7 +55,7 @@ class NB(object):
         pp_words = pp.flag_cut(str)
         words = []
         for word in pp_words:
-            if (word.flag not in self.pass_words):
+            if word.flag not in self.pass_words:
                 words.append((word.word, word.flag))
         return words
 
@@ -66,8 +66,8 @@ class NB(object):
         for line in lines:
             words = pp.flag_cut(line)
             for word in words:
-                if (word.flag not in self.pass_words):
-                    if (word.word not in dicts):
+                if word.flag not in self.pass_words:
+                    if word.word not in dicts:
                         dicts[word.word] = 1
                     else:
                         dicts[word.word] += 1
@@ -88,9 +88,10 @@ class NB(object):
             log_num[i] = log(self.ask[i].total) - log(self.total)  # 组单词总量的对数差 <0
             key = 0
             for word in askwords:
-                if (word[1] in self.passive_words):
-                    if (self.changehmm.hmm(askwords, key)):
-                        print('\t', i, word, self.ask[i].zero_freq())
+                if word[1] in self.passive_words:
+                    # 转义
+                    if self.changehmm.hmm(askwords, key):
+                        # print('\t', i, word, self.ask[i].zero_freq())
                         log_num[i] += log(self.ask[i].zero_freq()[0])
                         continue
                 log_num[i] += log(self.ask[i].freq(word[0])[0])  # 所在组的频率对数 <<0
@@ -112,7 +113,7 @@ class NB(object):
     def attitude(self, str):
         words = self.pp(str)
         ret, prob = self.classfaly(words)
-        if (ret == 'neg'):
+        if ret == 'neg':
             return 1 - prob  # 负面态度 设定为负数
         return prob
 
@@ -120,7 +121,7 @@ class NB(object):
 seman = NB()
 seman.load(data_path + "semantics.wooght")
 
-if (__name__ == '__main__'):
+if __name__ == '__main__':
     import sys, io
 
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')  # 改变标准输出的默认编码
