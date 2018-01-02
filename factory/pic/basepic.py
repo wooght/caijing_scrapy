@@ -8,7 +8,7 @@ import sys
 sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
 import model.Db as T
 from factory.basedata import basedata
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 import matplotlib as mpl
 import matplotlib.pyplot as plt     #matplotlib.pyplot 绘图主键
 import seaborn as sns

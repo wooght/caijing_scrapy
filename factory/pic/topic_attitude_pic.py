@@ -12,7 +12,7 @@ import sys
 sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
 from basepic import Basepic
 import model.Db as T
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 import json
 import time
 #获取参数股票代码

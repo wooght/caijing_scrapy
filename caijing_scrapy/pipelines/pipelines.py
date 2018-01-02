@@ -5,7 +5,7 @@
 
 from caijing_scrapy.items import NewsItem,TopicItem,CodesItem,QuotesItem,PlatesItem,NoticesItem,QandaItem
 from model import T
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 from analyse import article_analyse
 import time
 
@@ -111,5 +111,5 @@ class CaijingScrapyPipeline(object):
         return None
 
     def close_spider(self,spider):
-        wfunc.e('spider '+spider.name+' --->closed')
-        wfunc.e('add total nums :'+str(self.add_nums))
+        wfunc.estatus('spider '+spider.name+' --->closed')
+        wfunc.estatus('add total nums :'+str(self.add_nums))

@@ -10,7 +10,7 @@ import numpy as np
 from scrapy.http import HtmlResponse
 
 from caijing_scrapy.middlewares.Wmiddlewares import Wdownloadmiddlewares
-from caijing_scrapy.providers.werror import Werror
+from common.werror import Werror
 
 
 class WooghtDownloadMiddleware(Wdownloadmiddlewares):
@@ -59,7 +59,7 @@ class WooghtDownloadMiddleware(Wdownloadmiddlewares):
             not_html = 'html' in url
             if not not_html and 'yicai' in url:
                 print('------------>yicai------>')
-                arr_num = [1, 2, 3, 4, 5]
+                arr_num = np.arange(10)
                 for i in arr_num:
                     button_id = self.driver.find_element_by_id('divMore')  # 多次点击更多按钮
                     time.sleep(2)

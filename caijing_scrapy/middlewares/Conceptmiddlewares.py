@@ -8,7 +8,7 @@
 from scrapy.http import HtmlResponse
 
 from caijing_scrapy.middlewares.Wmiddlewares import Wdownloadmiddlewares as Dobj
-from caijing_scrapy.providers.werror import Werror
+from common.werror import Werror
 
 
 class WooghtDownloadMiddleware(Dobj):

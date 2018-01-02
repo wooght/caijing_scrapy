@@ -8,7 +8,7 @@
 import scrapy
 import re
 from caijing_scrapy.items import TopicItem
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 from model import T
 
 # 以下两项 是spider拥有链接管理和追踪功能

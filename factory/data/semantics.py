@@ -36,9 +36,12 @@ class semantics:
         for words in keywords:
             ws = [words[0].word.encode('utf-8'), words[0].flag, words[1]]
             self.keywords.append(ws)
-        words = pp.flag_cut(self.body)
+        words = pp.flag_cut(self.body, stop_flag=('x', 'ns', 'm'))
         for w in words:
-            self.words.append([w.word.encode('utf-8'), w.flag])
+            w_tmp = [w.word.encode('utf-8'), w.flag, 0, 0]
+            w_tmp[2] = seman.ask['pos'].get_rate(w.word)
+            w_tmp[3] = seman.ask['neg'].get_rate(w.word)
+            self.words.append(w_tmp)
         ju = pp.cut_ju(self.body)
         for j in ju:
             fen = seman.attitude(j)

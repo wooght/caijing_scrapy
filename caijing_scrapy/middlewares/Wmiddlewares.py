@@ -13,8 +13,8 @@ import time
 import selenium
 from selenium import webdriver
 
-import providers.wfunc
-from providers.werror import Werror
+import common.wfunc
+from common.werror import Werror
 from caijing_scrapy.settings import USER_AGENT, PHANTOMJSPAGES
 
 
@@ -43,7 +43,7 @@ class Wdownloadmiddlewares(object):
             cap['phantomjs.page.settings.disk-cache'] = True
         if self.stdout_utf8:
             sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')  # 改变标准输出的默认编码
-        providers.wfunc.e(cap)
+        common.wfunc.e('phantomjs is ok')
 
         # 创建webdriver
         # #service_args中:--ssl-protocol=any具备访问加密请求https的功能
@@ -54,11 +54,11 @@ class Wdownloadmiddlewares(object):
         self.driver.set_script_timeout(self.timeout * 2)  # 设置异步超时时间
         # self.driver.implicitly_wait(5)                    #设置只能等待时间
 
-        providers.wfunc.e('!+!+=new driver run=+!+!')
+        common.wfunc.e('!+!+=new driver run=+!+!')
 
     # 爬虫执行完后 余下操作
     def spider_closed(self):
-        providers.wfunc.e('driver closed')
+        common.wfunc.e('driver closed')
         self.driver.quit()  # 关闭浏览器
 
     # 访问连接,浏览器解析连接response
@@ -67,18 +67,19 @@ class Wdownloadmiddlewares(object):
         if self.random_agent:
             self.driver.desired_capabilities['phantomjs.page.settings.userAgent'] = random.choice(USER_AGENT)
         try:
-            providers.wfunc.e(providers.wfunc.today() + 'open url:' + url)
+            common.wfunc.e('open url:' + url)
             t_one = time.time()
             self.driver.get(url)
             t_two = time.time()
-            providers.wfunc.e('spend times:' + str(t_two - t_one))
+            common.wfunc.e('spend times:' + str(t_two - t_one))
         except selenium.common.exceptions.TimeoutException as e:
-            providers.wfunc.e("Timeout")
+            common.wfunc.e("Timeout")
             if (self.save_error_pic):
                 self.driver.save_screenshot('errpic/' + str(int(time.time())) + ".png")  # 保存报错图片
             raise Werror('...Timeout....')
         except Exception as e:
-            providers.wfunc.e_error(e)
+            common.wfunc.e_error('other error')
+            common.wfunc.e_error(e)
             self.driver.quit()  # 退出旧的driver,减小内存
             self.set_cap()  # 10061错误,及phantomjs内容溢出,需重新启动
             raise ConnectionRefusedError()
@@ -96,5 +97,5 @@ class Wdownloadmiddlewares(object):
     # 随机等待时间
     def delay(self):
         delay_time = random.randint(0, 2)
-        providers.wfunc.e('delayd....' + str(delay_time))
+        # common.wfunc.e('delayd....' + str(delay_time))
         time.sleep(delay_time)

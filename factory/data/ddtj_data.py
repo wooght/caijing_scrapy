@@ -10,7 +10,7 @@ from data_config import sys_path
 sys.path.append(sys_path)
 
 from factory.basedata import basedata
-import providers.wfunc
+import common.wfunc
 import os,json
 from model import T
 

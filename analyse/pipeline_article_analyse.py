@@ -22,7 +22,7 @@ from .NLP.semantics import seman
 # 计算情感分平均值
 
 
-class article_analyse():
+class article_analyse(object):
     # 分析接口
     # x.run(TopicItem)
     def run(self, item):

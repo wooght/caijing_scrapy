@@ -9,6 +9,7 @@ from .NLP.participle import pp
 from .NLP.semantics import seman
 
 
+# 获取关键词:上市公司,上市板块
 def get_index(charts):
     listed_plate = {}
     listed_company = {}
@@ -22,6 +23,7 @@ def get_index(charts):
     return listed_plate, listed_company
 
 
+# 获取所在句子的语义情感打分
 def get_sentiments(charts, ju):
     totle = []
     for j in ju:

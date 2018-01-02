@@ -12,8 +12,7 @@ import numpy as np
 import random
 from caijing_scrapy.items import DdtjItem
 import time
-import json
-from caijing_scrapy.providers import wfunc
+from common import wfunc
 from model import *
 
 # 新浪大单爬取 最多查询最近11天

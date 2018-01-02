@@ -7,7 +7,7 @@
 import sys
 sys.path.append('F:\homestead\scripy_wooght\caijing_scrapy\caijing_scrapy')
 import model.Db as T
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 from basepic import Basepic
 import time
 import json

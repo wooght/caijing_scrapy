@@ -9,7 +9,7 @@ import scrapy
 import re
 import time
 from caijing_scrapy.items import NoticesItem,NewsItem,TopicItem
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 import numpy as np
 from model import *
 
@@ -85,7 +85,7 @@ class Cnstock_newsSpider(CrawlSpider):
     old_link = []
 
     def start_requests(self):
-        totle_news = np.arange(20)
+        totle_news = np.arange(0,20)
         for i in totle_news:
             url = 'http://company.cnstock.com/company/scp_gsxw/'+str(i)
             yield scrapy.Request(url,callback=self.parse)
@@ -124,7 +124,7 @@ class Cnstock_newsSpider(CrawlSpider):
         items['url'] = response.url
         url_re = re.search(r'.*\/company\/scp_gsxw\/(\d+)\/(\d+).htm$',items['url'],re.I)  #http://company.cnstock.com/company/scp_gsxw/201711/4153765.htm
         items['only_id'] = url_re.group(1)+url_re.group(2)
-        wfunc.e('news:'+items['title'])
+        wfunc.e('cnstock_news:'+items['title'])
         yield items
 
 
@@ -151,7 +151,7 @@ class Cnstock_topicsSpider(CrawlSpider):
     old_link = []
 
     def start_requests(self):
-        totle_news = np.arange(10)
+        totle_news = np.arange(5)
         for i in totle_news:
             url = 'http://ggjd.cnstock.com/gglist/search/qmtbbdj/'+str(i)
             yield scrapy.Request(url,callback=self.parse)
@@ -189,5 +189,5 @@ class Cnstock_topicsSpider(CrawlSpider):
         items['url'] = response.url
         url_re = re.search(r'.*\/company\/scp_ggjd\/tjd_bbdj\/(\d+)\/(\d+).htm$',items['url'],re.I)  #http://ggjd.cnstock.com/company/scp_ggjd/tjd_bbdj/201604/3765369.htm
         items['only_id'] = url_re.group(1)+url_re.group(2)
-        wfunc.e('topics:'+items['title'])
+        wfunc.e('cnstock_topics:'+items['title'])
         yield items

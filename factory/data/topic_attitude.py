@@ -24,7 +24,7 @@ class attitude_data(basedata):
         super(attitude_data, self).__init__(*args, **kwargs)
         self.code_id = code_id
         # 查询开始时间
-        self.start = int(time.time() - 180 * 3600 * 24)
+        self.start = int(time.time() - 360 * 3600 * 24)
 
     # company_attitude 数据组装车间
     def select_cp_atd(self, Tb, a_type):

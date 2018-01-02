@@ -21,10 +21,11 @@ data_path = os.path.dirname(__file__) + "/corpus/"
 
 # 朴素贝叶斯 模型
 class NB(object):
+    words = {}
+    ask = {}
+    total = 0
+
     def __init__(self):
-        self.words = {}
-        self.ask = {}
-        self.total = 0
         self.pass_words = {'x', 'm', 'url', 'nian', 'eng', 'nts', 'ntp', 'y', 'yue'}  # pass的词性
         self.passive_words = {'v', 'a'}  # 被动转义词性
         self.changehmm = changehmm()

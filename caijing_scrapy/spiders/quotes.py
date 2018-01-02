@@ -14,7 +14,7 @@ from caijing_scrapy.items import QuotesItem,quotes_itemItem
 from model import T
 import time
 import json
-import providers.wfunc
+import common.wfunc
 
 # 历史行情查询 一只股票一行
 class Quotes_itemSpider(scrapy.Spider):
@@ -48,7 +48,7 @@ class Quotes_itemSpider(scrapy.Spider):
             id = self.builde_code(item[0],item[1])
             #调整编码长度
             self.start_urls.append(self.url_module%(str(id),self.startdata,self.enddata))
-        print('共需查询:',len(self.start_urls),'支股票行情.......')
+        print('共需查询:'+str(len(self.start_urls))+'支股票行情.......')
     # 股票代码生产
     def builde_code(self,id,zh):
         id = str(id)
@@ -87,7 +87,7 @@ class Quotes_itemSpider(scrapy.Spider):
             items['code_id'] = item[1][1:]
             all_str.append(quotes)
             quotes={}                               #元祖赋值后不能改变
-        items['update_at'] = providers.wfunc.today(strtime=False)
+        items['update_at'] = common.wfunc.today(strtime=False)
         items['quotes'] = json.dumps(all_str,ensure_ascii=False)
         try:
             print(':',items['code_id'],'抓取成功,保存中.....')

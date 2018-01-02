@@ -8,7 +8,7 @@ from data_config import sys_path
 import sys
 sys.path.append(sys_path)
 from factory.basedata import basedata
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 import os,json
 from model import T
 import pandas

@@ -7,7 +7,7 @@
 
 import scrapy
 import json
-import providers.wfunc as wfunc
+import common.wfunc as wfunc
 import re
 from caijing_scrapy.items import QandaItem
 

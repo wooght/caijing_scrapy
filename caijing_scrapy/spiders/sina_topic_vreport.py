@@ -8,7 +8,7 @@
 import scrapy
 import re
 from caijing_scrapy.items import TopicItem
-from providers.wfunc import e, time_num
+from common.wfunc import e, time_num
 import numpy as np
 from model import T
 
@@ -56,7 +56,7 @@ class TopicVreport(CrawlSpider):
         pass
 
     def start_requests(self):
-        total_num = np.arange(1, 50)
+        total_num = np.arange(1, 1000)
         for i in total_num:
             # 如果没有更多 则停止爬取
             if (not self.to_continue): break
@@ -89,5 +89,5 @@ class TopicVreport(CrawlSpider):
         items['url'] = response.url
         items['only_id'] = url_re.group(1)
         items['body'] = response.xpath('//div[@class="blk_container"]').extract()[0].strip()
-        e('xueqiu_topic:' + items['title'])
+        e('sina_topic:' + items['title'])
         yield items

@@ -8,7 +8,7 @@ import time
 import numpy as np
 from scrapy.http import HtmlResponse
 
-import caijing_scrapy.providers.wfunc as wfunc
+import common.wfunc as wfunc
 from caijing_scrapy.middlewares.Wmiddlewares import Wdownloadmiddlewares as Dobj
 
 
