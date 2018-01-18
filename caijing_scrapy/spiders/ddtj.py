@@ -1,9 +1,9 @@
-# encoding:utf-8
-# ###################################
-# 新浪大单统计爬取
-# by wooght
-# 2017-11
-# ###################################
+# -*- coding: utf-8 -*-
+#
+# @method   : 新浪大单爬取
+# @Time     : 2017/11/3
+# @Author   : wooght
+# @File     : ddtj.py
 import scrapy
 from caijing_scrapy.settings import HEADERS
 from caijing_scrapy.settings import USER_AGENT

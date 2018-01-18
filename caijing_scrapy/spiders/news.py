@@ -19,7 +19,7 @@ from scrapy.linkextractors import LinkExtractor
 
 class NewsSpider(CrawlSpider):
     name = 'news'
-    allowed_domains = ['www.yicai.com', 'sina.com.cn', 'qq.com', '163.com']
+    allowed_domains = ['yicai.com', 'sina.com.cn', 'qq.com', '163.com']
     download_delay = 0.5  # 设置下载延时
     start_urls = [
         'http://stock.qq.com/l/stock/ywq/list20150423143546.htm',
@@ -48,7 +48,7 @@ class NewsSpider(CrawlSpider):
                            deny_domains=['qq.com', '163.com']), callback='parse_sina', follow=True,
              process_links='link_screen'),
         # 第一财经
-        Rule(LinkExtractor(allow=('http\:\/\/www\.yicai\.com\/news\/\d+\.html',)), callback='parse_yicai', follow=True,
+        Rule(LinkExtractor(allow=('http\:\/\/www\.yicai\.com\/news\/\d+\.html',)), callback='parse_yicai', follow=False,
              process_links='link_screen'),
         # 腾讯证券 http://stock.qq.com/a/20171107/017324.htm
         Rule(LinkExtractor(allow=('.*stock\.qq\.com\/a\/\d+\/\d+\.htm$',),
@@ -84,8 +84,6 @@ class NewsSpider(CrawlSpider):
         'Referer': 'http://zixuanguapp.finance.qq.com',
         "Connection": "keep-alive",
         "Host": "183.57.48.75",
-        "Connection": "keep-alive",
-
     }
     # 自选股新闻列表headers
     api_headers_index = {
@@ -151,7 +149,7 @@ class NewsSpider(CrawlSpider):
         items['title'] = api['data']['title']
         items['only_id'] = api['data']['id']
         items['body'] = api['data']['content']['text']
-        items['put_time'] = common.wfunc.time_num(api['data']['id'][:8], "%Y%m%d")
+        items['put_time'] = wfunc.time_num(api['data']['id'][:8], "%Y%m%d")
         items['url'] = api['data']['surl']
         yield items
 
@@ -168,7 +166,7 @@ class NewsSpider(CrawlSpider):
         items = NewsItem()
         items['title'] = response.xpath('//head/title/text()').extract()[0].strip()
         thetime = response.xpath('//div[@class="m-title f-pr"]/h2//span[2]/text()').extract()[0].strip()
-        items['put_time'] = common.wfunc.time_num(thetime, "%Y-%m-%d %H:%M")
+        items['put_time'] = wfunc.time_num(thetime, "%Y-%m-%d %H:%M")
         items['url'] = response.url
         h_num = re.search(r'\/(\d+)\.html', items['url'], re.I).group(1)
         items['only_id'] = h_num
@@ -193,7 +191,7 @@ class NewsSpider(CrawlSpider):
         url_re = re.search(r'doc\-\D+(\d*)\.shtml', items['url'], re.I)
         items['only_id'] = url_re.group(1)
         thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
-        items['put_time'] = common.wfunc.sina_get_time(thetime)
+        items['put_time'] = wfunc.sina_get_time(thetime)
         wfunc.e('sina_news:' + items['title'])
         yield items
 
@@ -214,7 +212,7 @@ class NewsSpider(CrawlSpider):
         if (len(thetime) < 1):
             thetime = response.xpath('//span[@class="pubTime article-time"]/text()')
         try:
-            items['put_time'] = common.wfunc.time_num(thetime.extract()[0].strip(), "%Y-%m-%d %H:%M")
+            items['put_time'] = wfunc.time_num(thetime.extract()[0].strip(), "%Y-%m-%d %H:%M")
         except IndexError as e:
             print('IndexError:dont fond time-->', response.url)
             return None
@@ -235,7 +233,7 @@ class NewsSpider(CrawlSpider):
         url_re = re.search(r'.*\.163\.com\/\d+\/\d+\/\d+\/(\w*)\.html$', items['url'], re.I)
         items['only_id'] = url_re.group(1)
         thetime = response.xpath('//div[@class="post_time_source"]/text()').extract_first().strip()
-        items['put_time'] = common.wfunc.time_num(thetime[:16], "%Y-%m-%d %H:%M")
+        items['put_time'] = wfunc.time_num(thetime[:16], "%Y-%m-%d %H:%M")
         wfunc.e('163_news:' + items['title'])
         yield items
 

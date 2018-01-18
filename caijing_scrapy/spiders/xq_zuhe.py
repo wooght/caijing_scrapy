@@ -119,8 +119,8 @@ class ZhChangeSpider(scrapy.Spider):
                 cc_arr = cc.split(';')
                 cc_nums = cc_arr[0][11:]
                 # r_cookie["xq_a_token"]=cc_nums
-                r_cookie['xq_a_token'] ='91c3cf476ba57a3ecd6aedf375f69a1da8ebba1f'
-        r_cookie['u'] = '9333734819'
+                r_cookie['xq_a_token'] ='ea73a62fc2cce672133fe4a73e6a1f540e165730'
+        r_cookie['u'] = '2174101414'
         for symbol in self.zh_list:
             print(self.url_models%(symbol))
             R = Request(url = self.url_models%(symbol),meta={'cookiejar':2,'zh_symbol':symbol},headers=self.api_headers,cookies=r_cookie,callback=self.api_zuhe_parse)

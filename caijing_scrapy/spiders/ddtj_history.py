@@ -8,8 +8,6 @@
 #
 import scrapy
 from scrapy.http import Request
-import re
-import time
 from caijing_scrapy.items import DdtjItem
 from common import wfunc
 from model import *
@@ -30,8 +28,9 @@ class DetailsSpider(scrapy.Spider):
         "ITEM_PIPELINES": {
             'caijing_scrapy.pipelines.QuotesPipelines.Pipeline': 300,
         },
-        'CONCURRENT_REQUESTS_PER_DOMAIN': 8,
-        'DOWNLOAD_DELAY': 1
+        'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+        'DOWNLOAD_DELAY': 2,
+        'RANDOMIZE_DOWNLOAD_DELAY': True
     }
     ddtj_onlyid = []
 
@@ -78,10 +77,11 @@ class DetailsSpider(scrapy.Spider):
                 id = wfunc.builde_code(code_id, shsz)  # 调整编码长度
                 only_id = dt + str(id[2:])
                 if (only_id in self.ddtj_onlyid):
-                    print('is exists...')
+                    print(only_id, ' is exists...')
                     # 重复only_id跳过
                     continue
                 url = self.url_models % (dt, id)
+                print(url)
                 R = Request(url, meta={'code_id': code_id, 'opendate': dt, 'only_id': only_id}, callback=self.parse)
                 yield R
 

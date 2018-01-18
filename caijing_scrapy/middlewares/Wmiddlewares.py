@@ -73,13 +73,14 @@ class Wdownloadmiddlewares(object):
             t_two = time.time()
             common.wfunc.e('spend times:' + str(t_two - t_one))
         except selenium.common.exceptions.TimeoutException as e:
-            common.wfunc.e("Timeout")
+            common.wfunc.e_error("Timeout")
+            common.wfunc.e(e)
             if (self.save_error_pic):
                 self.driver.save_screenshot('errpic/' + str(int(time.time())) + ".png")  # 保存报错图片
             raise Werror('...Timeout....')
         except Exception as e:
             common.wfunc.e_error('other error')
-            common.wfunc.e_error(e)
+            common.wfunc.e(e)
             self.driver.quit()  # 退出旧的driver,减小内存
             self.set_cap()  # 10061错误,及phantomjs内容溢出,需重新启动
             raise ConnectionRefusedError()

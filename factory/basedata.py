@@ -33,6 +33,7 @@ class basedata:
         quotes['di'] = self.pd.to_numeric(quotes['di'])
         quotes['shou'] = self.pd.to_numeric(quotes['shou'])
         quotes['zd_range'] = self.pd.to_numeric(quotes['zd_range'])
+        quotes['zd_money'] = self.pd.to_numeric(quotes['zd_money'])
         return quotes
 
     # attitude数据组装施工

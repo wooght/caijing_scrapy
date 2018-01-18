@@ -1,8 +1,119 @@
-[INFO  - 2018-01-02T16:37:14.921Z] GhostDriver - Main - running on port 51283
-[INFO  - 2018-01-02T16:37:15.690Z] Session [30fb47a0-efdb-11e7-aee8-fdf0499fad09] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE","webSecurityEnabled":true}
-[INFO  - 2018-01-02T16:37:15.690Z] Session [30fb47a0-efdb-11e7-aee8-fdf0499fad09] - page.customHeaders:  - {"Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
-[INFO  - 2018-01-02T16:37:15.690Z] Session [30fb47a0-efdb-11e7-aee8-fdf0499fad09] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.settings.connection":"keep-alive","phantomjs.page.settings.loadImages":false,"phantomjs.page.settings.accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","phantomjs.page.settings.resourceTimeout":200,"phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE","phantomjs.page.settings.disk-cache":false,"phantomjs.page.customHeaders.Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
-[INFO  - 2018-01-02T16:37:15.691Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 30fb47a0-efdb-11e7-aee8-fdf0499fad09
-[ERROR - 2018-01-02T16:37:15.709Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Connection\":\"close\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:51283\",\"User-Agent\":\"Python http auth\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"pageLoad\\\": 20000, \\\"sessionId\\\": \\\"30fb47a0-efdb-11e7-aee8-fdf0499fad09\\\"}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/30fb47a0-efdb-11e7-aee8-fdf0499fad09/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
+[INFO  - 2018-01-17T13:40:25.302Z] GhostDriver - Main - running on port 39530
+[INFO  - 2018-01-17T13:40:26.094Z] Session [f95fcac0-fb8b-11e7-937e-2f8a434f854e] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE","webSecurityEnabled":true}
+[INFO  - 2018-01-17T13:40:26.099Z] Session [f95fcac0-fb8b-11e7-937e-2f8a434f854e] - page.customHeaders:  - {"Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
+[INFO  - 2018-01-17T13:40:26.099Z] Session [f95fcac0-fb8b-11e7-937e-2f8a434f854e] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"},"phantomjs.page.settings.userAgent":"Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36 QIHU 360EE","phantomjs.page.settings.connection":"keep-alive","phantomjs.page.settings.loadImages":false,"phantomjs.page.settings.resourceTimeout":200,"phantomjs.page.settings.accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8","phantomjs.page.settings.disk-cache":false,"phantomjs.page.customHeaders.Cookie":"aliyungf_tc=AQAAAIplnShTMAQAebbT3lEVm4rc3txx;"}
+[INFO  - 2018-01-17T13:40:26.103Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: f95fcac0-fb8b-11e7-937e-2f8a434f854e
+[ERROR - 2018-01-17T13:40:26.113Z] RouterReqHand - _handle.error - {"name":"Missing Command Parameter","message":"{\"headers\":{\"Accept\":\"application/json\",\"Accept-Encoding\":\"identity\",\"Connection\":\"close\",\"Content-Length\":\"72\",\"Content-Type\":\"application/json;charset=UTF-8\",\"Host\":\"127.0.0.1:39530\",\"User-Agent\":\"Python http auth\"},\"httpVersion\":\"1.1\",\"method\":\"POST\",\"post\":\"{\\\"pageLoad\\\": 20000, \\\"sessionId\\\": \\\"f95fcac0-fb8b-11e7-937e-2f8a434f854e\\\"}\",\"url\":\"/timeouts\",\"urlParsed\":{\"anchor\":\"\",\"query\":\"\",\"file\":\"timeouts\",\"directory\":\"/\",\"path\":\"/timeouts\",\"relative\":\"/timeouts\",\"port\":\"\",\"host\":\"\",\"password\":\"\",\"user\":\"\",\"userInfo\":\"\",\"authority\":\"\",\"protocol\":\"\",\"source\":\"/timeouts\",\"queryKey\":{},\"chunks\":[\"timeouts\"]},\"urlOriginal\":\"/session/f95fcac0-fb8b-11e7-937e-2f8a434f854e/timeouts\"}","line":546,"sourceURL":"phantomjs://code/session_request_handler.js","stack":"_postTimeout@phantomjs://code/session_request_handler.js:546:73\n_handle@phantomjs://code/session_request_handler.js:148:25\n_reroute@phantomjs://code/request_handler.js:61:20\n_handle@phantomjs://code/router_request_handler.js:78:46"}
 
   phantomjs://platform/console++.js:263 in error
+[INFO  - 2018-01-17T13:45:25.302Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+4:44.269Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T13:49:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T13:54:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T13:59:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:04:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:09:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:14:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:19:44.263Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:24:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:29:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:34:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:39:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:44:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:49:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:54:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T14:59:44.264Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+A8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60319
+postDefine@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:5199
+makeDefer@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:3511
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:9244
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:9214
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+depPromise@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:4719
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:6850
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+U@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:6780
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:5256
+l@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60319
+postDefine@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:5199
+makeDefer@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:3511
+get@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:3805
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:3052
+l@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60319
+_@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2981
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:4159
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+w@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2265
+compile@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:22170
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:71012
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:47316
+l@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60319
+render@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:23654
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:3100
+l@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60319
+_@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2981
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:4159
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+w@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2265
+compile@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:22170
+global code@http://static.ws.126.net/f2e/finance/index2016/collect/first~ppVKbl9E8WGG.js:10:5954
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-17T13:40:31.269Z] Session [f91665b0-fb8b-11e7-9be7-cfee48687825] - page.onError - stack:
+  c (http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-17T13:40:31.455Z] Session [f91665b0-fb8b-11e7-9be7-cfee48687825] - page.onError - msg: Error: undefined is not an object (evaluating 'n.children.push')
+create@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:19233
+_@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2850
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:4159
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+w@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2265
+compile@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:22170
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:4110
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+w@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2265
+compile@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:22170
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:4110
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+w@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:2:2265
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:7626
+l@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60319
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:3:7613
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:59286
+l@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:60126
+then@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:19929
+http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:39928
+each@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:4133
+resolve@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:39907
+h@http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1:2713
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-17T13:40:31.459Z] Session [f91665b0-fb8b-11e7-9be7-cfee48687825] - page.onError - stack:
+  c (http://static.ws.126.net/f2e/finance/common2015/collect/foot~XEutC8EA8WhW.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-17T13:41:11.520Z] Session [f91665b0-fb8b-11e7-9be7-cfee48687825] - page.onError - msg: ReferenceError: Can't find variable: etag_ngx_str
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-17T13:41:11.523Z] Session [f91665b0-fb8b-11e7-9be7-cfee48687825] - page.onError - stack:
+  global code (http://beacon.sina.com.cn/h.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[INFO  - 2018-01-17T13:45:25.240Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T13:50:25.211Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
+[INFO  - 2018-01-17T13:55:25.211Z] SessionManagerReqHand - _cleanupWindowlessSessions - Asynchronous Sessions clean-up phase starting NOW
