@@ -11,6 +11,7 @@ from scrapy.http import Request
 from caijing_scrapy.items import DdtjItem
 from common import wfunc
 from model import *
+from factory.data.dd_pct import dd_pct
 import json
 
 
@@ -37,14 +38,22 @@ class DetailsSpider(scrapy.Spider):
     def __init__(self,code=None,*args,**kwargs):
         super(DetailsSpider,self).__init__(*args,**kwargs)
         self.codeid = code
+        self.first100 = False
 
     # 构建查询code_id及查询日期--->根据行情构建有效日期
     def select_quotes(self):
-        r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id])
+        code = []
         if self.codeid!=None:
             r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id]).where(T.quotes_item.c.code_id == self.codeid)
+        elif self.first100:
+            var_dd = dd_pct()
+            var_dd.select_all()
+            code_100 = var_dd.first_100()
+            r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id]).where(
+                T.quotes_item.c.code_id in code_100)
+        else:
+            r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id])
         s = T.conn.execute(r)
-        code = []
         for quotes in s.fetchall():
             quotes_json = json.loads(quotes[0])
             one = []

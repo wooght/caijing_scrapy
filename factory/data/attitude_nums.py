@@ -4,9 +4,10 @@
 # by wooght
 # 2017-11
 # ##################################
-from data_config import sys_path
+import os
 import sys
-sys.path.append(sys_path)
+
+sys.path.append(os.path.dirname(__file__)+'/../../')
 from factory.basedata import basedata
 from model import T
 import time

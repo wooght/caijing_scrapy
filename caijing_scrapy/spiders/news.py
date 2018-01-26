@@ -190,7 +190,11 @@ class NewsSpider(CrawlSpider):
         items['url'] = response.url
         url_re = re.search(r'doc\-\D+(\d*)\.shtml', items['url'], re.I)
         items['only_id'] = url_re.group(1)
-        thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
+        # thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
+        try:
+            thetime = response.xpath('//*[@id="top_bar"]/div/div[2]/span[1]').extract_first().strip()
+        except AttributeError:
+            thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
         items['put_time'] = wfunc.sina_get_time(thetime)
         wfunc.e('sina_news:' + items['title'])
         yield items

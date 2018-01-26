@@ -57,7 +57,13 @@ class Pipeline(object):
             if (item['change_id'] not in self.change_list):
                 i = T.zuhe_change.insert()
                 r = T.conn.execute(i, dict(item))
+                self.math_nums()
         return None
+
+    def math_nums(self):
+        self.add_nums += 1
+
 
     def close_spider(self, spider):
         wfunc.estatus('spider ' + spider.name + ' --->closed')
+        wfunc.estatus('add total nums :' + str(self.add_nums))
