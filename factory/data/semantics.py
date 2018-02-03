@@ -5,9 +5,10 @@
 # @Author   : wooght
 # @File     : semantics.py
 
-from data_config import sys_path
+import os
 import sys
 
+sys_path = os.path.dirname(__file__)+'/../../'
 sys.path.append(sys_path)
 from model import topic
 from analyse.common import *

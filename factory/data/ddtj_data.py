@@ -21,7 +21,7 @@ except:
 
 if __name__ == '__main__':
     dd = ddtj_analyse()
-    dd.select_ddtj(code_id)
+    dd.select_ddtj(code_id, '2015-11-01')
     dd.BACKPROBE(True)
     is_times = dd.web_api()
     dd.BACKPROBE(False)

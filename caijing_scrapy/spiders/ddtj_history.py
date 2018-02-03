@@ -11,7 +11,7 @@ from scrapy.http import Request
 from caijing_scrapy.items import DdtjItem
 from common import wfunc
 from model import *
-from factory.data.dd_pct import dd_pct
+from factory.data_analyse import dd_pct
 import json
 
 
@@ -35,10 +35,10 @@ class DetailsSpider(scrapy.Spider):
     }
     ddtj_onlyid = []
 
-    def __init__(self,code=None,*args,**kwargs):
+    def __init__(self, code=None, first100=False, *args, **kwargs):
         super(DetailsSpider,self).__init__(*args,**kwargs)
         self.codeid = code
-        self.first100 = False
+        self.first100 = first100
 
     # 构建查询code_id及查询日期--->根据行情构建有效日期
     def select_quotes(self):
@@ -47,10 +47,11 @@ class DetailsSpider(scrapy.Spider):
             r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id]).where(T.quotes_item.c.code_id == self.codeid)
         elif self.first100:
             var_dd = dd_pct()
-            var_dd.select_all()
-            code_100 = var_dd.first_100()
+            var_dd.select_all(wfunc.before_day(50))
+            code_100 = var_dd.have_dd(30)
+            print(code_100)
             r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id]).where(
-                T.quotes_item.c.code_id in code_100)
+                T.quotes_item.c.code_id.in_(code_100))
         else:
             r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id])
         s = T.conn.execute(r)
@@ -86,11 +87,10 @@ class DetailsSpider(scrapy.Spider):
                 id = wfunc.builde_code(code_id, shsz)  # 调整编码长度
                 only_id = dt + str(id[2:])
                 if (only_id in self.ddtj_onlyid):
-                    print(only_id, ' is exists...')
                     # 重复only_id跳过
                     continue
                 url = self.url_models % (dt, id)
-                print(url)
+                print('open ddtj_url:', url)
                 R = Request(url, meta={'code_id': code_id, 'opendate': dt, 'only_id': only_id}, callback=self.parse)
                 yield R
 
@@ -111,7 +111,7 @@ class DetailsSpider(scrapy.Spider):
             items['kuvolume'] = items['kuvolume'] * 100
             items['kdvolume'] = items['kdvolume'] * 100
             items['totalvol'] = items['totalvol'] * 100
-            print(items)
+            print(items['code_id'], items['stockvol'], items['opendate'])
             yield items
 
     # 数据处理

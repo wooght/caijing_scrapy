@@ -41,6 +41,11 @@ def the_day(nums, t=False):
         return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(nums))
 
 
+def before_day(days):
+    nums = int(time.time()) - days*24*3600
+    return time.strftime("%Y-%m-%d", time.localtime(nums))
+
+
 # 雪球时间匹配
 def search_time(str):
     str_search = re.search(r'\D*(\d{4}-\d{2}-\d{2} .*)', str)

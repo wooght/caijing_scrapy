@@ -13,21 +13,21 @@ class Pipeline(object):
 
     def open_spider(self, spider):
         wfunc.e('spider ' + spider.name + ' --->opend')
-        if (spider.name in ['ddtj', 'ddtj_history']):
+        if spider.name in ['ddtj', 'ddtj_history']:
             s = T.select([T.ddtj.c.only_id])
             r = T.conn.execute(s)
             ddtj_onlyid = []
             for item in r.fetchall():
                 ddtj_onlyid.append(item[0])
             self.ddtj_onlyid = ddtj_onlyid
-        if (spider.name == 'xueqiu_zuhe'):
+        if spider.name == 'xueqiu_zuhe':
             s = T.select([T.xq_zuhe.c.zh_symbol])
             r = T.conn.execute(s)
             zh_list = []
             for item in r.fetchall():
                 zh_list.append(item[0])
             self.zh_list = zh_list
-        if (spider.name == 'zuhe_change'):
+        if spider.name == 'zuhe_change':
             s = T.select([T.zuhe_change.c.change_id])
             r = T.conn.execute(s)
             change_list = []
@@ -37,7 +37,7 @@ class Pipeline(object):
 
     def process_item(self, item, spider):
         # 行情
-        if (isinstance(item, quotes_itemItem)):
+        if isinstance(item, quotes_itemItem):
             s = T.quotes_item.delete().where(T.quotes_item.c.code_id == item['code_id'])
             r = T.conn.execute(s)
             i = T.quotes_item.insert()
@@ -47,6 +47,7 @@ class Pipeline(object):
             if (item['only_id'] not in self.ddtj_onlyid):
                 i = T.ddtj.insert()
                 r = T.conn.execute(i, dict(item))
+                self.math_nums()
         # 组合
         elif (isinstance(item, ZuheItem)):
             if (item['zh_symbol'] not in self.zh_list):

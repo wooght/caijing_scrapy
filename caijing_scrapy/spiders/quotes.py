@@ -12,6 +12,7 @@ from scrapy import Request
 import random
 from caijing_scrapy.items import QuotesItem, quotes_itemItem
 from model import T
+from factory.data_analyse import dd_pct
 import time
 import json
 import common.wfunc
@@ -37,7 +38,7 @@ class Quotes_itemSpider(scrapy.Spider):
     HEADERS['User-Agent'] = random.choice(USER_AGENT)
 
     # 查询地址生产器
-    def __init__(self, codeid=None, *args, **kwargs):
+    def __init__(self, codeid=None, first100=False, *args, **kwargs):
         super(Quotes_itemSpider, self).__init__(*args, **kwargs)
         self.select_data()
 
@@ -45,6 +46,14 @@ class Quotes_itemSpider(scrapy.Spider):
             codes = [['0000001', 'szzs']]
         else:
             s = T.select([T.listed_company.c.codeid, T.listed_company.c.shsz])
+            if first100:
+                var_dd = dd_pct()
+                var_dd.select_all(common.wfunc.before_day(50))
+                code_100 = var_dd.have_dd(30)
+                print(code_100)
+                s = T.select([T.listed_company.c.codeid, T.listed_company.c.shsz]).where(
+                    T.listed_company.c.codeid.in_(code_100))
+
             if codeid is not None:
                 s = T.select([T.listed_company.c.codeid, T.listed_company.c.shsz]).where(
                     T.listed_company.c.codeid == codeid)
