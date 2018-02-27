@@ -26,15 +26,11 @@ class basedata:
         r = T.select([T.quotes_item.c.quotes]).where(T.quotes_item.c.code_id == id)
         s = T.conn.execute(r)
         # json解析
-        for item in s.fetchall():
-            obj = json.loads(item[0])
+        item = s.fetchall()[0]
+        obj = json.loads(item[0])
         quotes = self.pd.DataFrame(obj)
-        quotes['gao'] = self.pd.to_numeric(quotes['gao'])
-        quotes['di'] = self.pd.to_numeric(quotes['di'])
-        quotes['shou'] = self.pd.to_numeric(quotes['shou'])
-        quotes['zd_range'] = self.pd.to_numeric(quotes['zd_range'])
-        quotes['zd_money'] = self.pd.to_numeric(quotes['zd_money'])
-        quotes['liang'] = self.pd.to_numeric(quotes['liang'])
+        quotes = self.to_math(df=quotes, numeric=['gao', 'di', 'shou', 'kai', 'before',
+                                                  'zd_range', 'zd_money', 'liang'])
         return quotes
 
     # attitude数据组装施工
@@ -84,3 +80,14 @@ class basedata:
                 item_arr.append('%0.2f' % args[0].loc[item, cols])
             result_arr.append(item_arr)
         return result_arr
+
+    # to numeric
+    def to_math(self, df, numeric=[], datetime=[]):
+        if len(numeric) > 0:
+            for num in numeric:
+                df[num] = self.pd.to_numeric(df[num])
+
+        if len(datetime) > 0:
+            for d in datetime:
+                df[d] = self.pd.to_datetime(df[d])
+        return df

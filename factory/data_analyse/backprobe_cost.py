@@ -32,7 +32,7 @@ class backprobe_cost:
 
 
     # 结束计费
-    def end_cost(self, price, stock_um):
-        pay = price * stock_um - self.revenue(price, stock_um)
+    def end_cost(self, price, stock_num):
+        pay = price * stock_num - self.revenue(price, stock_num)
         self.capital += pay
         return self.capital

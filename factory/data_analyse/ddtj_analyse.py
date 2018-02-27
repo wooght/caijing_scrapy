@@ -11,7 +11,7 @@ import sys
 sys.path.append(os.path.dirname(__file__)+'/../../')
 
 from ..basedata import basedata
-from .dd_position import dd_position
+from .dd_position_old import dd_position
 from model import ddtj
 from numpy import floor
 
@@ -30,6 +30,16 @@ class ddtj_analyse(basedata):
 
     max_income = 0.0  # 最大收益
     min_income = 0.0  # 最大亏损
+
+    def select_alldd(self):
+        all_dd = ddtj.all()
+        data_arr = []
+        for i in all_dd:
+            data_arr.append(dict(i))
+
+        df = self.pd.DataFrame(data_arr)
+        df = self.to_math(df, ['totalvolpct', 'kuvolume', 'kdvolume'], ['opendate'])
+        return df
 
     # 数据查询,与行情数据组装
     def select_ddtj(self, code_id, start_date='2015-01-01'):
@@ -54,8 +64,6 @@ class ddtj_analyse(basedata):
         pandas_ddtj['shou_change'] = 0  # 收盘速率
         pandas_ddtj['dd_range'] = 0  # 大单范围行程
         pandas_ddtj['shou_range'] = 0  # 大单范围行程
-        # print(pandas_ddtj.loc[:,['dk_contrast','shou','dk_cumsum','zd_money','datatime']])
-        # pandas_ddtj = pandas_ddtj[pandas_ddtj['datatime'] > start_date]
         return self.dd_change(pandas_ddtj)
 
 
@@ -88,7 +96,7 @@ class ddtj_analyse(basedata):
         self.dd_position.setdata(self.dd_rate)
         if self.dd_position.psin(last_index):
             return (1, self.dd_rate.loc[last_index, 'totalvolpct'])
-        elif self.dd_position.psout(last_index, is_times=True):
+        elif self.dd_position.psout(last_index, is_times=True) < 1:
             return (-1, self.dd_rate.loc[last_index, 'totalvolpct'])
         else:
             return (0, self.dd_rate.loc[last_index, 'totalvolpct'])
@@ -150,21 +158,22 @@ class ddtj_analyse(basedata):
                 ispc = self.dd_position.psout(i.Index, is_times)
                 if ispc < 0:
                     length = len(start_kai)
-                    if ispc == -1 and length > 1:
+                    if ispc == -2 or length == 1:
+                        position = False
+                        income_tmp = self.income_math(start_kai, pd.loc[i.Index + 1, 'kai'])
+                        income += income_tmp
+                        pd.loc[i.Index + 1, 'c_state'] = -1
+                        pd.loc[i.Index + 1, 'income'] = income_tmp
+                        pd.loc[i.Index + 1, 'total_income'] = income
+                        start_kai = []  # 平仓,清空建仓记录
+                    elif ispc == -1 and length > 1:
                         split_index = round(length/2)
                         income_pc = self.income_math(start_kai[:split_index], pd.loc[i.Index+1, 'kai'])
                         income += income_pc
                         pd.loc[i.Index+1, 'c_state'] = -2  # 部分平仓
                         pd.loc[i.Index+1, 'income'] = income_pc
                         start_kai = start_kai[split_index:]
-                    elif ispc == -2:
-                        position = False
-                        income_tmp = self.income_math(start_kai, pd.loc[i.Index+1, 'kai'])
-                        income += income_tmp
-                        pd.loc[i.Index+1, 'c_state'] = -1
-                        pd.loc[i.Index+1, 'income'] = income_tmp
-                        pd.loc[i.Index+1, 'total_income'] = income
-                        start_kai = []  # 平仓,清空建仓记录
+
 
         pd['total_income'] = pd['total_income'].replace([0, 0.00], method='pad')  # 前值替换
         self.backprobe_data = pd

@@ -48,7 +48,7 @@ class Quotes_itemSpider(scrapy.Spider):
             s = T.select([T.listed_company.c.codeid, T.listed_company.c.shsz])
             if first100:
                 var_dd = dd_pct()
-                var_dd.select_all(common.wfunc.before_day(50))
+                var_dd.select_all(common.wfunc.before_day(80))
                 code_100 = var_dd.have_dd(30)
                 print(code_100)
                 s = T.select([T.listed_company.c.codeid, T.listed_company.c.shsz]).where(

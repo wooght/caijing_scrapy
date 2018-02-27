@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# @method   : DD Backprobe 进出场判断
+# @method   : 进出场判断
 # @Time     : 2018/1/24
 # @Author   : wooght
 # @File     : dd_position.py
@@ -10,20 +10,21 @@ class dd_position:
     rate_const = 0.2  # 速率常数
     times_const = 2  # 速率比例系数
     range_const = 20  # 范围常数
-    dd = object
+    pd = object
 
     def setdata(self, pd):
-        self.dd = pd
+        self.pd = pd
+        self.ddpct_mean = pd['totalvolpct'].mean()
 
-    def psin(self, codeid, i):
-        if self.pct_mean(codeid, i) < 0.3: return False
-        shou_change = self.dd[codeid].pd.loc[i, 'shou_change']
-        dd_change = self.dd[codeid].pd.loc[i, 'dd_change']
+    def psin(self, i):
+        if self.pct_mean(i) < 0.3: return False
+        shou_change = self.pd.loc[i, 'shou_change']
+        dd_change = self.pd.loc[i, 'dd_change']
         #  大于速率常数且走势为正
         if dd_change > self.rate_const and shou_change > 0:
             times_rate = self.times_const * self.rate_const
             now_times_shou = self.times_const * shou_change
-            now_pct_mean = self.dd[codeid].pd.loc[i, 'totalvolpct']
+            now_pct_mean = self.pd.loc[i, 'totalvolpct']
             both_like = dd_change > shou_change or self.both_like(dd_change, shou_change)
             than_rate = dd_change >= now_times_shou if now_pct_mean >= 0.5 else both_like  # 速率大于走势*系数
             than_const = dd_change >= times_rate and both_like  # 速率大于速率常数,且大于走势
@@ -31,19 +32,19 @@ class dd_position:
         else:
             return False
 
-    def psout(self, codeid, i):
-        dd_change = self.dd[codeid].pd.loc[i, 'dd_change']
-        if self.dd[codeid].pd.loc[i, 'zd_range'] <= -9.9:
+    def psout(self, i, is_times):
+        dd_change = self.pd.loc[i, 'dd_change']
+        if self.pd.loc[i, 'zd_range'] <= -9.9:
             # 出现跌停
             return -2
-        if self.down_continue5(codeid, i):
+        if self.down_continue5(i):
             return -2
         # 小于速率常数
         if dd_change < -self.rate_const:
             # 主力加速下降 平仓
             # 和速率常数相比,前提是和行情速率相比成立
-            shou_change = self.dd[codeid].pd.loc[i, 'shou_change']
-            now_pct_mean = self.dd[codeid].pd.loc[i, 'totalvolpct']
+            shou_change = self.pd.loc[i, 'shou_change']
+            now_pct_mean = self.pd.loc[i, 'totalvolpct']
             now_times_shou = self.times_const * shou_change
             times_rate = -self.times_const * self.rate_const
             # 大单占比小于0.5的,减小带动指数
@@ -64,9 +65,9 @@ class dd_position:
             return 1
 
     # 范围占比均值计算
-    def pct_mean(self, codeid, i):
+    def pct_mean(self, i):
         #  暂时设定大于0.4
-        return self.dd[codeid].pd.loc[i - self.range_const:i, 'totalvolpct'].mean()
+        return self.pd.loc[i - self.range_const:i, 'totalvolpct'].mean()
 
     # 两者相当
     def both_like(self, d, s):
@@ -80,7 +81,7 @@ class dd_position:
             return dd > shou * 0.9
 
     # 双双连续缓慢下跌
-    def down_continue5(self, codeid, i):
-        dd = self.dd[codeid].pd.loc[i - 4:i, 'dd_change'].max() < 0
-        shou = self.dd[codeid].pd.loc[i - 4:i, 'shou_change'].max() < 0
+    def down_continue5(self, i):
+        dd = self.pd.loc[i - 4:i, 'dd_change'].max() < 0
+        shou = self.pd.loc[i - 4:i, 'shou_change'].max() < 0
         return dd and shou

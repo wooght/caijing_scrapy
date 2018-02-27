@@ -24,12 +24,23 @@ if __name__ == '__main__':
     if ms_list:
         print(ms_list)
     else:
-        var_dd = dd_pct()
-        var_dd.select_all(wfunc.before_day(50))
-        var_dd.select_companyies()
-        code_100 = var_dd.have_dd(30)
-        var_zh = zuhe_math()
-        zh_focus = var_zh.group_mean()
+        ddpct = dd_pct()
+        ddpct.select_companyies()
+        ddmath = dd_math()
+        zhmath = zuhe_math()
+        zh_focus = zhmath.group_mean()
+        alldd = ddmath.select_alldd()
+        ddpct.dd_repository = alldd
+        codeids = ddpct.have_dd(260)
+        dd_df_dict = {}
+        for id in codeids:
+            if id not in zh_focus:
+                continue
+            dd_df_dict[id] = alldd[alldd.code_id == id].copy()
+
+        last_df = ddmath.quotes_install(dd_df_dict)
+        backprobe = dd_backprobe()
+        result = backprobe.dispatch(last_df, 0)
 
         #  回测汇总
         total_income = 0
@@ -43,22 +54,15 @@ if __name__ == '__main__':
 
         max_income = {'id': 0, 'income': 0}
         min_income = {'id': 0, 'income': 0}
-
         s_all = []
-        for id in code_100:
-            if id not in zh_focus:
-                continue
-            dd.select_ddtj(str(id), start_date='2017-12-01')
-            dd.BACKPROBE(True)
-            is_times = dd.web_api()
-            income = is_times['income']
+        for i in result:
+            income = result[i].f_total_income()
             total_income += income
-            total_jia += is_times['jia_num']
-            total_position += len(is_times['hc'])
-            name = var_dd.cps[var_dd.cps['code_id'] == id].iloc[0]['name']
-            id_income = {'name': name.encode('utf-8'), 'id': str(id), 'income': float_nums(income),
-                         'max': float_nums(is_times['max_income']['max']),
-                         'min': float_nums(is_times['max_income']['min'])}
+            total_jia += (result[i].jia_nums() + result[i].kai_nums())
+            name = ddpct.cps[ddpct.cps['code_id'] == result[i].codeid].iloc[0]['name']
+            id_income = {'name': name.encode('utf-8'), 'id': str(result[i].codeid), 'income': float_nums(income),
+                         'max': float_nums(result[i].f_max_income()),
+                         'min': float_nums(result[i].f_min_income())}
             if income > max_income['income']:
                 max_income = id_income
             elif income < min_income['income']:
@@ -69,9 +73,10 @@ if __name__ == '__main__':
             else:
                 total_kcome += float_nums(income)
                 total_kcodes += 1
+
             s_all.append(id_income)
-        # last_list = sorted(s_all, key=lambda d: d['income'])
-        result = {
+
+        web_result = {
             'total_income': float_nums(total_income),
             'total_jia': float_nums(total_jia),
             'probe_data': s_all,
@@ -81,5 +86,5 @@ if __name__ == '__main__':
             'total_kcodes': total_kcodes,
             'strategy': '占比少,带动力小,速率相差更大'.encode('utf-8')
         }
-        data_cache.save_marshal(file_path, result)
-        print(result)
+        data_cache.save_marshal(file_path, web_result)
+        print(web_result)
