@@ -18,6 +18,9 @@ from model import Db as T
 from analyse.common import *
 from analyse.NLP.participle import pp
 from analyse.NLP.semantics import NB
+from factory.data_analyse.marshal_cache import data_cache
+
+cache_file = 'result_guide.wooght'
 
 f_quotes = basedata()
 all_company = companies.all_codenames()
@@ -26,19 +29,27 @@ for code in all_company:
     tmp_code = dict(code)
     all_codes[tmp_code['name']] = tmp_code['codeid']
 
-start_day = wfunc.time_num('2017-12-01', '%Y-%m-%d')
+start_day = wfunc.time_num('2016-11-01', '%Y-%m-%d')
 end_day = wfunc.time_num('2017-12-12', '%Y-%m-%d')
 
+# 上证指数日期
 sz_quotes = f_quotes.select_quotes(1000001, True)
 allow_dates = list(sz_quotes['datatime'])
 
+# 筛选股票
 ddpct = dd_pct()
 ddpct.select_all()
 allow_codes = ddpct.have_dd(260)
 
 nb = NB()
+# 停用词
+nb.pass_words = {
+    'x', 'm', 'url', 'nian', 'eng', 'nts', 'ntp', 'y', 'yue',
+    'nt', 'nr', 'j', 't', 'n', 'nz', 'mq', 'nrt'
+}
 
 
+# 行情组装
 quotes = {}
 for i in all_codes.items():
     if i[1] in allow_codes:
@@ -52,7 +63,7 @@ for i in all_codes.items():
         except IndexError:
             continue
 
-print(quotes)
+# 文章查询
 Table = T.news
 def allarticles():
     s = T.select([Table.c.body,Table.c.title,Table.c.put_time,Table.c.id,Table.c.title]).where(Table.c.put_time > start_day).where(Table.c.put_time < end_day)
@@ -63,6 +74,9 @@ pos['total'] = 0
 neg = {}
 neg['total'] = 0
 all_news = allarticles()
+total_articles = 0  # 总共分析文章数量
+
+# 文章遍历分类
 for news in all_news:
     put_time = wfunc.the_day(int(dict(news)['put_time']))
     if put_time not in allow_dates:
@@ -71,6 +85,8 @@ for news in all_news:
     plate, company = get_index(body)
     ju = pp.cut_ju(body)
     if len(company) > 0:
+        total_articles += 1
+        print('article numbers:', total_articles)
         for c in company.items():
             charts = c[0]
             if charts not in quotes:
@@ -83,9 +99,14 @@ for news in all_news:
                     q = quotes[charts]
                     the_index = q[q['datatime'] == put_time].index[0]  # index格式为Int64Index([0], dtype='int64')
                     try:
-                        cha = q.loc[the_index, 'shou'] - q.loc[the_index+5, 'shou']
+                        # 5日后收盘比较
+                        cha = q.loc[the_index+5, 'shou'] - q.loc[the_index, 'shou']
+                        if abs(cha/q.loc[the_index, 'shou']) < 0.05:
+                            cha = 0
                     except ValueError:
                         cha = 0
+
+                    # 结果分类
                     if cha > 0:
                         for word in words:
                             if word[0] not in pos:
@@ -105,14 +126,17 @@ result = {}
 result['pos'] = pos
 result['neg'] = neg
 
+data_cache.save_marshal(cache_file, result)
+
 for i in pos.items():
     print(i)
-print('pos total:', pos['total'])
 
 print('*' * 100)
 
 for i in neg.items():
     print(i)
 print('neg total', neg['total'])
+print('pos total:', pos['total'])
+print('allow_codes:', allow_codes)
 
 

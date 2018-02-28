@@ -129,4 +129,4 @@ if __name__ == '__main__':
     # seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
     # seman.save(data_path+"semantics.wooght")
     # 调用方法
-    print(seman.attitude('上市之路一波三折，是谁拖住三只松鼠的“尾巴”？'))
+    print(seman.attitude('2017年四季报显示，中邮信息产业的十大重仓股分别是旋极信息、尔康制药、昆仑万维、华宇软件、视源股份、兆易创新、泰格医药、乐视网、先导智能、慈文传媒	'))

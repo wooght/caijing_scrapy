@@ -49,4 +49,4 @@ class dd_pct(basedata):
         the_data = last_pd[last_pd.pctcount >= days]  # 筛选拥有大单天数
         pctsort = the_data.sort_values('pctmean')  # 按照占比排序
         self.pctsort = pctsort
-        return list(pctsort.iloc[-2:, :].code_id)
+        return list(pctsort.iloc[-20:, :].code_id)
