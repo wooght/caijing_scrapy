@@ -9,8 +9,6 @@
 from model import topic
 from .common import *
 from .NLP.participle import pp
-from .NLP.semantics import seman
-
 
 # from snownlp import SnowNLP
 # from snownlp import sentiment
@@ -23,6 +21,9 @@ from .NLP.semantics import seman
 
 
 class article_analyse(object):
+    def __init__(self, attitude_file):
+        load_file(attitude_file)
+
     # 分析接口
     # x.run(TopicItem)
     def run(self, item):
@@ -31,7 +32,7 @@ class article_analyse(object):
         title_plate, title_company = get_index(item['title'])
         title_attitude = False
         if len(title_company) > 0:
-            title_sentiments = seman.attitude(item['title'])
+            title_sentiments = get_one(item['title'])
             print('title_sentiments:', title_sentiments)
             title_words = list(title_company)[0]
             title_attitude = True
@@ -40,7 +41,7 @@ class article_analyse(object):
             # the_plate = max(listed_plate.items(),key=lambda d:d[1])     #只计算权重最大的一个
             for plate in listed_plate.items():
                 one_item = {}
-                the_sentiments = get_sentiments(plate[0], article_ju)  # 态度打分
+                the_sentiments = get_lists(plate[0], article_ju)  # 态度打分
                 one_item['plate_id'] = topic.s_plate_id(plate[0])  # 生产sql修改语句字典
                 one_item['plate_attitude'] = the_sentiments
                 one_item['article_id'] = item['article_id']
@@ -54,7 +55,7 @@ class article_analyse(object):
             # the_company = max(listed_company.items(),key=lambda d:d[1])
             for company in listed_company.items():
                 one_item = {}
-                the_sentiments = get_sentiments(company[0], article_ju)
+                the_sentiments = get_lists(company[0], article_ju)
                 if title_attitude and company[0] == title_words:
                     the_sentiments = float(the_sentiments) * 0.4 + float(title_sentiments) * 0.6  # 如果与表填相关,则标题占比提高
                 one_item['code_id'] = topic.s_company_id(company[0])
