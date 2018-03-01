@@ -23,8 +23,12 @@ def get_index(charts):
     return listed_plate, listed_company
 
 
+def load_file(attitude_file):
+    seman.load(attitude_file)
+
+
 # 获取所在句子的语义情感打分
-def get_sentiments(charts, ju):
+def get_lists(charts, ju):
     totle = []
     for j in ju:
         if charts in j:
@@ -39,3 +43,8 @@ def get_sentiments(charts, ju):
     except:
         avg = 0.1  # 返回0.1 与没有的区分开
     return '%.2f' % avg
+
+
+# 获取单个句子/一段话的态度
+def get_one(ju):
+    return seman.attitude(ju)

@@ -31,8 +31,8 @@ class NB(object):
         self.changehmm = changehmm()
 
     # 加载序列化数据
-    def load(self, path):
-        f = open(path, 'rb')
+    def load(self, file):
+        f = open(data_path+file, 'rb')
         arr = marshal.load(f)
         for i in arr:
             self.ask[i] = freq()
@@ -120,11 +120,10 @@ class NB(object):
 
 
 seman = NB()
-seman.load(data_path + "semantics.wooght")
 
 if __name__ == '__main__':
     import sys, io
-
+    seman.load("semantics.wooght")
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')  # 改变标准输出的默认编码
     # seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
     # seman.save(data_path+"semantics.wooght")
