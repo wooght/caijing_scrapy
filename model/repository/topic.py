@@ -41,4 +41,7 @@ def s_plate_id(str):
     s = select([listed_plate.c.plateid]).where(listed_plate.c.name.like(str))
     r = conn.execute(s)
     result = r.fetchone()
-    return result[0]
+    if result:
+        return result[0]
+    else:
+        return 0

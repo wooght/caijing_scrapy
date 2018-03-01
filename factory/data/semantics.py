@@ -30,6 +30,7 @@ class semantics:
     zf = []
 
     def __init__(self, article_id):
+        seman.load('topic.wooght')
         articles_dict = dict(topic.one(article_id))
         self.title = articles_dict['title']
         self.body = articles_dict['body'].strip()
@@ -45,12 +46,12 @@ class semantics:
             self.words.append(w_tmp)
         ju = pp.cut_ju(self.body)
         for j in ju:
-            fen = seman.attitude(j)
+            fen = get_one(j)
             self.ju.append([j.strip().encode('utf-8'), fen])
         listed_plate, listed_company = get_index(self.body)
         if len(listed_company) > 0:
             for companys in listed_company.items():
-                cfen = get_sentiments(companys[0], ju)
+                cfen = get_lists(companys[0], ju)
                 self.zf.append([companys[0].encode('utf-8'), companys[1], cfen])
 
 

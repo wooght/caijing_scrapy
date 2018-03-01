@@ -11,7 +11,7 @@ import sys
 sys.path.append(os.path.dirname(__file__) + '/../../')
 
 from factory.data_analyse.marshal_cache import data_cache
-cache_file = os.path.dirname(__file__)+'/result_guide.wooght'
+cache_file = os.path.dirname(__file__)+'/result_guide_topic.wooght'
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')  # 改变标准输出的默认编码
 
 data = data_cache.get_marshal(cache_file)

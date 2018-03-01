@@ -123,9 +123,10 @@ seman = NB()
 
 if __name__ == '__main__':
     import sys, io
-    seman.load("semantics.wooght")
+    # seman.load("semantics.wooght")
+    seman.load('news.wooght')
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf8')  # 改变标准输出的默认编码
     # seman.load_corpus(data_path+"positive.txt",data_path+"negative.txt")
     # seman.save(data_path+"semantics.wooght")
     # 调用方法
-    print(seman.attitude('2017年四季报显示，中邮信息产业的十大重仓股分别是旋极信息、尔康制药、昆仑万维、华宇软件、视源股份、兆易创新、泰格医药、乐视网、先导智能、慈文传媒	'))
+    print(seman.attitude('$东岳集团(00189)$ 东岳集团-财务数据模型更新 公司公布业绩预告17年财年 已錄得超過 160%的大幅增长'))
