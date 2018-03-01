@@ -34,15 +34,20 @@ class dd_backprobe(basedata):
 
 
     #  最后一天做单状态判断
-    def last_probe(self, pd):
-        last_index = pd.index.max()
-        self.dd_position.setdata(pd)
-        if self.dd_position.psin(last_index):
-            return (1, self.dd_rate.loc[last_index, 'totalvolpct'])
-        elif self.dd_position.psout(last_index, is_times=True) < 1:
-            return (-1, self.dd_rate.loc[last_index, 'totalvolpct'])
-        else:
-            return (0, self.dd_rate.loc[last_index, 'totalvolpct'])
+    def last_probe(self, pd_dict):
+        sz_pd = self.dd_math.sz_quotes
+        last_index = sz_pd.index.max()
+        self.dd_position.setdata(pd_dict)
+        result = {}
+        for d in pd_dict:
+            pd = pd_dict[d]
+            if self.dd_position.psin(pd.codeid, last_index):
+                result[d] = (1, pd.pd.loc[last_index, 'totalvolpct'])
+            elif self.dd_position.psout(pd.codeid, last_index) < 0:
+                result[d] = (-1, pd.pd.loc[last_index, 'totalvolpct'])
+            else:
+                result[d] = (0, pd.pd.loc[last_index, 'totalvolpct'])
+        return result
 
 
     # 回测调度

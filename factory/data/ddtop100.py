@@ -10,10 +10,7 @@ import sys
 
 sys.path.append(os.path.dirname(__file__) + '/../../')
 
-from factory.data_analyse import dd_pct
-from factory.data_analyse import ddtj_analyse
-from factory.data_analyse import data_cache
-from factory.data_analyse import float_nums
+from factory.data_analyse import *
 from common import wfunc
 
 day = wfunc.today(strtime=False)
@@ -27,14 +24,21 @@ class ddtop100(dd_pct):
         if ms_list:
             return ms_list
         else:
-            self.select_all(wfunc.before_day(50))  # 查询50天前以来的数据
+            self.select_all(wfunc.before_day(60))  # 查询50天前以来的数据
             codes = self.have_dd(30)  # 查询拥有大单30天以上的
             self.select_companyies()
-            dd = ddtj_analyse()
-            result_list = []
+            ddmath = dd_math()
+            alldd = ddmath.select_alldd()
+            self.dd_repository = alldd
+            dd_df_dict = {}
             for id in codes:
-                dd.select_ddtj(str(id), '2017-12-01')
-                status = dd.last_probe()
+                dd_df_dict[id] = alldd[alldd.code_id == id].copy()
+            last_df = ddmath.quotes_install(dd_df_dict)
+            backprobe = dd_backprobe()
+            result = backprobe.last_probe(last_df)
+            result_list = []
+            for id in result:
+                status = result[id]
                 names = self.cps[self.cps.code_id == id]
                 name = names.iloc[0]['name']
                 pct = self.pctsort[self.pctsort.code_id == id].iloc[0]['pctmean']
