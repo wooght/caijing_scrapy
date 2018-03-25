@@ -41,7 +41,7 @@ class dd_pct(basedata):
 
     #  占比排序取codeid
     #  return list codeid
-    def have_dd(self, days):
+    def have_dd(self, days, nums=100):
         pct_mean = self.dd_repository.groupby('code_id', as_index=False)['totalvolpct'].agg({'pctmean': 'mean'})
         pct_count = self.dd_repository.groupby('code_id', as_index=False)['totalvolpct'].agg({'pctcount': 'count'})
         tmp_pd = self.pd.merge(pct_mean, pct_count, on=['code_id'], how='left')
@@ -49,4 +49,4 @@ class dd_pct(basedata):
         the_data = last_pd[last_pd.pctcount >= days]  # 筛选拥有大单天数
         pctsort = the_data.sort_values('pctmean')  # 按照占比排序
         self.pctsort = pctsort
-        return list(pctsort.iloc[-100:, :].code_id)
+        return list(pctsort.iloc[- nums:, :].code_id)

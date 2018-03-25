@@ -25,7 +25,7 @@ class dd_position:
             now_times_shou = self.times_const * shou_change
             now_pct_mean = self.dd[codeid].pd.loc[i, 'totalvolpct']
             both_like = dd_change > shou_change or self.both_like(dd_change, shou_change)
-            than_rate = dd_change >= now_times_shou if now_pct_mean >= 0.5 else both_like  # 速率大于走势*系数
+            than_rate = (dd_change >= now_times_shou) if now_pct_mean >= 0.5 else both_like  # 速率大于走势*系数
             than_const = dd_change >= times_rate and both_like  # 速率大于速率常数,且大于走势
             return than_rate or than_const
         else:
@@ -78,6 +78,8 @@ class dd_position:
             return shou > dd * 0.9
         elif shou > dd:
             return dd > shou * 0.9
+        else:
+            return True
 
     # 双双连续缓慢下跌
     def down_continue5(self, codeid, i):

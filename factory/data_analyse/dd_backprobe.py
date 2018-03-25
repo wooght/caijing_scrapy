@@ -52,12 +52,16 @@ class dd_backprobe(basedata):
 
     # 回测调度
     # 上证指数为时间基础 遍历每一天,每一只股票
-    def dispatch(self, pd_dict, days=0):
+    def dispatch(self, pd_dict, days=0, enddays=0):
         sz_pd = self.dd_math.sz_quotes
         if days != 0:
             maxday = sz_pd['datatime'].max()
             startday = maxday - datetime.timedelta(days=days)
             sz_pd = sz_pd[sz_pd['datatime'] > startday]
+        if enddays != 0:
+            lastday = sz_pd['datatime'].max()
+            endday = lastday - datetime.timedelta(days=days)
+            sz_pd = sz_pd[sz_pd['datatime'] < endday]
         self.last_index = sz_pd.index.max()
         start_index = sz_pd.index.min() + self.range_const
         self.dd_position.setdata(pd_dict)

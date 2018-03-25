@@ -55,7 +55,7 @@ class NewsSpider(CrawlSpider):
                            deny_domains=['sina.com.cn', '163.com', 'yicai.com']), callback='parse_qq_ywq', follow=False,
              process_links='link_screen'),
         # http://stock.qq.com/l/stock/ywq/list20150423143546_2.htm 只查询前9页数据
-        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d\_\d+.htm',)), follow=True, process_links='link_screen',
+        Rule(LinkExtractor(allow=('.*stock\.qq\.com\/.*\/list\d+\_\d.htm',)), follow=True, process_links='link_screen',
              process_request='wnews_request'),
         # process_request 指定对请求进行处理函数
         # 网易财经 http://money.163.com/17/1114/13/D375MGIB0025814V.html

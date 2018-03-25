@@ -79,6 +79,8 @@ class dd_position:
             return shou > dd * 0.9
         elif shou > dd:
             return dd > shou * 0.9
+        else:
+            return True
 
     # 双双连续缓慢下跌
     def down_continue5(self, i):

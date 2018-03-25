@@ -44,7 +44,7 @@ class WooghtDownloadMiddleware(Wdownloadmiddlewares):
         if spider.name == 'topics':
             print('------------>xueqiu------>')
             if url == "https://xueqiu.com":
-                arr_num = np.arange(10)
+                arr_num = np.arange(20)
                 for i in arr_num:
                     time.sleep(1)
                     js = "var a=document.body.scrollTop=" + str(i * 3000) + ";"
@@ -59,14 +59,14 @@ class WooghtDownloadMiddleware(Wdownloadmiddlewares):
             not_html = 'html' in url
             if not not_html and 'yicai' in url:
                 print('------------>yicai------>')
-                arr_num = np.arange(10)
+                arr_num = np.arange(20)
                 for i in arr_num:
                     button_id = self.driver.find_element_by_id('divMore')  # 多次点击更多按钮
                     time.sleep(2)
                     button_id.click()
             elif "money.163.com" in url:
                 print('------------>mony163------>')
-                arr_num = np.arange(10)
+                arr_num = np.arange(20)
                 for i in arr_num:
                     time.sleep(2)
                     # js = 'var a = clickLoadMore();'

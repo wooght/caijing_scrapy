@@ -31,7 +31,7 @@ if __name__ == '__main__':
         zh_focus = zhmath.group_mean()
         alldd = ddmath.select_alldd()
         ddpct.dd_repository = alldd
-        codeids = ddpct.have_dd(260)
+        codeids = ddpct.have_dd(days=100, nums=400)
         dd_df_dict = {}
         for id in codeids:
             if id not in zh_focus:
@@ -40,7 +40,7 @@ if __name__ == '__main__':
 
         last_df = ddmath.quotes_install(dd_df_dict)
         backprobe = dd_backprobe()
-        result = backprobe.dispatch(last_df, 0)
+        result = backprobe.dispatch(last_df, days=0, enddays=0)
 
         #  回测汇总
         total_income = 0
@@ -55,7 +55,9 @@ if __name__ == '__main__':
         max_income = {'id': 0, 'income': 0}
         min_income = {'id': 0, 'income': 0}
         s_all = []
-        for i in result:
+        for i in codeids:
+            if i not in zh_focus:
+                continue
             income = result[i].f_total_income()
             total_income += income
             total_jia += (result[i].jia_nums() + result[i].kai_nums())

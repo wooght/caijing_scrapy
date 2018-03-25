@@ -22,10 +22,11 @@ class ddtop100(dd_pct):
     def api(self):
         ms_list = data_cache.get_marshal(file_path)
         if ms_list:
+            ms_list.sort(key=lambda d:d[4])
             return ms_list
         else:
             self.select_all(wfunc.before_day(60))  # 查询50天前以来的数据
-            codes = self.have_dd(30)  # 查询拥有大单30天以上的
+            codes = self.have_dd(days=30, nums=200)  # 查询拥有大单30天以上的
             self.select_companyies()
             ddmath = dd_math()
             alldd = ddmath.select_alldd()
@@ -44,6 +45,7 @@ class ddtop100(dd_pct):
                 pct = self.pctsort[self.pctsort.code_id == id].iloc[0]['pctmean']
                 result_list.append([str(id), name.encode('utf-8'), float_nums(status[0]),
                                     float_nums(status[1]), float_nums(pct)])
+            result_list.sort(key=lambda d:d[4])
             data_cache.save_marshal(file_path, result_list)
             return result_list
 

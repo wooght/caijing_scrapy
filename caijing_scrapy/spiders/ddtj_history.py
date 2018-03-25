@@ -47,8 +47,8 @@ class DetailsSpider(scrapy.Spider):
             r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id]).where(T.quotes_item.c.code_id == self.codeid)
         elif self.first100:
             var_dd = dd_pct()
-            var_dd.select_all(wfunc.before_day(50))
-            code_100 = var_dd.have_dd(30)
+            var_dd.select_all(wfunc.before_day(120))
+            code_100 = var_dd.have_dd(days=10, nums=400)
             print(code_100)
             r = T.select([T.quotes_item.c.quotes, T.quotes_item.c.code_id]).where(
                 T.quotes_item.c.code_id.in_(code_100))
