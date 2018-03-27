@@ -12,6 +12,12 @@ def all():
     return r.fetchall()
 
 
+def all_url():
+    s = select([topic.c.url])
+    r = conn.execute(s)
+    return r.fetchall()
+
+
 def one(id):
     s = select([topic.c.body, topic.c.id, topic.c.title]).where(topic.c.id == id)
     r = conn.execute(s)

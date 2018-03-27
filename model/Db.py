@@ -8,8 +8,9 @@ __author__ = 'wooght'
 from sqlalchemy import create_engine, Table, Column, MetaData, select
 from sqlalchemy import VARCHAR, TEXT as Text, Integer, String, ForeignKey, Date, Float, SmallInteger, \
     BigInteger
-from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.ext.declarative import declarative_base
 
+# 连接mysql
 engine = create_engine("mysql+pymysql://homestead:secret@192.168.10.10:3306/scrapy?charset=utf8", encoding="utf-8",
                        echo=False)  # echo表示是否输出执行过程内容
 metadata = MetaData()
