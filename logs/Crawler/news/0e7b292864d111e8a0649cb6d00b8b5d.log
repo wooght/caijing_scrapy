@@ -1,0 +1,629 @@
+2018-05-31 20:54:36 [wooght] WARNING: ERRORTimeout
+2018-05-31 20:56:23 [scrapy.core.scraper] ERROR: Error downloading <GET http://www.yicai.com/data/>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 37, in process_request
+    response = yield method(request=request, spider=spider)
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/middlewares/Newsmiddlewares.py", line 64, in process_request
+    button_id = self.driver.find_element_by_id('divMore')  # 多次点击更多按钮
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 353, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 957, in find_element
+    'value': value})['value']
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 314, in execute
+    self.error_handler.check_response(response)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"divMore"}
+  (Session info: headless chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.15.0-22-generic x86_64)
+
+2018-05-31 20:56:24 [scrapy.core.scraper] ERROR: Error downloading <GET http://stock.qq.com/a/20180531/042474.htm>: User timeout caused connection failure.
+2018-05-31 20:58:36 [scrapy.core.scraper] ERROR: Spider error processing <GET http://finance.sina.com.cn/times/qt/2017-12-07/doc-ifypikwu3371870.shtml> (referer: http://finance.sina.com.cn/roll/2018-05-31/doc-ihcffhsw0211862.shtml)
+Traceback (most recent call last):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 195, in parse_sina
+    thetime = response.xpath('//*[@id="top_bar"]/div/div[2]/span[1]').extract_first().strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spiders/crawl.py", line 78, in _parse_response
+    for requests_or_item in iterate_spider_output(cb_res):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 197, in parse_sina
+    thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
+IndexError: list index out of range
+2018-05-31 20:58:39 [scrapy.core.scraper] ERROR: Error downloading <GET http://www.yicai.com/news/comment/>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 37, in process_request
+    response = yield method(request=request, spider=spider)
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/middlewares/Newsmiddlewares.py", line 64, in process_request
+    button_id = self.driver.find_element_by_id('divMore')  # 多次点击更多按钮
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 353, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 957, in find_element
+    'value': value})['value']
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 314, in execute
+    self.error_handler.check_response(response)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"divMore"}
+  (Session info: headless chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.15.0-22-generic x86_64)
+
+2018-05-31 20:58:43 [scrapy.core.scraper] ERROR: Spider error processing <GET http://finance.sina.com.cn/times/2018-01-02/doc-ifyqcwaq6724116.shtml> (referer: http://finance.sina.com.cn/roll/2018-05-31/doc-ihcffhsw0211862.shtml)
+Traceback (most recent call last):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 195, in parse_sina
+    thetime = response.xpath('//*[@id="top_bar"]/div/div[2]/span[1]').extract_first().strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spiders/crawl.py", line 78, in _parse_response
+    for requests_or_item in iterate_spider_output(cb_res):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 197, in parse_sina
+    thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
+IndexError: list index out of range
+2018-05-31 20:59:29 [scrapy.core.scraper] ERROR: Spider error processing <GET http://sports.163.com/18/0530/07/DJ1O06NQ0005877U.html> (referer: http://sports.163.com/18/0531/19/DJ5IPD4M00058781.html)
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spiders/crawl.py", line 78, in _parse_response
+    for requests_or_item in iterate_spider_output(cb_res):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 230, in parse_163_money
+    items['title'] = response.xpath('//div[@id="epContentLeft"]/h1[1]/text()').extract()[0].strip()
+IndexError: list index out of range
+2018-05-31 21:00:01 [scrapy.core.scraper] ERROR: Spider error processing <GET http://finance.sina.com.cn/stock/s/2018-04-11/doc-ifyuwqez9253667.shtml> (referer: http://finance.sina.com.cn/roll/2018-05-31/doc-ihcffhsw0211862.shtml)
+Traceback (most recent call last):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 195, in parse_sina
+    thetime = response.xpath('//*[@id="top_bar"]/div/div[2]/span[1]').extract_first().strip()
+AttributeError: 'NoneType' object has no attribute 'strip'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spiders/crawl.py", line 78, in _parse_response
+    for requests_or_item in iterate_spider_output(cb_res):
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 197, in parse_sina
+    thetime = response.xpath('//span[@class="time-source"]/text()').extract()[0].strip()
+IndexError: list index out of range
+2018-05-31 21:00:08 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/jsy/2018-05-31/doc-ihcikcev4825809.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/jsy/2018-05-31/doc-ihcikcev4825809.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:08 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/times/qt/2017-12-25/doc-ifypsqka1131656.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/times/qt/2017-12-25/doc-ifypsqka1131656.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:15 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/money/smjj/smcc/2018-05-31/doc-ihcffhsw0267221.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/money/smjj/smcc/2018-05-31/doc-ihcffhsw0267221.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:15 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcffhsw0377345.shtml>: User timeout caused connection failure.
+2018-05-31 21:00:19 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/zldx/2018-05-31/doc-ihcffhsw0296476.shtml>: User timeout caused connection failure.
+2018-05-31 21:00:19 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0531/19/DJ5JHT2N0025817I.html>: User timeout caused connection failure.
+2018-05-31 21:00:23 [scrapy.core.scraper] ERROR: Error downloading <GET http://home.163.com/18/0529/07/DIV47SGP001081EI.html>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://home.163.com/18/0529/07/DIV47SGP001081EI.html took longer than 5.0 seconds..
+2018-05-31 21:00:27 [scrapy.core.scraper] ERROR: Error downloading <GET http://renjian.163.com/18/0531/17/DJ5BFAEP000181RV.html>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://renjian.163.com/18/0531/17/DJ5BFAEP000181RV.html took longer than 5.0 seconds..
+2018-05-31 21:00:27 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/zldx/2018-05-31/doc-ihcffhsw0237557.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/zldx/2018-05-31/doc-ihcffhsw0237557.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:30 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/hyyj/2018-05-31/doc-ihcikcev6154750.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/hyyj/2018-05-31/doc-ihcikcev6154750.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:30 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0531/20/DJ5LTDA600259ARN.html>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://money.163.com/18/0531/20/DJ5LTDA600259ARN.html took longer than 5.0 seconds..
+2018-05-31 21:00:33 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev6074568.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev6074568.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:33 [scrapy.core.scraper] ERROR: Error downloading <GET http://stock.qq.com/a/20180531/038733.htm>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://stock.qq.com/a/20180531/038733.htm took longer than 5.0 seconds..
+2018-05-31 21:00:37 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev3526109.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev3526109.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:37 [scrapy.core.scraper] ERROR: Error downloading <GET http://stock.qq.com/a/20180531/040964.htm>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://stock.qq.com/a/20180531/040964.htm took longer than 5.0 seconds..
+2018-05-31 21:00:43 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0531/19/DJ5JF3300025817I.html>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://money.163.com/18/0531/19/DJ5JF3300025817I.html took longer than 5.0 seconds..
+2018-05-31 21:00:43 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0531/19/DJ5KQ67D00258105.html>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://money.163.com/18/0531/19/DJ5KQ67D00258105.html took longer than 5.0 seconds..
+2018-05-31 21:00:43 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev6198917.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev6198917.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:46 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/roll/2018-05-31/doc-ihcikcev6330419.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/roll/2018-05-31/doc-ihcikcev6330419.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:46 [scrapy.core.scraper] ERROR: Error downloading <GET http://stock.qq.com/a/20180531/040727.htm>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://stock.qq.com/a/20180531/040727.htm took longer than 5.0 seconds..
+2018-05-31 21:00:46 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0531/19/DJ5IDLGH00258152.html>: User timeout caused connection failure.
+2018-05-31 21:00:46 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0531/02/DJ3P8JRE002580S6.html>: User timeout caused connection failure.
+2018-05-31 21:00:46 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/e/2018-05-31/doc-ihcffhsw1080417.shtml>: User timeout caused connection failure.
+2018-05-31 21:00:46 [scrapy.core.scraper] ERROR: Error downloading <GET http://stock.qq.com/a/20180531/040423.htm>: User timeout caused connection failure.
+2018-05-31 21:00:54 [scrapy.core.scraper] ERROR: Error downloading <GET http://www.yicai.com/news/gushi/>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 37, in process_request
+    response = yield method(request=request, spider=spider)
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/middlewares/Newsmiddlewares.py", line 64, in process_request
+    button_id = self.driver.find_element_by_id('divMore')  # 多次点击更多按钮
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 353, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 957, in find_element
+    'value': value})['value']
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 314, in execute
+    self.error_handler.check_response(response)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"divMore"}
+  (Session info: headless chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.15.0-22-generic x86_64)
+
+2018-05-31 21:00:55 [scrapy.core.scraper] ERROR: Error downloading <GET http://money.163.com/18/0528/19/DITS372P00258152.html>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://money.163.com/18/0528/19/DITS372P00258152.html took longer than 5.0 seconds..
+2018-05-31 21:00:55 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcffhsv9764750.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcffhsv9764750.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:55 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/jsy/2018-05-31/doc-ihcikcev4771757.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/jsy/2018-05-31/doc-ihcikcev4771757.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:57 [scrapy.core.scraper] ERROR: Error downloading <GET http://www.yicai.com/news/hongguan/>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 37, in process_request
+    response = yield method(request=request, spider=spider)
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/middlewares/Newsmiddlewares.py", line 64, in process_request
+    button_id = self.driver.find_element_by_id('divMore')  # 多次点击更多按钮
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 353, in find_element_by_id
+    return self.find_element(by=By.ID, value=id_)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 957, in find_element
+    'value': value})['value']
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 314, in execute
+    self.error_handler.check_response(response)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"id","selector":"divMore"}
+  (Session info: headless chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.15.0-22-generic x86_64)
+
+2018-05-31 21:00:57 [scrapy.core.scraper] ERROR: Error downloading <GET http://stock.qq.com/a/20180531/040341.htm>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://stock.qq.com/a/20180531/040341.htm took longer than 5.0 seconds..
+2018-05-31 21:00:57 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcikcev6469688.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcikcev6469688.shtml took longer than 5.0 seconds..
+2018-05-31 21:00:58 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/sdbk/2018-05-31/doc-ihcikcev4969384.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/sdbk/2018-05-31/doc-ihcikcev4969384.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:10 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/y/2018-05-31/doc-ihcikcev6509508.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/y/2018-05-31/doc-ihcikcev6509508.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:22 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/jsy/2018-05-31/doc-ihcikcev4776892.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/jsy/2018-05-31/doc-ihcikcev4776892.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:27 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/roll/2018-05-31/doc-ihcffhsw0212987.shtml>: User timeout caused connection failure.
+2018-05-31 21:01:39 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev5940867.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/s/2018-05-31/doc-ihcikcev5940867.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:45 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/focus/2018-05-31/doc-ihcikcev3491425.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/focus/2018-05-31/doc-ihcikcev3491425.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:49 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/roll/2018-05-31/doc-ihcikcev6341545.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/roll/2018-05-31/doc-ihcikcev6341545.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:51 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/zldx/2018-05-31/doc-ihcffhsv8371148.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/zldx/2018-05-31/doc-ihcffhsv8371148.shtml took longer than 5.0 seconds..
+2018-05-31 21:01:52 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/hyyj/2018-05-31/doc-ihcffhsw1105261.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/hyyj/2018-05-31/doc-ihcffhsw1105261.shtml took longer than 5.0 seconds..
+2018-05-31 21:02:02 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/hyyj/2018-05-31/doc-ihcffhsw0605217.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/hyyj/2018-05-31/doc-ihcffhsw0605217.shtml took longer than 5.0 seconds..
+2018-05-31 21:02:02 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/stockptd/2018-05-30/doc-ihcffhsv4552231.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/stockptd/2018-05-30/doc-ihcffhsv4552231.shtml took longer than 5.0 seconds..
+2018-05-31 21:02:03 [scrapy.core.scraper] ERROR: Error downloading <GET http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcffhsw0379865.shtml>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1384, in _inlineCallbacks
+    result = result.throwExceptionIntoGenerator(g)
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/python/failure.py", line 422, in throwExceptionIntoGenerator
+    return g.throw(self.type, self.value, self.tb)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 43, in process_request
+    defer.returnValue((yield download_func(request=request,spider=spider)))
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 653, in _runCallbacks
+    current.result = callback(current.result, *args, **kw)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/handlers/http11.py", line 351, in _cb_timeout
+    raise TimeoutError("Getting %s took longer than %s seconds." % (url, timeout))
+twisted.internet.error.TimeoutError: User timeout caused connection failure: Getting http://finance.sina.com.cn/stock/marketresearch/2018-05-31/doc-ihcffhsw0379865.shtml took longer than 5.0 seconds..
+2018-05-31 21:02:18 [scrapy.core.scraper] ERROR: Spider error processing <GET http://183.57.48.75/ifzqgtimg/appstock/news/NewsOpenProxy/get?nkey=getQQNewsSimpleHtmlContentVerify&id=FIN2018053102126114&chlid=news_news_istock&return=0,1,6,100,102&devid=b7f6945c2c01d5275408b475f9d3d77deccf4fce&appver=iphone5.8.1&_omgid=7f37d4eaf6195b4505da3fa034f73aacf580001011161c&_columnId=stock_yaowen_v2_new&_rndtime=1512996494&_appName=ios&_dev=iPhone8,2&_devId=b7f6945c2c01d5275408b475f9d3d77deccf4fce&_appver=5.8.1&_ifChId=&_isChId=1&_osVer=10.3.3&_uin=10000&_wxuin=20000%20> (referer: http://zixuanguapp.finance.qq.com)
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/utils/defer.py", line 102, in iter_errback
+    yield next(it)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/offsite.py", line 30, in process_spider_output
+    for x in result:
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/referer.py", line 339, in <genexpr>
+    return (_set_referer(r) for r in result or ())
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/urllength.py", line 37, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/spidermiddlewares/depth.py", line 58, in <genexpr>
+    return (r for r in result or () if _filter(r))
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/spiders/news.py", line 152, in parse_zxg_apinews
+    items['put_time'] = wfunc.time_num(api['data']['id'][:8], "%Y%m%d")
+  File "/home/wooght/www/app/caijing_scrapy/common/wfunc.py", line 25, in time_num
+    timeArray = time.strptime(str, format)
+  File "/usr/lib/python3.6/_strptime.py", line 559, in _strptime_time
+    tt = _strptime(data_string, format)[0]
+  File "/usr/lib/python3.6/_strptime.py", line 362, in _strptime
+    (data_string, format))
+ValueError: time data 'FIN20180' does not match format '%Y%m%d'

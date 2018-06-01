@@ -47,7 +47,7 @@ class WooghtDownloadMiddleware(Wdownloadmiddlewares):
                 arr_num = np.arange(20)
                 for i in arr_num:
                     time.sleep(1)
-                    js = "var a=document.body.scrollTop=" + str(i * 3000) + ";"
+                    js = "var a=document.documentElement.scrollTop=" + str(i * 3000) + ";"
                     self.driver.execute_script(js)
                 for i in arr_num:
                     time.sleep(2)

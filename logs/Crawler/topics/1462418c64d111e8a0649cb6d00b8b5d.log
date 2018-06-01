@@ -1,0 +1,20 @@
+2018-05-31 20:50:22 [scrapy.core.scraper] ERROR: Error downloading <GET https://xueqiu.com>
+Traceback (most recent call last):
+  File "/home/wooght/.local/lib/python3.6/site-packages/twisted/internet/defer.py", line 1386, in _inlineCallbacks
+    result = g.send(result)
+  File "/home/wooght/.local/lib/python3.6/site-packages/scrapy/core/downloader/middleware.py", line 37, in process_request
+    response = yield method(request=request, spider=spider)
+  File "/home/wooght/www/app/caijing_scrapy/caijing_scrapy/middlewares/Newsmiddlewares.py", line 54, in process_request
+    button_class = self.driver.find_element_by_class_name('home__timeline__more')
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 557, in find_element_by_class_name
+    return self.find_element(by=By.CLASS_NAME, value=name)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 957, in find_element
+    'value': value})['value']
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/webdriver.py", line 314, in execute
+    self.error_handler.check_response(response)
+  File "/home/wooght/.local/lib/python3.6/site-packages/selenium/webdriver/remote/errorhandler.py", line 242, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.NoSuchElementException: Message: no such element: Unable to locate element: {"method":"class name","selector":"home__timeline__more"}
+  (Session info: headless chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.38.552522 (437e6fbedfa8762dec75e2c5b3ddb86763dc9dcb),platform=Linux 4.15.0-22-generic x86_64)
+

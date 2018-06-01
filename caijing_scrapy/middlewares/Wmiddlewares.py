@@ -12,6 +12,8 @@ import time
 
 import selenium
 from selenium import webdriver
+from pyvirtualdisplay import Display
+from selenium.webdriver.chrome.options import Options
 
 import common.wfunc
 from common.werror import Werror
@@ -31,7 +33,8 @@ class Wdownloadmiddlewares(object):
 
     # 创建webdriver
     # 设置driver属性
-    def set_cap(self):
+    def set_cap_phantomjs(self):
+        #  DesiredCapabilities指webdirver的环境
         cap = webdriver.DesiredCapabilities.PHANTOMJS
         refererlist = [
             'http://www.baidu.com', 'http://www.qq.com', 'https://zhidao.baidu.com/'
@@ -55,6 +58,18 @@ class Wdownloadmiddlewares(object):
         # self.driver.implicitly_wait(5)                    #设置只能等待时间
 
         common.wfunc.e('!+!+=new driver run=+!+!')
+
+
+    # chromedriver
+    def set_cap(self):
+        # display = Display(visible=0, size=(1920, 1080))  # 构建虚拟窗口
+        # display.start()
+        chrome_options = Options()
+        chrome_options.add_argument('--headless')  # 设置为无头的测试浏览器
+        chrome_options.add_argument('--disable-gpu')
+        self.driver = webdriver.Chrome(chrome_options=chrome_options)
+        self.driver.maximize_window()
+        common.wfunc.e('!+!+=new dirver run=+!+!')
 
     # 爬虫执行完后 余下操作
     def spider_closed(self):
